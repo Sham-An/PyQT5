@@ -1,8 +1,32 @@
 import pandas as pd
 
+#pd.set_option('display.max_columns', None)
+#pd.set_option('display.max_rows', None)
+
 titanic_data = pd.read_csv('titanic.csv')
-titanic_data.head()
-print(titanic_data.head())
+#titanic_data.head()
+print(f" 1. titanic_data.head() \n {titanic_data.head(10)} ")
+# +++ print(titanic_data.columns.values)
+print(titanic_data.columns.tolist())
+#вывод полного списка колонок
+#Method 1:
+#pd.set_option('display.max_columns', None)
+#pd.set_option('display.max_rows', None)
+
+#Method 2:
+#pd.options.display.max_columns = None
+#pd.options.display.max_rows = None
+
+#Method 3: ++++
+#print(df.columns.tolist())
+#pd.reset_option("display.max_rows") #сброс по умолчанию
+
+#Method 4: ++++
+#df_data=pd.read_csv('../input/data.csv')
+#print(df_data.columns.values)
+
+print(f" 1.1 titanic_data.head() \n {titanic_data.head(10)} ")
+#############################
 col_names = ['Id',
              'Survived',
              'Passenger Class',
@@ -15,8 +39,10 @@ col_names = ['Id',
              'Price', 'Cabin',
              'Station']
 
-titanic_data = pd.read_csv(r'titanic.csv', names=col_names, skiprows=[0], sep=',')#, sep=';')
-print(titanic_data.head())
+titanic_data = pd.read_csv(r'titanic.csv', names=col_names, skiprows=[0])#, sep=',')#, sep=';')
+#print(titanic_data.head())
+print(f" 2. titanic_data.head() \n {titanic_data.head()} ")
+print(titanic_data.columns.tolist())
 
 #Запись CSV-файлов с помощью to_csv()
 #Опять же, DataFrame являются табличными.

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://habr.com/ru/company/ruvds/blog/494720/ -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+  <meta name="referrer" content="unsafe-url">
+  <title>Моя шпаргалка по pandas / Хабр</title>
+  <style>
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Fira Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firasans/v11/va9B4kDNxMZdWfMOD5VnZKveSxf6TF0.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: 'Fira Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firasans/v11/va9B4kDNxMZdWfMOD5VnZKveQhf6TF0.woff2) format('woff2');
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: 'Fira Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firasans/v11/va9B4kDNxMZdWfMOD5VnZKveSBf6TF0.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin */
+    @font-face {
+      font-family: 'Fira Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/firasans/v11/va9B4kDNxMZdWfMOD5VnZKveRhf6.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* non-breaking hyphen */
+    @font-face {
+      font-family: 'Fira Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/l/font?kit=KFOlCnqEu92Fr1MmEU9vBh0_IsHAlmrO6g&skey=ee881451c540fdec&v=v29) format('woff2');
+      unicode-range: U+02011;
+    }
+  </style>
+  <link rel="preload" href="./Моя шпаргалка по pandas _ Хабр_files/chunk-vendors.e7843cc0.css" as="style"><link rel="preload" href="./Моя шпаргалка по pandas _ Хабр_files/chunk-vendors.8aa20160.js.Без названия" as="script"><link rel="preload" href="./Моя шпаргалка по pandas _ Хабр_files/app.1bc0e9a2.css" as="style"><link rel="preload" href="./Моя шпаргалка по pandas _ Хабр_files/app.4f1abf33.js.Без названия" as="script">
+  <link rel="stylesheet" href="./Моя шпаргалка по pandas _ Хабр_files/chunk-vendors.e7843cc0.css"><link rel="stylesheet" href="./Моя шпаргалка по pandas _ Хабр_files/app.1bc0e9a2.css">
+  <script type="text/javascript" async="" src="./Моя шпаргалка по pandas _ Хабр_files/js"></script><script async="" src="./Моя шпаргалка по pandas _ Хабр_files/tag.js.Без названия"></script><script async="" src="./Моя шпаргалка по pandas _ Хабр_files/analytics.js.Без названия"></script><script>window.i18nFetch = new Promise((res, rej) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', '/js/i18n/ru-compiled.2822d469ec31a56409ac330bbcf7fcbf.json');
+          xhr.responseType = 'json';
+          xhr.onload = function(e) {
+            if (this.status === 200) {
+              res({ru: xhr.response});
+            } else {
+              rej(e);
+            }
+          };
+          xhr.send();
+        });</script>
+  
+  <script data-vue-meta="ssr" type="application/ld+json" data-vmid="ldjson-schema">{"@context":"http:\/\/schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/habr.com\/ru\/company\/ruvds\/blog\/494720\/"},"headline":"Моя шпаргалка по pandas","datePublished":"2020-03-31T12:30:02+03:00","dateModified":"2020-03-31T12:30:02+03:00","author":{"@type":"Person","name":"ru_vds"},"publisher":{"@type":"Organization","name":"Habr","logo":{"@type":"ImageObject","url":"https:\/\/habrastorage.org\/webt\/a_\/lk\/9m\/a_lk9mjkccjox-zccjrpfolmkmq.png"}},"description":"Один преподаватель как-то сказал мне, что если поискать аналог программиста в мире книг, то окажется, что программисты похожи не на учебники, а на оглавления уче...","url":"https:\/\/habr.com\/ru\/company\/ruvds\/blog\/494720\/#post-content-body","about":["c_ruvds","h_webdev","h_python","f_develop"],"image":["https:\/\/habrastorage.org\/webt\/ge\/yb\/iu\/geybiuurbhpsffn2pu04xhax_rq.jpeg","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/d5b\/59f\/543\/d5b59f543d887c33b912e66642640d9e.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/402\/bcb\/22e\/402bcb22ee99170d544f90fd64104289.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/edd\/7c8\/e25\/edd7c8e25b0d16a143659ca1462a186e.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/0f6\/061\/9bb\/0f60619bb1a49bde2df4f171613dd193.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/85d\/2ad\/393\/85d2ad3933d300b6afbe8f3b3140f40d.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/2f7\/ab5\/6f1\/2f7ab56f1f7d431ef3e5f6ac7922c9a9.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/bf5\/2c0\/d4f\/bf52c0d4f50d357a40871a6999f2335f.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/3d2\/51e\/47a\/3d251e47afdd01962810b0a1a8aa8859.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/c19\/9fb\/d4c\/c199fbd4cf50623d5fd75ded8f1614cc.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/e1f\/008\/ddf\/e1f008ddfdb79459dad6f50421736c7b.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/db3\/77e\/121\/db377e121b77d871acdf9d1bc737069b.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/685\/c18\/60f\/685c1860f536fba854754c956107e3a7.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/8fe\/931\/02d\/8fe93102df79a85d02b6ef286049def5.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/c7f\/bd8\/d5d\/c7fbd8d5dff65dce484d873b497f31dc.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/c7b\/e91\/e10\/c7be91e10b1e31ee525dc26e44d2e9ea.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/9b9\/34f\/172\/9b934f17234b988ded660c608413ab45.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/3c6\/5bb\/666\/3c65bb666ff3c7389c2b35cd2d4b3029.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/68b\/a5d\/883\/68ba5d883c0b79be8a35a82296ba9dd9.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/f84\/b07\/bf1\/f84b07bf1b7f835b21aebda6004a84e4.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/774\/266\/31e\/77426631ebae515bef71c75fde3bd77b.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/c77\/504\/5fc\/c775045fcf404c6e973a3bfd2aa32192.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/5d5\/2f0\/52b\/5d52f052b52c7054bd81c38bb2fe1128.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/04e\/4ca\/e83\/04e4cae8384f7484c380066d6f13d3ed.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/b2b\/c4a\/191\/b2bc4a191c3178a18410ce592562b97a.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/4ca\/eae\/3c9\/4caeae3c921af60b4d39fc9ef4947b43.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/092\/795\/c51\/092795c51d4be09e6f0211d5b14ef8ce.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/291\/2d7\/4af\/2912d74af64b3e114e543433d482eb6e.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/395\/62f\/618\/39562f618aba5dadee84f65c5eec1de6.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/ca5\/c88\/9ce\/ca5c889ce4fcaeefcf6073a53a854800.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/196\/0bb\/044\/1960bb0441f16d1f5a637f53125b0133.png","https:\/\/habrastorage.org\/getpro\/habr\/post_images\/e3e\/1d6\/d24\/e3e1d6d24c6b3ef1797cbfb64dfebc6b.png","https:\/\/habrastorage.org\/webt\/iq\/fi\/b4\/iqfib45pgphfrxv--zfemt0qnmw.jpeg"]}</script>
+  <script src="./Моя шпаргалка по pandas _ Хабр_files/gpt.js.Без названия" async=""></script>
+  <style>.grecaptcha-badge{visibility: hidden;}</style>
+  <meta name="habr-version" content="2.66.0">
+  
+  <meta data-vue-meta="ssr" property="fb:app_id" content="444736788986613"><meta data-vue-meta="ssr" property="fb:pages" content="472597926099084"><meta data-vue-meta="ssr" name="twitter:card" content="summary_large_image"><meta data-vue-meta="ssr" name="twitter:site" content="@habr_com"><meta data-vue-meta="ssr" property="og:site_name" content="Хабр" data-vmid="og:site_name"><meta data-vue-meta="ssr" property="og:title" content="Моя шпаргалка по pandas" data-vmid="og:title"><meta data-vue-meta="ssr" name="twitter:title" content="Моя шпаргалка по pandas" data-vmid="twitter:title"><meta data-vue-meta="ssr" name="aiturec:title" content="Моя шпаргалка по pandas" data-vmid="aiturec:title"><meta data-vue-meta="ssr" name="description" content="Один преподаватель как-то сказал мне, что если поискать аналог программиста в мире книг, то окажется, что программисты похожи не на учебники, а на оглавления учебников: они не помнят всего, но знают,..." data-vmid="description"><meta data-vue-meta="ssr" itemprop="description" content="Один преподаватель как-то сказал мне, что если поискать аналог программиста в мире книг, то окажется, что программисты похожи не на учебники, а на оглавления учебников: они не помнят всего, но знают,..." data-vmid="description:itemprop"><meta data-vue-meta="ssr" property="og:description" content="Один преподаватель как-то сказал мне, что если поискать аналог программиста в мире книг, то окажется, что программисты похожи не на учебники, а на оглавления учебников: они не помнят всего, но знают,..." data-vmid="og:description"><meta data-vue-meta="ssr" name="twitter:description" content="Один преподаватель как-то сказал мне, что если поискать аналог программиста в мире книг, то окажется, что программисты похожи не на учебники, а на оглавления учебников: они не помнят всего, но знают,..." data-vmid="twitter:description"><meta data-vue-meta="ssr" property="aiturec:description" content="Один преподаватель как-то сказал мне, что если поискать аналог программиста в мире книг, то окажется, что программисты похожи не на учебники, а на оглавления учебников: они не помнят всего, но знают,..." data-vmid="aiturec:description"><meta data-vue-meta="ssr" itemprop="image" content="https://habr.com/share/publication/494720/b4cce66d91bfdc3a71828ed36ec27a17/" data-vmid="image:itemprop"><meta data-vue-meta="ssr" property="og:image" content="https://habr.com/share/publication/494720/b4cce66d91bfdc3a71828ed36ec27a17/" data-vmid="og:image"><meta data-vue-meta="ssr" property="og:image:width" content="1200" data-vmid="og:image:width"><meta data-vue-meta="ssr" property="og:image:height" content="630" data-vmid="og:image:height"><meta data-vue-meta="ssr" property="aiturec:image" content="https://habr.com/share/publication/494720/b4cce66d91bfdc3a71828ed36ec27a17/" data-vmid="aiturec:image"><meta data-vue-meta="ssr" name="twitter:image" content="https://habr.com/share/publication/494720/b4cce66d91bfdc3a71828ed36ec27a17/" data-vmid="twitter:image"><meta data-vue-meta="ssr" property="vk:image" content="https://habr.com/share/publication/494720/b4cce66d91bfdc3a71828ed36ec27a17/?format=vk" data-vmid="vk:image"><meta data-vue-meta="ssr" property="aiturec:item_id" content="494720" data-vmid="aiturec:item_id"><meta data-vue-meta="ssr" property="aiturec:datetime" content="2020-03-31T09:30:02.000Z" data-vmid="aiturec:datetime"><meta data-vue-meta="ssr" content="https://habr.com/ru/company/ruvds/blog/494720/" property="og:url" data-vmid="og:url"><meta data-vue-meta="ssr" property="og:type" content="article" data-vmid="og:type"><meta data-vue-meta="ssr" property="og:locale" content="ru_RU" data-vmid="og:locale"><meta data-vue-meta="ssr" name="keywords" content="Python, Pandas, разработка">
+  <link data-vue-meta="ssr" href="https://habr.com/ru/rss/post/494720/?fl=ru" type="application/rss+xml" title="" rel="alternate" name="rss"><link data-vue-meta="ssr" href="https://habr.com/ru/company/ruvds/blog/494720/" rel="canonical" data-vmid="canonical"><link data-vue-meta="ssr" data-vmid="hreflang"><link data-vue-meta="ssr" image_src="image" href="https://habr.com/share/publication/494720/b4cce66d91bfdc3a71828ed36ec27a17/" data-vmid="image:href">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303b44">
+  <meta name="msapplication-TileColor" content="#629FBC">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" type="image/png" sizes="16x16" href="https://assets.habr.com/habr-web/img/favicons/favicon-16.png">
+  <link rel="shortcut icon" type="image/png" sizes="32x32" href="https://assets.habr.com/habr-web/img/favicons/favicon-32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="https://assets.habr.com/habr-web/img/favicons/apple-touch-icon-76.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="https://assets.habr.com/habr-web/img/favicons/apple-touch-icon-120.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="https://assets.habr.com/habr-web/img/favicons/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://assets.habr.com/habr-web/img/favicons/apple-touch-icon-180.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="256x256" href="https://assets.habr.com/habr-web/img/favicons/apple-touch-icon-256.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_1136x640.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_2436x1125.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_1792x828.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_828x1792.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_1334x750.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_1242x2668.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_2208x1242.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_1125x2436.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_1242x2208.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_2732x2048.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_2688x1242.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_2224x1668.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_750x1334.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_2048x2732.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_2388x1668.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_1668x2224.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_640x1136.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_1668x2388.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://assets.habr.com/habr-web/img/splashes/splash_2048x1536.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://assets.habr.com/habr-web/img/splashes/splash_1536x2048.png">
+  <link rel="mask-icon" color="#77a2b6" href="https://assets.habr.com/habr-web/img/favicons/apple-touch-icon-120.svg">
+  <link crossorigin="use-credentials" href="https://habr.com/manifest.webmanifest" rel="manifest">
+  <script>window.yaContextCb = window.yaContextCb || []</script>
+  <script src="./Моя шпаргалка по pandas _ Хабр_files/context.js.Без названия" async=""></script>
+<script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/69290a95a92f54c31261.js.Без названия" crossorigin="anonymous" importance="high"></script><script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/80872bfed5966279ccc0.js.Без названия" crossorigin="anonymous" importance="high"></script><script async="" crossorigin="anonymous" src="./Моя шпаргалка по pandas _ Хабр_files/host.js.Без названия"></script><link rel="preconnect" href="https://yastatic.net/"><link rel="preconnect" href="https://avatars.mds.yandex.net/"><link rel="preconnect" href="https://mc.yandex.ru/"><meta id="https://yastatic.net/partner-code-bundles/55804/context_static.js"><link rel="preconnect" href="https://ads.adfox.ru/"><script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/4efaf7abb4568af39bfe.js.Без названия" crossorigin="anonymous" importance="high"></script><script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/chunk-2d21ab85.4d06bd97.js.Без названия"></script><script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/hljs.84625c5d.js.Без названия"></script><link rel="stylesheet" type="text/css" href="./Моя шпаргалка по pandas _ Хабр_files/gallery.34dd7d07.css"><script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/gallery.a887cf5c.js.Без названия"></script><script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/chunk-2d222042.bdf40a76.js.Без названия"></script><script data-vue-meta="ssr" onload="window[&#39;e0044d29c024&#39;] = true" src="./Моя шпаргалка по pandas _ Хабр_files/saved_resource" data-vmid="checklogin"></script><script charset="utf-8" src="./Моя шпаргалка по pandas _ Хабр_files/photoswipe.2b48f110.js.Без названия"></script></head>
+<body>
+
+
+<div id="app" data-async-called="true"><div class="tm-layout__wrapper"><!----> <div></div> <!----> <header class="tm-header"><div class="tm-page-width"><div class="tm-header__container"><!----> <span class="tm-header__logo-wrap"><a href="https://habr.com/ru/" class="tm-header__logo tm-header__logo_ru"><svg height="16" width="16" class="tm-svg-img tm-header__icon"><title>Хабр</title> <use xlink:href="/img/habr-logo-ru.svg#logo"></use></svg></a> <span class="tm-header__beta-sign" style="display:none;">β</span></span> <div class="tm-dropdown tm-header__projects"><div class="tm-dropdown__head"><button class="tm-header__dropdown-toggle"><svg height="16" width="16" class="tm-svg-img tm-header__icon tm-header__icon_dropdown"><title>Открыть список</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#arrow-down"></use></svg></button></div> <!----></div> <a href="https://habr.com/ru/sandbox/start/" class="tm-header__become-author-btn">
+            Как стать автором
+          </a> <!----> <a href="https://effect.habr.com/a/K6v4tfRNP3nAvM7u3KAr3dDDke5QdZ33596uuTBGzGYqdQXF8YMNVjznI8S7N3cfuynySjtqAuOITnKzInLIpyMQH7u39AMqEvNDnK6t9ESj6JZ2nI7dhBPzJMjk" target="_blank" class="tm-top-link" style="color: rgb(255, 162, 153);">
+  Опрос: что вы хотите видеть на Хабре
+</a> <!----></div></div></header> <div class="tm-layout"><div class="tm-page-progress-bar"></div> <div data-menu-sticky="true" class="tm-base-layout__header tm-base-layout__header_is-sticky"><div class="tm-page-width"><div class="tm-base-layout__header-wrapper"><div class="tm-main-menu"><div class="tm-main-menu__section"><nav class="tm-main-menu__section-content"><!----> <a href="https://habr.com/ru/flows/all" class="tm-main-menu__item">
+        Все потоки
+      </a> <a href="https://habr.com/ru/flows/develop/" class="tm-main-menu__item">
+          Разработка
+        </a><a href="https://habr.com/ru/flows/admin/" class="tm-main-menu__item">
+          Администрирование
+        </a><a href="https://habr.com/ru/flows/design/" class="tm-main-menu__item">
+          Дизайн
+        </a><a href="https://habr.com/ru/flows/management/" class="tm-main-menu__item">
+          Менеджмент
+        </a><a href="https://habr.com/ru/flows/marketing/" class="tm-main-menu__item">
+          Маркетинг
+        </a><a href="https://habr.com/ru/flows/popsci/" class="tm-main-menu__item">
+          Научпоп
+        </a></nav></div></div> <div class="tm-header-user-menu tm-base-layout__user-menu"><a href="https://habr.com/ru/search/" class="tm-header-user-menu__item tm-header-user-menu__search"><svg height="24" width="24" class="tm-svg-img tm-header-user-menu__icon tm-header-user-menu__icon_search tm-header-user-menu__icon_dark"><title>Поиск</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#search"></use></svg></a> <!----> <!----> <!----> <div class="tm-header-user-menu__item tm-header-user-menu__user_desktop"><div class="tm-dropdown"><div class="tm-dropdown__head"><svg height="24" width="24" data-test-id="menu-toggle-guest" class="tm-svg-img tm-header-user-menu__icon"><title>Профиль</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#header-user"></use></svg> <!----></div> <!----></div> <!----></div> <!----></div></div></div></div> <button class="tm-scroll-top"><span title="Наверх" class="tm-svg-icon__wrapper tm-scroll-top__arrow"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Наверх</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#small-arrow"></use></svg></span></button> <div class="tm-page-width"></div> <main class="tm-layout__container"><div hl="ru" companyname="ruvds" data-async-called="true" class="tm-page"><div class="tm-page-width"><div class="tm-page__header"><div class="tm-company-card__branding tm-company-article__branding"><!----> <a href="https://ruvds.com/ru-rub"><img src="./Моя шпаргалка по pandas _ Хабр_files/b778d5a41f83016379c6630262c3294c.png" width="100%" class="tm-company-card__branding-image"></a></div></div> <div class="tm-page__wrapper"><div class="tm-page__main tm-page__main_has-sidebar"><div class="pull-down"><div class="pull-down__header" style="height:0px;"><div class="pull-down__content" style="bottom:10px;"><svg height="24" width="24" class="tm-svg-img pull-down__arrow"><title>Обновить</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#pull-arrow"></use></svg></div></div> <div class="tm-article-presenter"><div class="tm-company-profile-card tm-company-article__profile-card"><div class="tm-company-card tm-company-profile-card__info"><div class="tm-company-card__header"><a href="https://habr.com/ru/company/ruvds/profile/" class="tm-company-card__avatar"><div class="tm-entity-image"><img alt="" height="48" src="./Моя шпаргалка по pandas _ Хабр_files/f27ea85bd62fbd985c308110885af7e0.png" width="48" class="tm-entity-image__pic"></div></a> <!----> <div class="tm-rating tm-company-card__rating"><div class="tm-rating__header"> <div class="tm-rating__counter">2100.36</div></div> <div class="tm-rating__text">
+    Рейтинг
+  </div></div> <!----></div> <div class="tm-company-card__info"><a href="https://habr.com/ru/company/ruvds/profile/" class="tm-company-card__name">
+      RUVDS.com
+    </a> <div class="tm-company-card__description">VDS/VPS-хостинг. Скидка 10% по коду <b>HABR10</b></div></div></div> <!----></div> <div class="tm-article-presenter__body"><div class="tm-misprint-area"><div class="tm-misprint-area__wrapper"><article class="tm-article-presenter__content tm-article-presenter__content_narrow"><div class="tm-article-presenter__header"> <div class="tm-article-snippet tm-article-presenter__snippet"><div class="tm-article-snippet__meta-container"><div class="tm-article-snippet__meta"><span class="tm-user-info tm-article-snippet__author"><a href="https://habr.com/ru/users/ru_vds/" title="ru_vds" class="tm-user-info__userpic"><div class="tm-entity-image"><img alt="" height="24" src="./Моя шпаргалка по pandas _ Хабр_files/e36812d3de38eb3d479d7a13228717ef.png" width="24" class="tm-entity-image__pic"></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/ru_vds/" class="tm-user-info__username">
+      ru_vds
+    </a> </span></span> <span class="tm-article-snippet__datetime-published"><time datetime="2020-03-31T09:30:02.000Z" title="2020-03-31, 12:30">31  марта  2020 в 12:30</time></span></div> <!----></div> <h1 lang="ru" class="tm-article-snippet__title tm-article-snippet__title_h1"><span>Моя шпаргалка по pandas</span></h1> <div class="tm-article-snippet__hubs"><span class="tm-article-snippet__hubs-item"><a href="https://habr.com/ru/company/ruvds/blog/" class="tm-article-snippet__hubs-item-link router-link-active"><span>Блог компании RUVDS.com</span> <!----></a></span><span class="tm-article-snippet__hubs-item"><a href="https://habr.com/ru/hub/webdev/" class="tm-article-snippet__hubs-item-link"><span>Разработка веб-сайтов</span> <span title="Профильный хаб" class="tm-article-snippet__profiled-hub">*</span></a></span><span class="tm-article-snippet__hubs-item"><a href="https://habr.com/ru/hub/python/" class="tm-article-snippet__hubs-item-link"><span>Python</span> <span title="Профильный хаб" class="tm-article-snippet__profiled-hub">*</span></a></span></div> <div class="tm-article-snippet__labels"><div class="tm-article-snippet__label tm-article-snippet__label_variant-translation"><span>
+        Перевод
+      </span></div></div> <!----> <!----></div></div> <div class="tm-article-presenter__origin"><a href="https://towardsdatascience.com/my-python-pandas-cheat-sheet-746b11e44368" target="_blank" class="tm-article-presenter__origin-link">
+                Автор оригинала:
+                <span>
+                  Chris
+                </span></a></div> <div data-gallery-root="" lang="ru" class="tm-article-body"><div></div> <div id="post-content-body"><div><div class="article-formatted-body article-formatted-body_version-1"><div xmlns="http://www.w3.org/1999/xhtml">Один преподаватель как-то сказал мне, что если поискать аналог программиста в мире книг, то окажется, что программисты похожи не на учебники, а на оглавления учебников: они не помнят всего, но знают, как быстро найти то, что им нужно.<br>
+<br>
+Возможность быстро находить описания функций позволяет программистам продуктивно работать, не теряя состояния потока. Поэтому я и создал представленную здесь шпаргалку по <code>pandas</code> и включил в неё то, чем пользуюсь каждый день, создавая веб-приложения и модели машинного обучения.<br>
+<br>
+<a href="https://habr.com/ru/company/ruvds/blog/494720/"><img src="./Моя шпаргалка по pandas _ Хабр_files/geybiuurbhpsffn2pu04xhax_rq.jpeg" data-src="https://habrastorage.org/webt/ge/yb/iu/geybiuurbhpsffn2pu04xhax_rq.jpeg"></a><br>
+<br>
+Нельзя сказать, что это — исчерпывающий список возможностей <code>pandas</code>, но сюда входят функции, которыми я пользуюсь чаще всего, примеры и мои пояснения по поводу ситуаций, в которых эти функции особенно полезны.<br>
+<a name="habracut"></a><br>
+<h2><font color="#3AC1EF">1. Подготовка к работе</font></h2><br>
+Если вы хотите самостоятельно опробовать то, о чём тут пойдёт речь, загрузите набор данных <a href="https://www.kaggle.com/CooperUnion/anime-recommendations-database">Anime Recommendations Database</a> с Kaggle. Распакуйте его и поместите в ту же папку, где находится ваш Jupyter Notebook (далее — блокнот).<br>
+<br>
+Теперь выполните следующие команды.<br>
+<br>
+<pre><code class="python hljs"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+anime = pd.read_csv(<span class="hljs-string">'anime-recommendations-database/anime.csv'</span>)
+rating = pd.read_csv(<span class="hljs-string">'anime-recommendations-database/rating.csv'</span>)
+anime_modified = anime.set_index(<span class="hljs-string">'name'</span>)
+</code></pre><br>
+После этого у вас должна появиться возможность воспроизвести то, что я покажу в следующих разделах этого материала.<br>
+<br>
+<h2><font color="#3AC1EF">2. Импорт данных</font></h2><br>
+<h3><font color="#3AC1EF">▍Загрузка CSV-данных</font></h3><br>
+Здесь я хочу рассказать о преобразовании CSV-данных непосредственно в датафреймы (в объекты Dataframe). Иногда при загрузке данных формата CSV нужно указывать их кодировку (например, это может выглядеть как <code>encoding='ISO-8859–1'</code>). Это — первое, что стоит попробовать сделать в том случае, если оказывается, что после загрузки данных датафрейм содержит нечитаемые символы.<br>
+<br>
+<pre><code class="python hljs">anime = pd.read_csv(<span class="hljs-string">'anime-recommendations-database/anime.csv'</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/d5b59f543d887c33b912e66642640d9e.png" data-src="https://habrastorage.org/getpro/habr/post_images/d5b/59f/543/d5b59f543d887c33b912e66642640d9e.png"></div><br>
+<i><font color="#999999">Загруженные CSV-данные</font></i><br>
+<br>
+Существует похожая функция для загрузки данных из Excel-файлов — <code>pd.read_excel</code>.<br>
+<br>
+<h3><font color="#3AC1EF">▍Создание датафрейма из данных, введённых вручную</font></h3><br>
+Это может пригодиться тогда, когда нужно вручную ввести в программу простые данные. Например — если нужно оценить изменения, претерпеваемые данными, проходящими через конвейер обработки данных.<br>
+<br>
+<pre><code class="python hljs">df = pd.DataFrame([[<span class="hljs-number">1</span>,<span class="hljs-string">'Bob'</span>, <span class="hljs-string">'Builder'</span>],
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="hljs-number">2</span>,<span class="hljs-string">'Sally'</span>, <span class="hljs-string">'Baker'</span>],
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="hljs-number">3</span>,<span class="hljs-string">'Scott'</span>, <span class="hljs-string">'Candle Stick Maker'</span>]],&nbsp;
+columns=[<span class="hljs-string">'id'</span>,<span class="hljs-string">'name'</span>, <span class="hljs-string">'occupation'</span>])
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/402bcb22ee99170d544f90fd64104289.png" data-src="https://habrastorage.org/getpro/habr/post_images/402/bcb/22e/402bcb22ee99170d544f90fd64104289.png"></div><br>
+<i><font color="#999999">Данные, введённые вручную</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Копирование датафрейма</font></h3><br>
+Копирование датафреймов может пригодиться в ситуациях, когда требуется внести в данные изменения, но при этом надо и сохранить оригинал. Если датафреймы нужно копировать, то рекомендуется делать это сразу после их загрузки.<br>
+<br>
+<pre><code class="python hljs">anime_copy = anime.copy(deep=<span class="hljs-literal">True</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/edd7c8e25b0d16a143659ca1462a186e.png" data-src="https://habrastorage.org/getpro/habr/post_images/edd/7c8/e25/edd7c8e25b0d16a143659ca1462a186e.png"></div><br>
+<i><font color="#999999">Копия датафрейма</font></i><br>
+<br>
+<h2><font color="#3AC1EF">3. Экспорт данных</font></h2><br>
+<h3><font color="#3AC1EF">▍Экспорт в формат CSV</font></h3><br>
+При экспорте данных они сохраняются в той же папке, где находится блокнот. Ниже показан пример сохранения первых 10 строк датафрейма, но то, что именно сохранять, зависит от конкретной задачи.<br>
+<br>
+<pre><code class="python hljs">rating[:<span class="hljs-number">10</span>].to_csv(<span class="hljs-string">'saved_ratings.csv'</span>, index=<span class="hljs-literal">False</span>)
+</code></pre><br>
+Экспортировать данные в виде Excel-файлов можно с помощью функции <code>df.to_excel</code>.<br>
+<br>
+<h2><font color="#3AC1EF">4. Просмотр и исследование данных</font></h2><br>
+<h3><font color="#3AC1EF">▍Получение n записей из начала или конца датафрейма</font></h3><br>
+Сначала поговорим о выводе первых <code>n</code> элементов датафрейма. Я часто вывожу некоторое количество элементов из начала датафрейма где-нибудь в блокноте. Это позволяет мне удобно обращаться к этим данным в том случае, если я забуду о том, что именно находится в датафрейме. Похожую роль играет и вывод нескольких последних элементов.<br>
+<br>
+<pre><code class="python hljs">anime.head(<span class="hljs-number">3</span>)
+rating.tail(<span class="hljs-number">1</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/0f60619bb1a49bde2df4f171613dd193.png" data-src="https://habrastorage.org/getpro/habr/post_images/0f6/061/9bb/0f60619bb1a49bde2df4f171613dd193.png"></div><br>
+<i><font color="#999999">Данные из начала датафрейма</font></i><br>
+<br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/85d2ad3933d300b6afbe8f3b3140f40d.png" data-src="https://habrastorage.org/getpro/habr/post_images/85d/2ad/393/85d2ad3933d300b6afbe8f3b3140f40d.png"></div><br>
+<i><font color="#999999">Данные из конца датафрейма</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Подсчёт количества строк в датафрейме</font></h3><br>
+Функция <code>len(),</code> которую я тут покажу, не входит в состав <code>pandas</code>. Но она хорошо подходит для подсчёта количества строк датафреймов. Результаты её работы можно сохранить в переменной и воспользоваться ими там, где они нужны.<br>
+<br>
+<pre><code class="python hljs">len(df)
+<span class="hljs-comment">#=&gt; 3</span>
+</code></pre><br>
+<h3><font color="#3AC1EF">▍Подсчёт количества уникальных значений в столбце</font></h3><br>
+Для подсчёта количества уникальных значений в столбце можно воспользоваться такой конструкцией:<br>
+<br>
+<pre><code class="python hljs">len(ratings[<span class="hljs-string">'user_id'</span>].unique())
+</code></pre><br>
+<h3><font color="#3AC1EF">▍Получение сведений о датафрейме</font></h3><br>
+В сведения о датафрейме входит общая информация о нём вроде заголовка, количества значений, типов данных столбцов.<br>
+<br>
+<pre><code class="python hljs">anime.info()
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/2f7ab56f1f7d431ef3e5f6ac7922c9a9.png" data-src="https://habrastorage.org/getpro/habr/post_images/2f7/ab5/6f1/2f7ab56f1f7d431ef3e5f6ac7922c9a9.png"></div><br>
+<i><font color="#999999">Сведения о датафрейме</font></i><br>
+<br>
+Есть ещё одна функция, похожая на <code>df.info</code> — <code>df.dtypes</code>. Она лишь выводит сведения о типах данных столбцов.<br>
+<br>
+<h3><font color="#3AC1EF">▍Вывод статистических сведений о датафрейме</font></h3><br>
+Знание статистических сведений о датафрейме весьма полезно в ситуациях, когда он содержит множество числовых значений. Например, знание среднего, минимального и максимального значений столбца <code>rating</code> даёт нам некоторое понимание того, как, в целом, выглядит датафрейм. Вот соответствующая команда:<br>
+<br>
+<pre><code class="python hljs">anime.describe()
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/bf52c0d4f50d357a40871a6999f2335f.png" data-src="https://habrastorage.org/getpro/habr/post_images/bf5/2c0/d4f/bf52c0d4f50d357a40871a6999f2335f.png"></div><br>
+<i><font color="#999999">Статистические сведения о датафрейме</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Подсчёт количества значений</font></h3><br>
+Для того чтобы подсчитать количество значений в конкретном столбце, можно воспользоваться следующей конструкцией:<br>
+<br>
+<pre><code class="python hljs">anime.type.value_counts()
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/3d251e47afdd01962810b0a1a8aa8859.png" data-src="https://habrastorage.org/getpro/habr/post_images/3d2/51e/47a/3d251e47afdd01962810b0a1a8aa8859.png"></div><br>
+<i><font color="#999999">Подсчёт количества элементов в столбце</font></i><br>
+<br>
+<h2><font color="#3AC1EF">5. Извлечение информации из датафреймов</font></h2><br>
+<h3><font color="#3AC1EF">▍Создание списка или объекта Series на основе значений столбца</font></h3><br>
+Это может пригодиться в тех случаях, когда требуется извлекать значения столбцов в переменные <code>x</code> и <code>y</code> для обучения модели. Здесь применимы следующие команды:<br>
+<br>
+<pre><code class="python hljs">anime[<span class="hljs-string">'genre'</span>].tolist()
+anime[<span class="hljs-string">'genre'</span>]
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/c199fbd4cf50623d5fd75ded8f1614cc.png" data-src="https://habrastorage.org/getpro/habr/post_images/c19/9fb/d4c/c199fbd4cf50623d5fd75ded8f1614cc.png"></div><br>
+<i><font color="#999999">Результаты работы команды anime['genre'].tolist()</font></i><br>
+<br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/e1f008ddfdb79459dad6f50421736c7b.png" data-src="https://habrastorage.org/getpro/habr/post_images/e1f/008/ddf/e1f008ddfdb79459dad6f50421736c7b.png"></div><br>
+<i><font color="#999999">Результаты работы команды anime['genre']</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Получение списка значений из индекса</font></h3><br>
+Поговорим о получении списков значений из индекса. Обратите внимание на то, что я здесь использовал датафрейм <code>anime_modified</code>, так как его индексные значения выглядят интереснее.<br>
+<br>
+<pre><code class="python hljs">anime_modified.index.tolist()
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/db377e121b77d871acdf9d1bc737069b.png" data-src="https://habrastorage.org/getpro/habr/post_images/db3/77e/121/db377e121b77d871acdf9d1bc737069b.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Получение списка значений столбцов</font></h3><br>
+Вот команда, которая позволяет получить список значений столбцов:<br>
+<br>
+<pre><code class="python hljs">anime.columns.tolist()
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/685c1860f536fba854754c956107e3a7.png" data-src="https://habrastorage.org/getpro/habr/post_images/685/c18/60f/685c1860f536fba854754c956107e3a7.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h2><font color="#3AC1EF">6. Добавление данных в датафрейм и удаление их из него</font></h2><br>
+<h3><font color="#3AC1EF">▍Присоединение к датафрейму нового столбца с заданным значением</font></h3><br>
+Иногда мне приходится добавлять в датафреймы новые столбцы. Например — в случаях, когда у меня есть тестовый и обучающий наборы в двух разных датафреймах, и мне, прежде чем их скомбинировать, нужно пометить их так, чтобы потом их можно было бы различить. Для этого используется такая конструкция:<br>
+<br>
+<pre><code class="python hljs">anime[<span class="hljs-string">'train set'</span>] = <span class="hljs-literal">True</span>
+</code></pre><br>
+<h3><font color="#3AC1EF">▍Создание нового датафрейма из подмножества столбцов</font></h3><br>
+Это может пригодиться в том случае, если требуется сохранить в новом датафрейме несколько столбцов огромного датафрейма, но при этом не хочется выписывать имена столбцов, которые нужно удалить.<br>
+<br>
+<pre><code class="python hljs">anime[[<span class="hljs-string">'name'</span>,<span class="hljs-string">'episodes'</span>]]
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/8fe93102df79a85d02b6ef286049def5.png" data-src="https://habrastorage.org/getpro/habr/post_images/8fe/931/02d/8fe93102df79a85d02b6ef286049def5.png"></div><br>
+<i><font color="#999999">Результат выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Удаление заданных столбцов</font></h3><br>
+Этот приём может оказаться полезным в том случае, если из датафрейма нужно удалить лишь несколько столбцов. Если удалять нужно много столбцов, то эта задача может оказаться довольно-таки утомительной, поэтому тут я предпочитаю пользоваться возможностью, описанной в предыдущем разделе.<br>
+<br>
+<pre><code class="python hljs">anime.drop([<span class="hljs-string">'anime_id'</span>, <span class="hljs-string">'genre'</span>, <span class="hljs-string">'members'</span>], axis=<span class="hljs-number">1</span>).head()
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/c7fbd8d5dff65dce484d873b497f31dc.png" data-src="https://habrastorage.org/getpro/habr/post_images/c7f/bd8/d5d/c7fbd8d5dff65dce484d873b497f31dc.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Добавление в датафрейм строки с суммой значений из других строк</font></h3><br>
+Для демонстрации этого примера самостоятельно создадим небольшой датафрейм, с которым удобно работать. Самое интересное здесь — это конструкция <code>df.sum(axis=0)</code>, которая позволяет получать суммы значений из различных строк.&nbsp;<br>
+<br>
+<pre><code class="python hljs">df = pd.DataFrame([[<span class="hljs-number">1</span>,<span class="hljs-string">'Bob'</span>, <span class="hljs-number">8000</span>],
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="hljs-number">2</span>,<span class="hljs-string">'Sally'</span>, <span class="hljs-number">9000</span>],
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="hljs-number">3</span>,<span class="hljs-string">'Scott'</span>, <span class="hljs-number">20</span>]], columns=[<span class="hljs-string">'id'</span>,<span class="hljs-string">'name'</span>, <span class="hljs-string">'power level'</span>])
+df.append(df.sum(axis=<span class="hljs-number">0</span>), ignore_index=<span class="hljs-literal">True</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/c7be91e10b1e31ee525dc26e44d2e9ea.png" data-src="https://habrastorage.org/getpro/habr/post_images/c7b/e91/e10/c7be91e10b1e31ee525dc26e44d2e9ea.png"></div><br>
+<i><font color="#999999">Результат выполнения команды</font></i><br>
+<br>
+Команда вида <code>df.sum(axis=1)</code> позволяет суммировать значения в столбцах.<br>
+<br>
+Похожий механизм применим и для расчёта средних значений. Например — <code>df.mean(axis=0)</code>.<br>
+<br>
+<h2><font color="#3AC1EF">7. Комбинирование датафреймов</font></h2><br>
+<h3><font color="#3AC1EF">▍Конкатенация двух датафреймов</font></h3><br>
+Эта методика применима в ситуациях, когда имеются два датафрейма с одинаковыми столбцами, которые нужно скомбинировать.<br>
+<br>
+В данном примере мы сначала разделяем датафрейм на две части, а потом снова объединяем эти части:<br>
+<br>
+<pre><code class="python hljs">df1 = anime[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>]
+df2 = anime[<span class="hljs-number">2</span>:<span class="hljs-number">4</span>]
+pd.concat([df1, df2], ignore_index=<span class="hljs-literal">True</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/9b934f17234b988ded660c608413ab45.png" data-src="https://habrastorage.org/getpro/habr/post_images/9b9/34f/172/9b934f17234b988ded660c608413ab45.png"></div><br>
+<i><font color="#999999">Датафрейм df1</font></i><br>
+<br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/3c65bb666ff3c7389c2b35cd2d4b3029.png" data-src="https://habrastorage.org/getpro/habr/post_images/3c6/5bb/666/3c65bb666ff3c7389c2b35cd2d4b3029.png"></div><br>
+<i><font color="#999999">Датафрейм df2</font></i><br>
+<br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/68ba5d883c0b79be8a35a82296ba9dd9.png" data-src="https://habrastorage.org/getpro/habr/post_images/68b/a5d/883/68ba5d883c0b79be8a35a82296ba9dd9.png"></div><br>
+<i><font color="#999999">Датафрейм, объединяющий df1 и df2</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Слияние датафреймов</font></h3><br>
+Функция <code>df.merge</code>, которую мы тут рассмотрим, похожа на левое соединение SQL. Она применяется тогда, когда два датафрейма нужно объединить по некоему столбцу.<br>
+<br>
+<pre><code class="python hljs">rating.merge(anime, left_on=’anime_id’, right_on=’anime_id’, suffixes=(‘_left’, ‘_right’))
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/f84b07bf1b7f835b21aebda6004a84e4.png" data-src="https://habrastorage.org/getpro/habr/post_images/f84/b07/bf1/f84b07bf1b7f835b21aebda6004a84e4.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h2><font color="#3AC1EF">8. Фильтрация</font></h2><br>
+<h3><font color="#3AC1EF">▍Получение строк с нужными индексными значениями</font></h3><br>
+Индексными значениями датафрейма <code>anime_modified</code> являются названия аниме. Обратите внимание на то, как мы используем эти названия для выбора конкретных столбцов.<br>
+<br>
+<pre><code class="python hljs">anime_modified.loc[[<span class="hljs-string">'Haikyuu!! Second Season'</span>,<span class="hljs-string">'Gintama'</span>]]
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/77426631ebae515bef71c75fde3bd77b.png" data-src="https://habrastorage.org/getpro/habr/post_images/774/266/31e/77426631ebae515bef71c75fde3bd77b.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Получение строк по числовым индексам</font></h3><br>
+Эта методика отличается от той, которая описана в предыдущем разделе. При использовании функции <code>df.iloc</code> первой строке назначается индекс <code>0</code>, второй — индекс <code>1</code>, и так далее. Такие индексы назначаются строкам даже в том случае, если датафрейм был модифицирован и в его индексном столбце используются строковые значения.<br>
+<br>
+Следующая конструкция позволяет выбрать три первых строки датафрейма:<br>
+<br>
+<pre><code class="python hljs">anime_modified.iloc[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>]
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/c775045fcf404c6e973a3bfd2aa32192.png" data-src="https://habrastorage.org/getpro/habr/post_images/c77/504/5fc/c775045fcf404c6e973a3bfd2aa32192.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Получение строк по заданным значениям столбцов</font></h3><br>
+Для получения строк датафрейма в ситуации, когда имеется список значений столбцов, можно воспользоваться следующей командой:<br>
+<br>
+<pre><code class="python hljs">anime[anime[<span class="hljs-string">'type'</span>].isin([<span class="hljs-string">'TV'</span>, <span class="hljs-string">'Movie'</span>])]
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/5d52f052b52c7054bd81c38bb2fe1128.png" data-src="https://habrastorage.org/getpro/habr/post_images/5d5/2f0/52b/5d52f052b52c7054bd81c38bb2fe1128.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+Если нас интересует единственное значение — можно воспользоваться такой конструкцией:<br>
+<br>
+<pre><code class="python hljs">anime[anime[‘type’] == <span class="hljs-string">'TV'</span>]
+</code></pre><br>
+<h3><font color="#3AC1EF">▍Получение среза датафрейма</font></h3><br>
+Эта техника напоминает получение среза списка. А именно, речь идёт о получении фрагмента датафрейма, содержащего строки, соответствующие заданной конфигурации индексов.<br>
+<br>
+<pre><code class="python hljs">anime[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>]
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/04e4cae8384f7484c380066d6f13d3ed.png" data-src="https://habrastorage.org/getpro/habr/post_images/04e/4ca/e83/04e4cae8384f7484c380066d6f13d3ed.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Фильтрация по значению</font></h3><br>
+Из датафреймов можно выбирать строки, соответствующие заданному условию. Обратите внимание на то, что при использовании этого метода сохраняются существующие индексные значения.<br>
+<br>
+<pre><code class="python hljs">anime[anime[<span class="hljs-string">'rating'</span>] &gt; <span class="hljs-number">8</span>]
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/b2bc4a191c3178a18410ce592562b97a.png" data-src="https://habrastorage.org/getpro/habr/post_images/b2b/c4a/191/b2bc4a191c3178a18410ce592562b97a.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h2><font color="#3AC1EF">9. Сортировка</font></h2><br>
+Для сортировки датафреймов по значениям столбцов можно воспользоваться функцией <code>df.sort_values</code>:<br>
+<br>
+<pre><code class="python hljs">anime.sort_values(<span class="hljs-string">'rating'</span>, ascending=<span class="hljs-literal">False</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/4caeae3c921af60b4d39fc9ef4947b43.png" data-src="https://habrastorage.org/getpro/habr/post_images/4ca/eae/3c9/4caeae3c921af60b4d39fc9ef4947b43.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h2><font color="#3AC1EF">10. Агрегирование</font></h2><br>
+<h3><font color="#3AC1EF">▍Функция df.groupby и подсчёт количества записей</font></h3><br>
+Вот как подсчитать количество записей с различными значениями в столбцах:<br>
+<br>
+<pre><code class="python hljs">anime.groupby(<span class="hljs-string">'type'</span>).count()
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/092795c51d4be09e6f0211d5b14ef8ce.png" data-src="https://habrastorage.org/getpro/habr/post_images/092/795/c51/092795c51d4be09e6f0211d5b14ef8ce.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Функция df.groupby и агрегирование столбцов различными способами</font></h3><br>
+Обратите внимание на то, что здесь используется <code>reset_index()</code>. В противном случае столбец <code>type</code> становится индексным столбцом. В большинстве случаев я рекомендую делать то же самое.<br>
+<br>
+<pre><code class="python hljs">anime.groupby([<span class="hljs-string">"type"</span>]).agg({
+&nbsp;&nbsp;<span class="hljs-string">"rating"</span>: <span class="hljs-string">"sum"</span>,
+&nbsp;&nbsp;<span class="hljs-string">"episodes"</span>: <span class="hljs-string">"count"</span>,
+&nbsp;&nbsp;<span class="hljs-string">"name"</span>: <span class="hljs-string">"last"</span>
+}).reset_index()
+</code></pre><br>
+<h3><font color="#3AC1EF">▍Создание сводной таблицы</font></h3><br>
+Для того чтобы извлечь из датафрейма некие данные, нет ничего лучше, чем сводная таблица. Обратите внимание на то, что здесь я серьёзно отфильтровал датафрейм, что ускорило создание сводной таблицы.<br>
+<br>
+<pre><code class="python hljs">tmp_df = rating.copy()
+tmp_df.sort_values(<span class="hljs-string">'user_id'</span>, ascending=<span class="hljs-literal">True</span>, inplace=<span class="hljs-literal">True</span>)
+tmp_df = tmp_df[tmp_df.user_id &lt; <span class="hljs-number">10</span>]&nbsp;
+tmp_df = tmp_df[tmp_df.anime_id &lt; <span class="hljs-number">30</span>]
+tmp_df = tmp_df[tmp_df.rating != <span class="hljs-number">-1</span>]
+pd.pivot_table(tmp_df, values=<span class="hljs-string">'rating'</span>, index=[<span class="hljs-string">'user_id'</span>], columns=[<span class="hljs-string">'anime_id'</span>], aggfunc=np.sum, fill_value=<span class="hljs-number">0</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/2912d74af64b3e114e543433d482eb6e.png" data-src="https://habrastorage.org/getpro/habr/post_images/291/2d7/4af/2912d74af64b3e114e543433d482eb6e.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h2><font color="#3AC1EF">11. Очистка данных</font></h2><br>
+<h3><font color="#3AC1EF">▍Запись в ячейки, содержащие значение NaN, какого-то другого значения</font></h3><br>
+Здесь мы поговорим о записи значения <code>0</code> в ячейки, содержащие значение <code>NaN</code>. В этом примере мы создаём такую же сводную таблицу, как и ранее, но без использования <code>fill_value=0</code>. А затем используем функцию <code>fillna(0)</code> для замены значений <code>NaN</code> на <code>0</code>.<br>
+<br>
+<pre><code class="python hljs">pivot = pd.pivot_table(tmp_df, values=<span class="hljs-string">'rating'</span>, index=[<span class="hljs-string">'user_id'</span>], columns=[<span class="hljs-string">'anime_id'</span>], aggfunc=np.sum)
+pivot.fillna(<span class="hljs-number">0</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/39562f618aba5dadee84f65c5eec1de6.png" data-src="https://habrastorage.org/getpro/habr/post_images/395/62f/618/39562f618aba5dadee84f65c5eec1de6.png"></div><br>
+<i><font color="#999999">Таблица, содержащая значения NaN</font></i><br>
+<br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/ca5c889ce4fcaeefcf6073a53a854800.png" data-src="https://habrastorage.org/getpro/habr/post_images/ca5/c88/9ce/ca5c889ce4fcaeefcf6073a53a854800.png"></div><br>
+<i><font color="#999999">Результаты замены значений NaN на 0</font></i><br>
+<br>
+<h2><font color="#3AC1EF">12. Другие полезные возможности</font></h2><br>
+<h3><font color="#3AC1EF">▍Отбор случайных образцов из набора данных</font></h3><br>
+Я использую функцию <code>df.sample</code> каждый раз, когда мне нужно получить небольшой случайный набор строк из большого датафрейма. Если используется параметр <code>frac=1</code>, то функция позволяет получить аналог исходного датафрейма, строки которого будут перемешаны.<br>
+<br>
+<pre><code class="python hljs">anime.sample(frac=<span class="hljs-number">0.25</span>)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/1960bb0441f16d1f5a637f53125b0133.png" data-src="https://habrastorage.org/getpro/habr/post_images/196/0bb/044/1960bb0441f16d1f5a637f53125b0133.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Перебор строк датафрейма</font></h3><br>
+Следующая конструкция позволяет перебирать строки датафрейма:<br>
+<br>
+<pre><code class="python hljs"><span class="hljs-keyword">for</span> idx,row <span class="hljs-keyword">in</span> anime[:<span class="hljs-number">2</span>].iterrows():
+&nbsp;&nbsp;&nbsp;&nbsp;print(idx, row)
+</code></pre><br>
+<div style="text-align:center;"><img src="./Моя шпаргалка по pandas _ Хабр_files/e3e1d6d24c6b3ef1797cbfb64dfebc6b.png" data-src="https://habrastorage.org/getpro/habr/post_images/e3e/1d6/d24/e3e1d6d24c6b3ef1797cbfb64dfebc6b.png"></div><br>
+<i><font color="#999999">Результаты выполнения команды</font></i><br>
+<br>
+<h3><font color="#3AC1EF">▍Борьба с ошибкой IOPub data rate exceeded</font></h3><br>
+Если вы сталкиваетесь с ошибкой <code>IOPub data rate exceeded</code> — попробуйте, при запуске Jupyter Notebook, воспользоваться следующей командой:<br>
+<br>
+<pre><code class="python hljs">jupyter notebook — NotebookApp.iopub_data_rate_limit=<span class="hljs-number">1.0e10</span>
+</code></pre><br>
+<h2><font color="#3AC1EF">Итоги</font></h2><br>
+Здесь я рассказал о некоторых полезных приёмах использования <code>pandas</code> в среде Jupyter Notebook. Надеюсь, моя шпаргалка вам пригодится.<br>
+<br>
+<b>Уважаемые читатели!</b> Есть ли какие-нибудь возможности <code>pandas</code>, без которых вы не представляете своей повседневной работы?<br>
+<br>
+<a href="https://ruvds.com/ru-rub/#order"><img src="https://habrastorage.org/r/w1560/webt/iq/fi/b4/iqfib45pgphfrxv--zfemt0qnmw.jpeg" data-src="https://habrastorage.org/webt/iq/fi/b4/iqfib45pgphfrxv--zfemt0qnmw.jpeg"></a></div></div></div> <div class="v-portal" style="display:none;"></div></div> <div aria-hidden="true" role="dialog" tabindex="-1" class="pswp"><div class="pswp__bg"></div> <div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div> <div class="pswp__item"></div> <div class="pswp__item"></div></div> <div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><span class="tm-svg-icon__wrapper pswp__button pswp__button--close"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Закрыть</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#close"></use></svg></span> <div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div></div></div></div> <!----></div> <div class="tm-article-presenter__meta"><div class="tm-separated-list tm-article-presenter__meta-list"><span class="tm-separated-list__title">Теги:</span> <ul class="tm-separated-list__list"><li class="tm-separated-list__item"><a href="https://habr.com/ru/search/?target_type=posts&amp;order=relevance&amp;q=%5BPython%5D" class="tm-tags-list__link">Python</a></li><li class="tm-separated-list__item"><a href="https://habr.com/ru/search/?target_type=posts&amp;order=relevance&amp;q=%5BPandas%5D" class="tm-tags-list__link">Pandas</a></li><li class="tm-separated-list__item"><a href="https://habr.com/ru/search/?target_type=posts&amp;order=relevance&amp;q=%5B%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0%5D" class="tm-tags-list__link">разработка</a></li></ul></div> <div class="tm-separated-list tm-article-presenter__meta-list"><span class="tm-separated-list__title">Хабы:</span> <ul class="tm-separated-list__list"><li class="tm-separated-list__item"><a href="https://habr.com/ru/company/ruvds/blog/" class="tm-hubs-list__link router-link-active">
+    Блог компании RUVDS.com
+  </a></li><li class="tm-separated-list__item"><a href="https://habr.com/ru/hub/webdev/" class="tm-hubs-list__link">
+    Разработка веб-сайтов
+  </a></li><li class="tm-separated-list__item"><a href="https://habr.com/ru/hub/python/" class="tm-hubs-list__link">
+    Python
+  </a></li></ul></div></div></article></div> <!----></div> <div class="tm-article-sticky-panel" style=""><div class="tm-data-icons tm-article-sticky-panel__icons"><div class="tm-article-rating tm-data-icons__item"><div class="tm-votes-meter tm-article-rating__votes-switcher"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 51: ↑49 и ↓2</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 51: ↑49 и ↓2" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+47</span></div> <div class="v-portal" style="display:none;"></div></div> <!----> <!----> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    408
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/494720/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      8
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/494720/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +8
+    </span></a></div> <div title="Поделиться" class="tm-sharing tm-data-icons__item"><button type="button" class="tm-sharing__button"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="tm-sharing__icon"><path fill="currentColor" d="M13.8 13.8V18l7.2-6.6L13.8 5v3.9C5 8.9 3 18.6 3 18.6c2.5-4.4 6-4.8 10.8-4.8z"></path></svg></button> <div class="v-portal" style="display:none;"></div></div> <div class="v-portal" style="display:none;"></div></div> </div></div> <div class="v-portal" style="display:none;"></div> <div class="tm-article-presenter__footer"><div class="tm-article-blocks"><div class="tm-editoral-subscription"><span class="tm-svg-icon__wrapper tm-editoral-subscription__close"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Закрыть</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#close"></use></svg></span> <h3 class="tm-editoral-subscription__title">
+    Редакторский дайджест
+  </h3> <p class="tm-editoral-subscription__description">
+    Присылаем лучшие статьи раз&nbsp;в&nbsp;месяц
+  </p> <form method="GET" class="tm-editoral-subscription__form"><div class="tm-input-text-decorated tm-editoral-subscription__input tm-input-text-decorated_has-label-after" name="email" placeholder="Электропочта" type="email"><!----> <input name="email" placeholder="Электропочта" type="email" class="tm-input-text-decorated__input"> <div class="tm-input-text-decorated__label tm-input-text-decorated__label_after"><button type="submit" class="tm-editoral-subscription__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=""><path fill="currentColor" clip-rule="evenodd" d="M19.707 11.293a1 1 0 010 1.414l-5.5 5.5a1 1 0 01-1.414-1.414L16.586 13H5a1 1 0 110-2h11.586l-3.793-3.793a1 1 0 011.414-1.414l5.5 5.5z"></path></svg></button></div></div> <!----></form></div> <section class="tm-block tm-block_spacing-bottom"><!----> <div class="tm-block__body tm-block__body_variant-balanced"><div class="tm-article-author"><div class="tm-article-author__company"><div class="tm-article-author__company-card"><div class="tm-company-snippet"><a href="https://habr.com/ru/company/ruvds/profile/" class="tm-company-snippet__logo-link"><div class="tm-entity-image"><img alt="" height="40" src="./Моя шпаргалка по pandas _ Хабр_files/f27ea85bd62fbd985c308110885af7e0.png" width="40" class="tm-entity-image__pic"></div></a> <div class="tm-company-snippet__info"><a href="https://habr.com/ru/company/ruvds/profile/" class="tm-company-snippet__title">RUVDS.com</a> <div class="tm-company-snippet__description">VDS/VPS-хостинг. Скидка 10% по коду <b>HABR10</b></div></div></div> <div class="tm-article-author__buttons"><!----> <!----></div></div> <div class="tm-article-author__company-contacts"><a href="https://facebook.com/ruvds" rel="noopener" target="_blank" class="tm-article-author__contact">
+      Facebook
+    </a><a href="https://twitter.com/ru_vds" rel="noopener" target="_blank" class="tm-article-author__contact">
+      Twitter
+    </a><a href="https://vk.com/ru_vds" rel="noopener" target="_blank" class="tm-article-author__contact">
+      ВКонтакте
+    </a></div> <div class="tm-article-author__separator"></div></div> <div class="tm-user-card tm-article-author__user-card tm-user-card_variant-article"><div class="tm-user-card__info-container"><div class="tm-user-card__header"><div class="tm-user-card__header-data"><a href="https://habr.com/ru/users/ru_vds/" class="tm-user-card__userpic tm-user-card__userpic_size-40"><div class="tm-entity-image"><img alt="" src="./Моя шпаргалка по pandas _ Хабр_files/e36812d3de38eb3d479d7a13228717ef(1).png" class="tm-entity-image__pic"></div></a> <div class="tm-user-card__meta"><div title=" 1012 голосов " class="tm-karma tm-user-card__karma"><div class="tm-karma__votes tm-karma__votes_positive">
+    252
+  </div> <div class="tm-karma__text">
+    Карма
+  </div></div> <div title="Рейтинг пользователя" class="tm-rating tm-user-card__rating"><div class="tm-rating__header"> <div class="tm-rating__counter">82.3</div></div> <div class="tm-rating__text">
+    Рейтинг
+  </div></div></div></div></div> <div class="tm-user-card__info tm-user-card__info_variant-article"><div class="tm-user-card__title tm-user-card__title_variant-article"><!----> <a href="https://habr.com/ru/users/ru_vds/" class="tm-user-card__nickname tm-user-card__nickname_variant-article">
+          @ru_vds
+        </a> <!----></div> <p class="tm-user-card__short-info tm-user-card__short-info_variant-article">Пользователь</p></div></div> <div class="tm-user-card__buttons tm-user-card__buttons_variant-article"><!----> <!----> <!----> <!----> <!----></div></div> <!----></div> <div class="v-portal" style="display:none;"></div></div> <!----></section>  <div class="tm-article-blocks__comments"><div class="tm-article-page-comments"><div class="tm-article-comments-client-rendered"><div class="tm-article-comments"><div class="tm-comments-wrapper"><div class="tm-comments-wrapper__wrapper"><header class="tm-comments-wrapper__header"><h2 class="tm-comments-wrapper__title">
+        Комментарии
+        <span class="tm-comments-wrapper__comments-count">
+          8
+        </span></h2> <div class="tm-comments-wrapper__header-aside"><!----> <button class="tm-rss-button tm-rss-button_comments-header"><span class="tm-svg-icon__wrapper tm-rss-button__icon"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Скопировать ссылку на RSS</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#rss"></use></svg></span></button> <!----></div></header> <div class="tm-comments-wrapper__inner"> <div class="tm-comments__tree"><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21447494" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-0"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21447494" class="tm-comment-thread__indent_l-0"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/bladeser/" class="tm-user-info__userpic" title="bladeser"><div class="tm-entity-image"><svg height="24" width="24" class="tm-svg-img tm-image-placeholder tm-image-placeholder_lilac"><!----> <use xlink:href="/img/megazord-v25.4b679db1.svg#placeholder-user"></use></svg></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/bladeser/" class="tm-user-info__username">
+      bladeser
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21447494" class="tm-comment-thread__comment-link">
+                01.04.2020 в 00:57
+                <!----></a></span></span></div> <div class="tm-comment__buttons"><!----> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml">Мда. Даже у джуна DS все это уже на подкорке записано. Представить, что при обработке нужно смотреть не в pandas.pydata.org, а в шпаргалку, вы уж простите меня великодушно, не могу.<br></div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Всего голосов 5: ↑3 и ↓2</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 5: ↑3 и ↓2" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">+1</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21447494" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <!----> <!----></section><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21449216" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-0"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21449216" class="tm-comment-thread__indent_l-0"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/KeyVi/" class="tm-user-info__userpic" title="KeyVi"><div class="tm-entity-image"><img alt="" height="24" src="https://habrastorage.org/r/w32/getpro/habr/avatars/43e/7f3/f35/43e7f3f3594cfb25aad75ddc628732b8.jpg" width="24" class="tm-entity-image__pic"></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/KeyVi/" class="tm-user-info__username">
+      KeyVi
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21449216" class="tm-comment-thread__comment-link">
+                01.04.2020 в 14:38
+                <!----></a></span></span></div> <div class="tm-comment__buttons"><!----> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml">Про пункт «Подсчёт количества уникальных значений в столбце»: можно это сделать без len(), с помощью метода nunique().<br>
+В остальном, спасибо за шпаргалку!</div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Комментарий пока не оценивали</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Комментарий пока не оценивали" class="tm-votes-meter__value tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">0</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21449216" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <!----> <!----></section><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21449218" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-0"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21449218" class="tm-comment-thread__indent_l-0"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/dairok/" class="tm-user-info__userpic" title="dairok"><div class="tm-entity-image"><img alt="" height="24" src="https://habrastorage.org/r/w32/getpro/habr/avatars/b18/ec4/e24/b18ec4e249733cb1264a27ca7f8e41e0.jpg" width="24" class="tm-entity-image__pic"></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/dairok/" class="tm-user-info__username">
+      dairok
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21449218" class="tm-comment-thread__comment-link">
+                01.04.2020 в 14:38
+                <!----></a></span></span></div> <div class="tm-comment__buttons"><!----> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml"><blockquote>len(ratings['user_id'].unique())</blockquote><br>
+А можно и просто: ratings['user_id'].<b>n</b>unique()<br>
+<blockquote>anime.type.value_counts()</blockquote><br>
+Лучше использовать вариант с обращением к имени колонки через[]: anime['type'].value_counts()<br></div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Комментарий пока не оценивали</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Комментарий пока не оценивали" class="tm-votes-meter__value tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">0</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21449218" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <div class="tm-comment-thread__children"><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21449450" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-1"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21449450" class="tm-comment-thread__indent_l-1"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/bladeser/" class="tm-user-info__userpic" title="bladeser"><div class="tm-entity-image"><svg height="24" width="24" class="tm-svg-img tm-image-placeholder tm-image-placeholder_lilac"><!----> <use xlink:href="/img/megazord-v25.4b679db1.svg#placeholder-user"></use></svg></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/bladeser/" class="tm-user-info__username">
+      bladeser
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21449450" class="tm-comment-thread__comment-link">
+                01.04.2020 в 15:15
+                <svg height="16" width="16" class="tm-svg-img tm-comment-thread__icon-pencil"><title>Комментарий был изменен</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#pencil-small"></use></svg></a></span></span></div> <div class="tm-comment__buttons"><button type="button" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon"><title>Показать предыдущий комментарий</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#small-arrow"></use></svg></button> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml">На 100% согласен. [anime[column].some_func() for column in anime.columns] слишком часто используемая конструкция чтобы ею пренебрегать. <br>
+Хотя если кто то подскажет как в этом anime.type.value_counts() случае перебрать все столбцы буду благодарен!</div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Комментарий пока не оценивали</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Комментарий пока не оценивали" class="tm-votes-meter__value tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">0</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21449450" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <!----> <!----></section></div> <!----></section><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21455668" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-0"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21455668" class="tm-comment-thread__indent_l-0"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/Limfocit/" class="tm-user-info__userpic" title="Limfocit"><div class="tm-entity-image"><svg height="24" width="24" class="tm-svg-img tm-image-placeholder tm-image-placeholder_green"><!----> <use xlink:href="/img/megazord-v25.4b679db1.svg#placeholder-user"></use></svg></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/Limfocit/" class="tm-user-info__username">
+      Limfocit
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21455668" class="tm-comment-thread__comment-link">
+                03.04.2020 в 13:06
+                <!----></a></span></span></div> <div class="tm-comment__buttons"><!----> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml">Вместо len(), я бы использовал аттрибут .shape (возвращает tuple — rows, columns) — поэтому аналог будет .shape[0].<br>
+Эту конструкцию:<br>
+tmp_df = tmp_df[tmp_df.user_id &lt; 10] <br>
+tmp_df = tmp_df[tmp_df.anime_id &lt; 30]<br>
+tmp_df = tmp_df[tmp_df.rating != -1]<br>
+можно заменить на фильтр И:<br>
+tmp_df[(tmp_df.user_id &lt; 10) &amp; (tmp_df.anime_id &lt; 30) &amp; (tmp_df.rating != -1)]</div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Всего голосов 1: ↑1 и ↓0</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 1: ↑1 и ↓0" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">+1</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21455668" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <!----> <!----></section><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21510680" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-0"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21510680" class="tm-comment-thread__indent_l-0"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/ivan_helsing/" class="tm-user-info__userpic" title="ivan_helsing"><div class="tm-entity-image"><svg height="24" width="24" class="tm-svg-img tm-image-placeholder tm-image-placeholder_green"><!----> <use xlink:href="/img/megazord-v25.4b679db1.svg#placeholder-user"></use></svg></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/ivan_helsing/" class="tm-user-info__username">
+      ivan_helsing
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21510680" class="tm-comment-thread__comment-link">
+                17.04.2020 в 18:16
+                <!----></a></span></span></div> <div class="tm-comment__buttons"><!----> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml">мне (как новичку) понравилось. удобно и понятно, спасибо за такую шпаргалку.<br>
+и классная фраза в преамбуле)<br></div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Комментарий пока не оценивали</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Комментарий пока не оценивали" class="tm-votes-meter__value tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">0</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21510680" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <!----> <!----></section><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21510682" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-0"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21510682" class="tm-comment-thread__indent_l-0"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/mgearr/" class="tm-user-info__userpic" title="mgearr"><div class="tm-entity-image"><svg height="24" width="24" class="tm-svg-img tm-image-placeholder tm-image-placeholder_lilac"><!----> <use xlink:href="/img/megazord-v25.4b679db1.svg#placeholder-user"></use></svg></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/mgearr/" class="tm-user-info__username">
+      mgearr
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21510682" class="tm-comment-thread__comment-link">
+                17.04.2020 в 18:16
+                <!----></a></span></span></div> <div class="tm-comment__buttons"><!----> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml">Вспоминаем Zen Of Python (Explicit is better than implicit) и вместо тормозных неявных срезов вида «anime[1:3]» и «anime[anime['rating'] &gt; 8]» <b>всегда</b> используем очевидные и явные loc/iloc.<br>
+<br>
+Поясню: в целях удобства записи одноразовых вычислений pandas API написан с использованием перекрытых операторов индекса, но они могут в некоторых случаях затыкаться или извлекать не то, что хотелось бы. С loc/iloc pandas-у нет нужды пытаться угадать, что вы имели в виду.<br>
+<br>
+На самом деле нужда всё равно останется, сейчас объясню, почему :)<br>
+<br>
+Проанализируем выражение «anime[anime['rating'] &gt; 8]», которое примерно равнозначно нижеследующему:<br>
+<br>
+bool_index_mask = anime['rating'] &gt; 8<br>
+result = anime[bool_index_mask]<br>
+del bool_mask<br>
+return result<br>
+<br>
+Мы уже знаем, что неявную индексацию в обоих случаях [] лучше бы заменить на .loc[]/.iloc[]<br>
+<br>
+Но как бедному пандасу прикажете угадать, что вы имели в виду в выражении фильтра: anime.loc[:, 'rating'] &gt; 8 или anime.loc[:, ['rating']] &gt; 8? В первом случае сравнивается Series, во втором — DataFrame. Результатом будет в обоих случаях булевская маска, а Series работает быстрее и кушает меньше памяти, но питон не настолько умён, чтобы угадать, что лучше бы использовать Series.<br>
+<br>
+Можно сделать запись ещё более явной и ещё немного ускорить создание маски: написать anime.loc[:, 'rating'].values &gt; 8, но это уже на любителя<br>
+<br>
+Если вам надо просто посчитать единственное значение в массиве из 10 строк, то, конечно, нет нужды заморачиваться с loc/iloc/values. Но если пишете прогу для больших данных, то пишите уж лучше явно, если не хотите потом искать по всему тексту, откуда у вас глюки лезут. Да, это чуть длиннее, но оно того ст<b>о</b>ит. И память, знаете ли, не резиновая, а процессоры не терагерцовые, так что лучше использовать более быстрые и компактные структуры</div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Комментарий пока не оценивали</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Комментарий пока не оценивали" class="tm-votes-meter__value tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">0</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21510682" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <!----> <!----></section><section class="tm-comment-thread"><!----> <article class="tm-comment-thread__comment"><a name="comment_21633200" class="tm-comment-thread__target"></a> <button class="tm-comment-thread__breadcrumbs tm-comment-thread__indent_b_l-0"><div class="tm-comment-thread__circle"></div></button> <!----> <div data-comment-body="21633200" class="tm-comment-thread__indent_l-0"><div data-gallery-root="" class="tm-comment"><header data-comment-header="" tabindex="-1" class="tm-comment__header"><div class="tm-comment__header-inner"><span class="tm-user-info tm-comment__user-info"><a href="https://habr.com/ru/users/S0mbre/" class="tm-user-info__userpic" title="S0mbre"><div class="tm-entity-image"><img alt="" height="24" src="https://habrastorage.org/r/w32/getpro/habr/avatars/040/127/319/0401273195f5cc2418c774c8e65424f0.jpg" width="24" class="tm-entity-image__pic"></div></a> <span class="tm-user-info__user"><a href="https://habr.com/ru/users/S0mbre/" class="tm-user-info__username">
+      S0mbre
+    </a> <a href="https://habr.com/ru/company/ruvds/blog/494720/#comment_21633200" class="tm-comment-thread__comment-link">
+                19.05.2020 в 14:40
+                <!----></a></span></span></div> <div class="tm-comment__buttons"><!----> <!----></div></header> <div class="tm-comment__body-content"><div xmlns="http://www.w3.org/1999/xhtml"><blockquote><pre><code class="python hljs">anime[anime[<span class="hljs-string">'type'</span>].isin([<span class="hljs-string">'TV'</span>, <span class="hljs-string">'Movie'</span>])]</code></pre><br>
+</blockquote><p>Здесь лучше бы проще:</p><br>
+<pre><code class="python hljs">anime[<span class="hljs-string">'type'</span>].loc[[<span class="hljs-string">'TV'</span>, <span class="hljs-string">'Movie'</span>]]</code></pre><br>
+<blockquote><pre><code class="python hljs">tmp_df = tmp_df[tmp_df.user_id &lt; <span class="hljs-number">10</span>]&nbsp;
+tmp_df = tmp_df[tmp_df.anime_id &lt; <span class="hljs-number">30</span>] 
+tmp_df = tmp_df[tmp_df.rating != <span class="hljs-number">-1</span>]</code></pre><br>
+</blockquote><p>Вот нагородил! Отчего бы не</p><br>
+<pre><code class="python hljs">tmp_df = tmp_df.query(<span class="hljs-string">'user_id &lt; 10 &amp; anime_id &lt; 30 &amp; rating != -1'</span>)</code></pre></div></div> <!----> <!----></div> <div class="tm-comment-footer"><div class="tm-votes-meter tm-comment-footer__votes-meter"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-comment"><title>Комментарий пока не оценивали</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Комментарий пока не оценивали" class="tm-votes-meter__value tm-votes-meter__value_appearance-comment tm-votes-meter__value_rating">0</span></div> <button type="button" class="tm-comment-thread__button">
+                  Ответить
+                </button> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-comment-footer__button tm-comment-footer__button_with-icon"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <!----></button> <button data-comment-popup="21633200" class="tm-comment__button tm-comment__button_with-icon"><svg height="16" width="16" class="tm-svg-img tm-comment__icon tm-comment__icon_dots"><title>Ещё</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#dots"></use></svg></button> <!----></div></div></article> <!----> <!----></section></div>  <div class="v-portal" style="display: none;"></div></div></div> <div class="tm-notice tm-comments__comment-notice tm-notice_positive"><!----> <div class="tm-notice__inner"><!----> <div class="tm-notice__content"><span>Только полноправные пользователи могут оставлять комментарии. <a rel="nofollow" href="https://habr.com/kek/v1/auth/habrahabr/?back=/ru/company/ruvds/blog/494720/&amp;hl=ru">Войдите</a>, пожалуйста.</span></div></div></div></div></div></div></div></div>  <section class="tm-block tm-block_spacing-around"><header class="tm-block__header"><h2 class="tm-block__title">Похожие публикации</h2> <!----></header> <div class="tm-block__body"><ul class="tm-article-list-block__list"><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2020-06-23T13:16:01.000Z" title="2020-06-23, 16:16">23  июня  2020 в 16:16</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/company/ruvds/blog/507778/" class="tm-article-title__link"><span>Python и разработка простого веб-приложения, использующего технологии машинного обучения</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 40: ↑38 и ↓2</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 40: ↑38 и ↓2" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+36</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">35K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    243
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/507778/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      6
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/507778/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +6
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2020-05-10T11:14:01.000Z" title="2020-05-10, 14:14">10  мая  2020 в 14:14</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/company/ruvds/blog/500426/" class="tm-article-title__link"><span>Python, pandas и решение трёх задач из мира Excel</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 33: ↑33 и ↓0</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 33: ↑33 и ↓0" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+33</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">41K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    186
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/500426/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      14
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/500426/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +14
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2020-05-09T13:16:01.000Z" title="2020-05-09, 16:16">9  мая  2020 в 16:16</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/company/ruvds/blog/500428/" class="tm-article-title__link"><span>Как помочь pandas в обработке больших объёмов данных?</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 34: ↑33 и ↓1</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 34: ↑33 и ↓1" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+32</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">7.3K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    76
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/500428/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      3
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/500428/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +3
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li> <!----></ul></div> <!----></section> <!----> <section class="tm-block tm-block_spacing-top"><header class="tm-block__header"><h2 class="tm-block__title">Лучшие публикации за сутки</h2> <!----></header> <div class="tm-block__body"><ul class="tm-article-list-block__list"><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-14T11:19:54.000Z" title="2022-03-14, 14:19">вчера в 14:19</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/company/selectel/blog/655485/" class="tm-article-title__link"><span>Утилита времен «динозавров»: история системного вызова chroot и его применение в современности</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 46: ↑45 и ↓1</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 46: ↑45 и ↓1" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+44</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">6.7K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    31
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/selectel/blog/655485/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      3
+    </span></a> <a href="https://habr.com/ru/company/selectel/blog/655485/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +3
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-14T12:28:27.000Z" title="2022-03-14, 15:28">вчера в 15:28</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/company/wunderfund/blog/654991/" class="tm-article-title__link"><span>Рисуем красивые трейсбеки, перехватывая исключения в Python</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 24: ↑24 и ↓0</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 24: ↑24 и ↓0" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+24</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">3.6K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    56
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/wunderfund/blog/654991/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      1
+    </span></a> <a href="https://habr.com/ru/company/wunderfund/blog/654991/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +1
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-15T06:47:23.000Z" title="2022-03-15, 09:47">сегодня в 09:47</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/post/654273/" class="tm-article-title__link"><span>Лямбда-исчисление в 397 байтах</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 22: ↑22 и ↓0</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 22: ↑22 и ↓0" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+22</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">2K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    25
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/post/654273/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      3
+    </span></a> <a href="https://habr.com/ru/post/654273/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +3
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-14T21:14:29.000Z" title="2022-03-15, 00:14">сегодня в 00:14</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/post/655641/" class="tm-article-title__link"><span>7 атрибутов&nbsp;хорошего firmware</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 28: ↑25 и ↓3</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 28: ↑25 и ↓3" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+22</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">3.8K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    43
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/post/655641/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      27
+    </span></a> <a href="https://habr.com/ru/post/655641/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +27
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-block tm-article-snippet-block-block_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-14T21:49:41.000Z" title="2022-03-15, 00:49">сегодня в 00:49</time></div></div> <h2 class="tm-article-title tm-article-title_block"><a href="https://habr.com/ru/post/655645/" class="tm-article-title__link"><span>Как написать рефлексию для C++</span></a></h2> <div class="tm-data-icons"><!----> <div class="tm-votes-meter tm-data-icons__item"><svg height="24" width="24" class="tm-svg-img tm-votes-meter__icon tm-votes-meter__icon_appearance-article"><title>Всего голосов 21: ↑20 и ↓1</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-rating"></use></svg> <span title="Всего голосов 21: ↑20 и ↓1" class="tm-votes-meter__value tm-votes-meter__value_positive tm-votes-meter__value_appearance-article tm-votes-meter__value_rating">+19</span></div> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">4.9K</span></span> <button title="Добавить в закладки" type="button" class="bookmarks-button tm-data-icons__item"><span title="Добавить в закладки" class="tm-svg-icon__wrapper bookmarks-button__icon"><svg height="24" width="24" class="tm-svg-img tm-svg-icon"><title>Добавить в закладки</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-favorite"></use></svg></span> <span title="Количество пользователей, добавивших публикацию в закладки" class="bookmarks-button__counter">
+    38
+  </span></button> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/post/655645/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      8
+    </span></a> <a href="https://habr.com/ru/post/655645/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +8
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li> <!----></ul></div> <!----></section> </div></div></div></div></div> <div class="tm-page__sidebar"><div class="tm-layout-sidebar"><div class="tm-layout-sidebar__placeholder_stick-top"></div> <div class="tm-sexy-sidebar tm-sexy-sidebar_stick-top" style="margin-top: 0px;"><!----> <section class="tm-block tm-block_spacing-bottom"><header class="tm-block__header"><h2 class="tm-block__title">Информация</h2> <!----></header> <div class="tm-block__body"><div class="tm-company-basic-info"><dl class="tm-description-list tm-description-list_variant-columns-nowrap"><dt class="tm-description-list__title tm-description-list__title_variant-columns-nowrap">Дата основания</dt> <dd class="tm-description-list__body tm-description-list__body_variant-columns-nowrap"><time datetime="2015-07-26T21:00:00.000Z" title="2015-07-27, 00:00">27  июля  2015</time></dd></dl> <dl class="tm-description-list tm-description-list_variant-columns-nowrap"><dt class="tm-description-list__title tm-description-list__title_variant-columns-nowrap">Местоположение</dt> <dd class="tm-description-list__body tm-description-list__body_variant-columns-nowrap">
+    Россия
+  </dd></dl> <dl class="tm-description-list tm-description-list_variant-columns-nowrap"><dt class="tm-description-list__title tm-description-list__title_variant-columns-nowrap">Сайт</dt> <dd class="tm-description-list__body tm-description-list__body_variant-columns-nowrap"><a href="https://ruvds.com/" target="_blank" class="tm-company-basic-info__link">
+      ruvds.com
+    </a></dd></dl> <dl class="tm-description-list tm-description-list_variant-columns-nowrap"><dt class="tm-description-list__title tm-description-list__title_variant-columns-nowrap">Численность</dt> <dd class="tm-description-list__body tm-description-list__body_variant-columns-nowrap">
+    11–30 человек
+  </dd></dl> <dl class="tm-description-list tm-description-list_variant-columns-nowrap"><dt class="tm-description-list__title tm-description-list__title_variant-columns-nowrap">Дата регистрации</dt> <dd class="tm-description-list__body tm-description-list__body_variant-columns-nowrap"><time datetime="2016-03-18T05:43:01.000Z" title="2016-03-18, 08:43">18  марта  2016</time></dd></dl> <dl class="tm-description-list tm-description-list_variant-columns-nowrap"><dt class="tm-description-list__title tm-description-list__title_variant-columns-nowrap">Представитель</dt> <dd class="tm-description-list__body tm-description-list__body_variant-columns-nowrap"><a href="https://habr.com/ru/users/ruvds/" class="tm-company-basic-info__link">
+      ruvds
+    </a></dd></dl></div></div> <!----></section> <div class="tm-company-widgets"><section class="tm-block tm-block_spacing-bottom" type="links"><header class="tm-block__header"><h2 class="tm-block__title">Ссылки</h2> <!----></header> <div class="tm-block__body"><ul class="tm-widget-links__list"><li class="tm-widget-links__item"><a href="https://ruvds.com/vps_start" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">VPS / VDS сервер от 130 рублей в месяц.</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/data" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">Дата-центры RUVDS в Москве, Санкт-Петербурге, Казани, Екатеринбурге, Новосибирске, Лондоне, Франкфурте, Цюрихе, Амстердаме</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/faq" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">Помощь и вопросы</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/partner" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">Партнерская программа RUVDS</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/vps_start" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">VPS (CPU 1x2ГГц, RAM 512Mb, SSD 10 Gb) — 190 рублей в месяц</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">VPS Windows от 307 рублей в месяц. Бесплатный тестовый период 3 дня.</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/data/zur1" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">VDS в Цюрихе. Дата-центр TIER III — швейцарское качество по низкой цене.</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/kaspersky" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">Антивирусная защита виртуального сервера. Легкий агент для VPS.</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/data/eng" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">VPS в Лондоне. Дата-центр TIER III — английская точность за рубли.</a> <small class="tm-widget-links__host">ruvds.com</small></li><li class="tm-widget-links__item"><a href="https://ruvds.com/ru-rub/" rel="nofollow noreferrer" target="_blank" class="tm-widget-links__link">VPS с видеокартой на мощных серверах 3,4ГГц</a> <small class="tm-widget-links__host">ruvds.com</small></li></ul></div> <!----></section><section class="tm-block tm-block_spacing-bottom" type="applications"><header class="tm-block__header"><h2 class="tm-block__title">Приложения</h2> <!----></header> <div class="tm-block__body"><ul class="tm-widget-applications__list"><li class="tm-widget-applications__item"><article class="tm-widget-applications__card"><aside class="tm-widget-applications__aside"><img alt="" src="./Моя шпаргалка по pandas _ Хабр_files/6ee74bd87dbf84e43cdcc0abd0d13a3f.png" class="tm-widget-applications__image"></aside> <div class="tm-widget-applications__body"><h3 class="tm-widget-applications__card-title">RUVDS Client</h3> <p class="tm-widget-applications__card-description">Приложение для мониторинга и управления виртуальными серверами RUVDS с мобильных устройств.</p> <ul class="tm-widget-applications__card-links"><li class="tm-widget-applications__card-link-item"><a href="https://play.google.com/store/apps/details?id=com.rudvs.ruvdsclient" rel="nofollow noreferrer" target="_blank" class="tm-widget-applications__card-link">Android</a></li><li class="tm-widget-applications__card-link-item"><a href="https://apps.apple.com/ru/app/ruvds-client/id1492272255?ign-mpt=uo%3D4" rel="nofollow noreferrer" target="_blank" class="tm-widget-applications__card-link">iOS</a></li></ul></div></article></li></ul></div> <!----></section><section class="tm-block tm-block_spacing-bottom" type="banner"><header class="tm-block__header tm-block__header_variant-borderless"><h2 class="tm-block__title">Виджет</h2> <!----></header> <div class="tm-block__body"><a href="https://ruvds.com/ru-rub/" class="tm-widget-banner__image-wrapper"><img alt="" src="./Моя шпаргалка по pandas _ Хабр_files/e1228e7f11865e9e73aeeb89a805f1f2.jpg" class="tm-widget-banner__image tm-widget-banner__image_align-left"></a> <!----></div> <!----></section></div> <section class="tm-block tm-block_spacing-around"><header class="tm-block__header"><h2 class="tm-block__title">Блог на Хабре</h2> <!----></header> <div class="tm-block__body"><ul class="tm-article-list-block__list"><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-sidebar tm-article-snippet-block-sidebar_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-15T09:00:02.000Z" title="2022-03-15, 12:00">сегодня в 12:00</time></div></div> <h2 class="tm-article-title tm-article-title_sidebar"><a href="https://habr.com/ru/company/ruvds/blog/655563/" class="tm-article-title__link"><span>«Облачная» агломерация: как Boeing, Amazon и Microsoft создали современный Сиэтл</span></a></h2> <div class="tm-data-icons"><!----> <!----> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">437</span></span> <!----> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/655563/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      0
+    </span></a> <!----></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-sidebar tm-article-snippet-block-sidebar_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-14T09:00:02.000Z" title="2022-03-14, 12:00">вчера в 12:00</time></div></div> <h2 class="tm-article-title tm-article-title_sidebar"><a href="https://habr.com/ru/company/ruvds/blog/654691/" class="tm-article-title__link"><span>KC868-Uair: пролетая над гнездом кукушки. Часть 1. Гнездо</span></a></h2> <div class="tm-data-icons"><!----> <!----> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">3.1K</span></span> <!----> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/654691/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      9
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/654691/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +9
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-sidebar tm-article-snippet-block-sidebar_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-13T10:00:01.000Z" title="2022-03-13, 13:00">13  марта   в 13:00</time></div></div> <h2 class="tm-article-title tm-article-title_sidebar"><a href="https://habr.com/ru/company/ruvds/blog/655123/" class="tm-article-title__link"><span>Обзор ретро-футуристичного КПК DevTerm с Linux</span></a></h2> <div class="tm-data-icons"><!----> <!----> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">9.9K</span></span> <!----> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/655123/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      4
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/655123/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +4
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-sidebar tm-article-snippet-block-sidebar_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-12T10:00:01.000Z" title="2022-03-12, 13:00">12  марта   в 13:00</time></div></div> <h2 class="tm-article-title tm-article-title_sidebar"><a href="https://habr.com/ru/company/ruvds/blog/655241/" class="tm-article-title__link"><span>Тим Бёрнерс-Ли и день WWW: 33 года всемирной паутине</span></a></h2> <div class="tm-data-icons"><!----> <!----> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">3K</span></span> <!----> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/655241/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      4
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/655241/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +4
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li><li class="tm-article-list-block__item"><article class="tm-article-snippet-block-sidebar tm-article-snippet-block-sidebar_preview"><div class="tm-article-snippet-block__user-meta"><div class="tm-article-snippet-block__date"><time datetime="2022-03-11T09:00:02.000Z" title="2022-03-11, 12:00">11  марта   в 12:00</time></div></div> <h2 class="tm-article-title tm-article-title_sidebar"><a href="https://habr.com/ru/company/ruvds/blog/651763/" class="tm-article-title__link"><span>Самая большая ошибка в истории физики</span></a></h2> <div class="tm-data-icons"><!----> <!----> <span class="tm-icon-counter tm-data-icons__item" title="Количество просмотров"><svg height="24" width="24" class="tm-svg-img tm-icon-counter__icon"><title>Просмотры</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-views"></use></svg> <span class="tm-icon-counter__value">24K</span></span> <!----> <div class="tm-article-comments-counter-link tm-data-icons__item" title="Читать комментарии"><a href="https://habr.com/ru/company/ruvds/blog/651763/comments/" class="tm-article-comments-counter-link__link"><svg height="24" width="24" class="tm-svg-img tm-article-comments-counter-link__icon"><title>Комментарии</title> <use xlink:href="/img/megazord-v25.4b679db1.svg#counter-comments"></use></svg> <span class="tm-article-comments-counter-link__value">
+      26
+    </span></a> <a href="https://habr.com/ru/company/ruvds/blog/651763/comments/" class="tm-article-comments-counter-link__link"><span title="Читать новые комментарии" class="tm-article-comments-counter-link__unread-counter">
+      +26
+    </span></a></div> <!----> <div class="v-portal" style="display: none;"></div></div></article></li> <!----></ul></div> <!----></section> <!----></div></div></div></div></div></div></main> <!----></div> <div class="tm-footer-menu"><div class="tm-page-width"><div class="tm-footer-menu__container"><div class="tm-footer-menu__block"><h3 class="tm-footer-menu__block-title">
+          Ваш аккаунт
+        </h3> <div class="tm-footer-menu__block-content"><ul class="tm-footer-menu__list"><li class="tm-footer-menu__list-item"><a href="https://habr.com/kek/v1/auth/habrahabr/?back=/ru/company/ruvds/blog/494720/&amp;hl=ru" rel="nofollow" target="_self">
+                Войти
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/kek/v1/auth/habrahabr-register/?back=/ru/company/ruvds/blog/494720/&amp;hl=ru" rel="nofollow" target="_self">
+                Регистрация
+              </a></li></ul></div></div><div class="tm-footer-menu__block"><h3 class="tm-footer-menu__block-title">
+          Разделы
+        </h3> <div class="tm-footer-menu__block-content"><ul class="tm-footer-menu__list"><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/" class="footer-menu__item-link router-link-active">
+                Публикации
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/news/" class="footer-menu__item-link">
+                Новости
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/hubs/" class="footer-menu__item-link">
+                Хабы
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/companies/" class="footer-menu__item-link">
+                Компании
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/users/" class="footer-menu__item-link">
+                Авторы
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/sandbox/" class="footer-menu__item-link">
+                Песочница
+              </a></li></ul></div></div><div class="tm-footer-menu__block"><h3 class="tm-footer-menu__block-title">
+          Информация
+        </h3> <div class="tm-footer-menu__block-content"><ul class="tm-footer-menu__list"><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/docs/help/" class="footer-menu__item-link">
+                Устройство сайта
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/docs/authors/codex/" class="footer-menu__item-link">
+                Для авторов
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/docs/companies/corpblogs/" class="footer-menu__item-link">
+                Для компаний
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/docs/docs/transparency/" class="footer-menu__item-link">
+                Документы
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://account.habr.com/info/agreement" target="_blank">
+                Соглашение
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://account.habr.com/info/confidential/" target="_blank">
+                Конфиденциальность
+              </a></li></ul></div></div><div class="tm-footer-menu__block"><h3 class="tm-footer-menu__block-title">
+          Услуги
+        </h3> <div class="tm-footer-menu__block-content"><ul class="tm-footer-menu__list"><li class="tm-footer-menu__list-item"><a href="https://docs.google.com/presentation/d/e/2PACX-1vQLwRfQmXibiUlWaRg-BAc38s7oM3lJiaPju7qmdJsp8ysIvZ_G-Npem0njJLMozE2bPHMpDqiI5hhy/pub?start=false&amp;loop=false&amp;delayms=60000&amp;slide=id.g91a03369cd_4_297" target="_blank">
+                Реклама
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habrastorage.org/storage/stuff/habr/service_price.pdf" target="_blank">
+                Тарифы
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://docs.google.com/presentation/d/e/2PACX-1vQJJds8-Di7BQSP_guHxICN7woVYoN5NP_22ra-BIo4bqnTT9FR6fB-Ku2P0AoRpX0Ds-LRkDeAoD8F/pub?start=false&amp;loop=false&amp;delayms=60000" target="_blank">
+                Контент
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://tmtm.timepad.ru/" target="_blank">
+                Семинары
+              </a></li><li class="tm-footer-menu__list-item"><a href="https://habr.com/ru/megaprojects/" class="footer-menu__item-link">
+                Мегапроекты
+              </a></li></ul></div></div></div></div></div> <div class="tm-footer"><div class="tm-page-width"><div class="tm-footer__container"><!----> <div class="tm-footer__social"><a href="https://www.facebook.com/habrahabr.ru" rel="nofollow noopener noreferrer" target="_blank" class="tm-svg-icon__wrapper tm-social-icons__icon"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Facebook</title> <use xlink:href="/img/social-icons-sprite.svg#social-logo-facebook"></use></svg></a><a href="https://twitter.com/habr_com" rel="nofollow noopener noreferrer" target="_blank" class="tm-svg-icon__wrapper tm-social-icons__icon"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Twitter</title> <use xlink:href="/img/social-icons-sprite.svg#social-logo-twitter"></use></svg></a><a href="https://vk.com/habr" rel="nofollow noopener noreferrer" target="_blank" class="tm-svg-icon__wrapper tm-social-icons__icon"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>VK</title> <use xlink:href="/img/social-icons-sprite.svg#social-logo-vkontakte"></use></svg></a><a href="https://telegram.me/habr_com" rel="nofollow noopener noreferrer" target="_blank" class="tm-svg-icon__wrapper tm-social-icons__icon"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Telegram</title> <use xlink:href="/img/social-icons-sprite.svg#social-logo-telegram"></use></svg></a><a href="https://www.youtube.com/channel/UCd_sTwKqVrweTt4oAKY5y4w" rel="nofollow noopener noreferrer" target="_blank" class="tm-svg-icon__wrapper tm-social-icons__icon"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Youtube</title> <use xlink:href="/img/social-icons-sprite.svg#social-logo-youtube"></use></svg></a><a href="https://zen.yandex.ru/habr" rel="nofollow noopener noreferrer" target="_blank" class="tm-svg-icon__wrapper tm-social-icons__icon"><svg height="16" width="16" class="tm-svg-img tm-svg-icon"><title>Яндекс Дзен</title> <use xlink:href="/img/social-icons-sprite.svg#social-logo-zen"></use></svg></a></div> <div class="v-portal" style="display:none;"></div> <button class="tm-footer__link"><!---->
+        Настройка языка
+      </button> <a href="https://habr.com/ru/about" class="tm-footer__link">
+        О сайте
+      </a> <a href="https://habr.com/ru/feedback/" class="tm-footer__link">
+        Техническая поддержка
+      </a> <!----> <a href="https://habr.com/berserk-mode-nope" class="tm-footer__link">
+        Вернуться на старую версию
+      </a> <div class="tm-footer-copyright"><span class="tm-copyright"><span class="tm-copyright__years">© 2006–2022 </span> <span class="tm-copyright__name">«<a href="https://company.habr.com/" rel="noopener" target="_blank" class="tm-copyright__link">Habr</a>»</span></span></div></div></div></div> <!----> <!----></div> <div class="vue-portal-target"><!----></div></div>
+
+<script src="./Моя шпаргалка по pandas _ Хабр_files/chunk-vendors.8aa20160.js.Без названия" defer=""></script><script src="./Моя шпаргалка по pandas _ Хабр_files/app.4f1abf33.js.Без названия" defer=""></script>
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </script>
+  
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(24049213, "init", {
+      defer:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:false,
+    });
+  </script>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/24049213" style="position:absolute; left:-9999px;" alt="" />
+    </div>
+  </noscript>
+  
+    <script type="text/javascript">
+      window.addEventListener('load', function () {
+        setTimeout(() => {
+          const img = new Image();
+          img.src = 'https://vk.com/rtrg?p=VK-RTRG-421343-57vKE';
+        }, 0);
+      });
+    </script>
+  
+<script src="./Моя шпаргалка по pandas _ Хабр_files/ads.js.Без названия" onload="window[&#39;zhY4i4nJ9K&#39;] = true"></script><div id="K9Jn4i4Yhz" style="display: none;"></div>
+
+
+<div><div><div class="Vue-Toastification__container top-left"></div></div><div><div class="Vue-Toastification__container top-center"></div></div><div><div class="Vue-Toastification__container top-right"></div></div><div><div class="Vue-Toastification__container bottom-left"></div></div><div><div class="Vue-Toastification__container bottom-center"></div></div><div><div class="Vue-Toastification__container bottom-right"></div></div></div></body></html>

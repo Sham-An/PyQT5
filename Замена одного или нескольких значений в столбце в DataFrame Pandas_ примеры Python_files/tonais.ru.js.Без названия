@@ -1,0 +1,305 @@
+var adfoxBiddersMap = {
+    "betweenDigital": "957893",
+	"otm": "1536131",
+	"rtbhouse": "1019105",
+	"getintent": "1048899",
+	"bidvol": "1445725",
+	"adtelligent": "1669224",
+	"sape": "1672697",
+	"mytarget": "952961",
+	"criteo": "1016557",
+	"adriver": "930088"
+	
+};
+
+var adUnits = [
+    //mob_300x250
+    {
+        "code": "adfox_161856109499254787",
+        "bids": [
+            {
+                "bidder": "betweenDigital",
+                "params": {
+                    "placementId": "4086376"
+                }
+            },
+			{
+                "bidder": "otm",
+                "params": {
+                    "placementId": "13130"
+                }
+            },
+			{
+                "bidder": "getintent",
+                "params": {
+                    "placementId": "66_300x250_alfadart"
+                }
+            },
+			{
+                "bidder": "rtbhouse",
+                "params": {
+                    "placementId": "SMXF2i2P9hxlvsUlbYu1"
+                }
+            },
+			{
+                "bidder": "bidvol",
+                "params": {
+                    "placementId": "14420"
+                }
+            },
+            {
+                "bidder": "sape",
+                "params": {
+                    "placementId": "692781"
+                }
+            },
+            {
+                "bidder": "mytarget",
+                "params": {
+                    "placementId": "970685"
+                }
+            },
+            {
+                "bidder": "criteo",
+                "params": {
+                    "placementId": "1473257"
+                }
+            },
+            {
+                "bidder": "adriver",
+                "params": {
+                    "placementId": "57:tonais_300x250mob"
+                }
+            }
+            
+        ],
+        "sizes": [
+            [
+                300,
+                250
+            ]
+        ]
+    },
+    //300x600
+    {
+        "code": "adfox_161856097809743043",
+        "bids": [
+            {
+                "bidder": "betweenDigital",
+                "params": {
+                    "placementId": "4086379"
+                }
+            },
+			{
+                "bidder": "otm",
+                "params": {
+                    "placementId": "13132"
+                }
+            },
+			{
+                "bidder": "getintent",
+                "params": {
+                    "placementId": "66_300x600_alfadart"
+                }
+            },
+			{
+                "bidder": "rtbhouse",
+                "params": {
+                    "placementId": "SMXF2i2P9hxlvsUlbYu1"
+                }
+            },
+			{
+                "bidder": "bidvol",
+                "params": {
+                    "placementId": "14421"
+                }
+            },
+            {
+                "bidder": "adtelligent",
+                "params": {
+                    "placementId": "695585"
+                }
+            },
+            {
+                "bidder": "sape",
+                "params": {
+                    "placementId": "692782"
+                }
+            },
+            {
+                "bidder": "mytarget",
+                "params": {
+                    "placementId": "970687"
+                }
+            },
+            {
+                "bidder": "criteo",
+                "params": {
+                    "placementId": "1473255"
+                }
+            },
+            {
+                "bidder": "adriver",
+                "params": {
+                    "placementId": "57:tonais_300x600"
+                }
+            }
+        ],
+        "sizes": [
+            [
+                300,
+                600
+            ]
+        ]
+    },
+    //336x280
+    {
+        "code": "adfox_161856088630039490",
+        "bids": [
+            {
+                "bidder": "betweenDigital",
+                "params": {
+                    "placementId": "4086380"
+                }
+            },
+			{
+                "bidder": "otm",
+                "params": {
+                    "placementId": "13133"
+                }
+            },
+			{
+                "bidder": "getintent",
+                "params": {
+                    "placementId": "66_300x250_alfadart"
+                }
+            },
+			{
+                "bidder": "rtbhouse",
+                "params": {
+                    "placementId": "SMXF2i2P9hxlvsUlbYu1"
+                }
+            },
+			{
+                "bidder": "bidvol",
+                "params": {
+                    "placementId": "14422"
+                }
+            },
+            {
+                "bidder": "adtelligent",
+                "params": {
+                    "placementId": "695585"
+                }
+            },
+            {
+                "bidder": "sape",
+                "params": {
+                    "placementId": "692783"
+                }
+            },
+            {
+                "bidder": "mytarget",
+                "params": {
+                    "placementId": "970689"
+                }
+            },
+            {
+                "bidder": "criteo",
+                "params": {
+                    "placementId": "1473257"
+                }
+            },
+            {
+                "bidder": "adriver",
+                "params": {
+                    "placementId": "57:tonais_336x280"
+                }
+            }
+        ],
+        "sizes": [
+            [
+                300,
+                250
+            ]
+        ]
+    },
+    //728x90
+    {
+        "code": "adfox_161856104053522749",
+        "bids": [
+            {
+                "bidder": "betweenDigital",
+                "params": {
+                    "placementId": "4086381"
+                }
+            },
+			{
+                "bidder": "otm",
+                "params": {
+                    "placementId": "13135"
+                }
+            },
+			{
+                "bidder": "getintent",
+                "params": {
+                    "placementId": "66_728x90_alfadart"
+                }
+            },
+			{
+                "bidder": "rtbhouse",
+                "params": {
+                    "placementId": "SMXF2i2P9hxlvsUlbYu1"
+                }
+            },
+			{
+                "bidder": "bidvol",
+                "params": {
+                    "placementId": "14423"
+                }
+            },
+            {
+                "bidder": "adtelligent",
+                "params": {
+                    "placementId": "695585"
+                }
+            },
+            {
+                "bidder": "sape",
+                "params": {
+                    "placementId": "692784"
+                }
+            },
+            {
+                "bidder": "mytarget",
+                "params": {
+                    "placementId": "970691"
+                }
+            },
+            {
+                "bidder": "criteo",
+                "params": {
+                    "placementId": "1473254"
+                }
+            },
+            {
+                "bidder": "adriver",
+                "params": {
+                    "placementId": "57:tonais_728x90"
+                }
+            }
+        ],
+        "sizes": [
+            [
+                728,
+                90
+            ]
+        ]
+    }
+];
+var userTimeout = 1000;
+window.YaHeaderBiddingSettings = {
+    biddersMap: adfoxBiddersMap,
+    adUnits: adUnits,
+    timeout: userTimeout
+};

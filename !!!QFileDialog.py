@@ -42,7 +42,8 @@ class Demo(QtWidgets.QWidget, Ui_Form):
 
 ################################################
         with open(file, 'r') as f:
-            sample = f.read(100) #читаем первые 100 символов (или весь файл)
+            #sample = f.read(100) #читаем первые 100 символов (или весь файл)
+            sample = f.readline()
 #     # пример проверки, что файл имеет заголовки
             header = csv.Sniffer().has_header(sample)
             print('В файле есть заголовки: ', header)
@@ -66,8 +67,21 @@ class Demo(QtWidgets.QWidget, Ui_Form):
         print("\n Чтобы напечатать диапазон строк, в данном случае от строки 4 до 7")
         with open(file, 'r') as csv_file:
             data = csv.reader(csv_file)
+###########################################################
+            csv_file.readline() #считывает первую строку заголовок
+            str_ = csv_file.readline() #считывает вторую строку (первая данных)
+            lenstr = int(len(str_))*4
+
+            print("\n    ___________     DATA   ___________       \n")
+#            mple = csv_file.read(496) #читаем 496 знака (байт) из файла методом файла
+            sample = str_+csv_file.read(lenstr)  # читаем 496 знака (байт) из файла методом файла
+
+#lenstr = len(lenstr)
+            print(f"            Print SAMPLE {lenstr}   \n{sample}")
+#############################################################
             for row in list(data)[0:7]:
-                print(row)
+                print(f"ROW = {row}")
+                #print(list(data))
 
 ########################################################
 #def read_csv():
