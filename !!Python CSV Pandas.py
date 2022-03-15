@@ -43,7 +43,6 @@ cities.to_csv('cities.csv', index=False, na_rep='Unknown')
 
 df = pd.read_csv('cities.csv')
 print(f'{df} \n')
-
 #В статье показано, как читать и писать CSV-файлы с помощью Python библиотеки Pandas.
 # Для чтения CSV-файла используется метод read_csv().
 # Можно также передавать пользовательские имена заголовков
