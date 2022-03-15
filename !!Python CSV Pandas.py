@@ -53,14 +53,14 @@ cities = pd.DataFrame([['Sacramento', 'California'], ['Miami', 'Florida']], colu
 cities.to_csv('cities.csv')
 #Индексы из DataFrame в итоге превратились в новый столбец, который теперь Unnamed.
 df = pd.read_csv('cities.csv')
-print(f'{df} \n')
+print(f' to_csv, read_csv \n{df} \n')
 
 #При сохранении файла необходимо обязательно отбросить индекс DataFrame:
 cities = pd.DataFrame([['Sacramento', 'California'], ['Miami', 'Florida']], columns=['City', 'State'])
 cities.to_csv('cities.csv', index=False)
 
 df = pd.read_csv('cities.csv')
-print(f'{df} \n')
+print(f'index=False \n {df} \n')
 
 #Обработка пропущенных значений
 #Иногда DataFrame имеют пропущенные значения, которые мы оставили как NaN или NA . В таких случаях вы можете отформатировать их при записи в CSV-файл. Вы можете использовать аргумент na_rep и установить значение, которое будет помещено вместо пропущенного значения:
@@ -68,7 +68,7 @@ cities = pd.DataFrame([['Sacramento', 'California'], ['Miami', 'Florida'], ['Was
 cities.to_csv('cities.csv', index=False, na_rep='Unknown')
 
 df = pd.read_csv('cities.csv')
-print(f'{df} \n')
+print(f'cities.to_csv (добавили запись), read_csv \n{df} \n')
 #В статье показано, как читать и писать CSV-файлы с помощью Python библиотеки Pandas.
 # Для чтения CSV-файла используется метод read_csv().
 # Можно также передавать пользовательские имена заголовков
