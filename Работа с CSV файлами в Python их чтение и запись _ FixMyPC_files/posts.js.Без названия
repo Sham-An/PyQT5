@@ -1,0 +1,48 @@
+class RecommendTag{
+    constructor(){
+      this.d_tag = document.createElement('div');
+    }
+    d(style='alert alert-success rounded'){
+      this.d_tag.className = style;
+      this.d_tag.align = 'right';
+    }
+    b(content){
+      this.b_tag = document.createElement('b');
+      this.b_tag.textContent = content;
+    }
+    h(content, url){
+      this.h_tag = document.createElement('h5');
+      this.a_tag = document.createElement('a');
+      this.a_tag.textContent = content;
+      this.a_tag.href = url;
+      this.a_tag.target = '_blank';
+      this.a_tag.style.textDecoration = 'none';
+      this.a_tag.style.color = '#009999';
+    }
+    cr(){
+      if (this.b_tag){
+        this.d_tag.appendChild(this.b_tag);
+      }
+      if (this.h_tag){
+        this.h_tag.appendChild(this.a_tag);
+        this.d_tag.appendChild(this.h_tag);
+      }
+      return this.d_tag
+    }
+  }
+
+  let c_url = window.location.pathname.split('/')[2],
+      tags = document.querySelectorAll('#recs'),
+      cnt = tags.length;
+  $.ajax({
+    url: `/api/post/recs/${c_url}/${cnt}/`
+  }).done(function(data) {
+    for (let i = 0; i < cnt; i++){
+      let t = new RecommendTag();
+      t.d();
+      t.b('Вам так же будет интересно');
+      t.h(data[i].name, data[i].url);
+      tags[i].classList.add('py-2');
+      tags[i].appendChild(t.cr());
+    }
+  })
