@@ -28,9 +28,7 @@ class Ui_Form(object):
 class Demo(QtWidgets.QWidget, Ui_Form):
     def __init__(self):
         super(Demo, self).__init__()
-
         self.setupUi(self)
-
         self.pushButton.clicked.connect(self.on_click)
 
     def on_click(self):
