@@ -101,6 +101,7 @@ class Demo(QtWidgets.QWidget, Ui_Form):
                 {'GTIN': '04607022750508', 'SN': "001EAcl2qQpCX"},
         ]
 
+
         with open('example2.csv', 'w', newline='') as file:
             writer = csv.DictWriter(file, fieldnames=fieldName)
             writer.writeheader()
