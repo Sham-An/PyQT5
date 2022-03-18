@@ -1,0 +1,10 @@
+function BxShowAuthService_MY(id, suffix)
+{
+	console.log(id);
+	console.log(suffix);
+	console.log('#bx_auth_serv #bx_auth_serv_'+suffix+id);
+	$('#bx_auth_serv ').css('display', 'block');
+	$('#bx_auth_serv div').css('display', 'none');
+	$('#bx_auth_serv #bx_auth_serv_'+suffix+id).css('display', 'block');
+
+}

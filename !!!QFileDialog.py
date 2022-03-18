@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+# coding: utf8
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QFileInfo
 import csv
+
 
 
 class Ui_Form(object):
@@ -94,28 +97,29 @@ class Demo(QtWidgets.QWidget, Ui_Form):
         print("\n ++++!!!!+++++ Чтение CSV-файла обычным способом read_csv() as file \n")
 
         with open(file, 'r') as file:
+            #with open('file_name.csv', encoding='cp1251', errors='ignore', newline='') as csv_input:
+                #reader = csv.reader(csv_input, delimiter=';')
             reader = csv.reader(file)  # Возвращает повторяемый объект, который можно пройти только один раз
             #numstr=5
             # для строки в списке (читатель): # возвращает двумерный массив
-            #             print(row)
             for row in reader:  # Может использовать .next, чтобы получить строку данных
             #for row in numstr:
-                ListRow = row[0].split(sep=";")
+                ListRow = row[0].split(sep=";")#.decode('cp1252', 'ignore').encode("utf-8")#.decode('utf-8', 'ignore')
+                #ListRowDecode = ListRow.decode('utf-8','ignore').encode("utf-8")
+                ListJoin = ''.join(row)
+                print(f" ВЕРНО !!!!! ListJoin {type(ListJoin)} {ListJoin}")# unicode(ListJoin, "utf-8"))
+                print(f"ListRow = {ListRow} \n Elem0 = {ListRow[0]} \n DataMatrix ВЕРНО = {ListRow[1]} \n GTIN = {ListRow[2]} \n SerNum = {ListRow[3]} \n Num = {reader.line_num}")
 
-                #ListRow = ''.join(row)
-                #print("ListRow", ListRow)
-                print(f"ListRow = {ListRow} \n Elem0 = {ListRow[0]} \n DataMatrix = {ListRow[1]} \n GTIN = {ListRow[2]} \n SerNum = {ListRow[3]} \n Num = {reader.line_num}")
-
-                print(f"{type(row)}, {reader.line_num}, {row}, \n ") # ListRow = {ListRow}") #{type(row[0])}")
+                print(f" НЕ ВЕРНО {type(row)}, {reader.line_num}, {row}, \n ") # ListRow = {ListRow}") #{type(row[0])}")
                 if reader.line_num > 5:
                     break
 #def read_to_dict()
-        print("\n  !!!!  Читать CSV-файл как словарь  read_to_dict(): \n")
+        print("\n  НЕ ВЕРНО!!!!  Читать CSV-файл как словарь  read_to_dict(): \n")
         with open(file_txt, 'r') as file:
             reader2 = csv.reader(file)  # Возвращает повторяемый объект, который можно пройти только один раз
             #Читать CSV-файл как словарь
             for row in reader2:
-                print(f"{type(row)}, {row}") # , "){reader.line_num}
+                print(f"{type(row)}, {row}, reader2.line_num {reader2.line_num}") # , "){reader.line_num}
                 if reader2.line_num > 5:
                     break
 

@@ -1,0 +1,383 @@
+@-webkit-keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media screen and (max-width:1024px) {
+	.fixed-popup{
+		display: none !important;
+	}
+}
+
+@media (max-width: 1199px) {
+	.content-inner img,
+	.sidebar-left img,
+	.sidebar-right img {
+		max-width: 100%;
+		height: auto !important;
+	}
+	.tbl-content-buttons-desc {
+		margin-bottom: 30px;
+	}
+	.tbl-content-buttons-desc td:first-child,
+	.tbl-content-buttons-desc th:first-child {
+		width: 160px;
+	}
+	.tbl-content-buttons-desc th,
+	.tbl-content-buttons-desc td {
+		padding: 5px !important;
+	}
+	.country-cities {
+		font-size: 0;
+		line-height: 1.2;
+	}
+	.country-cities li {
+		display: inline-block;
+		vertical-align: top;
+		font-size: 14px;
+		width: 24.99%;
+		margin: 0;
+	}
+	.partner-box .description,
+	.partner-box .equipment {
+		font-size: 14px;
+	}
+}
+@media (max-width: 1024px) {
+	.article p {
+		font-size: 16px;
+	}
+	.wiki-print-bar {
+		position: relative;
+		top: auto;
+		right: auto;
+		width: 100%;
+		margin: 0 0 20px 0;
+		padding-left: 225px;
+	}
+	.wiki-print-bar a {
+		float: none;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 10px 0 0;
+	}
+	.wiki-print-bar a:first-child {
+		margin: 0 10px 0 0;
+	}
+	.sidebar-left {
+		width: 200px;
+		margin-right: 25px;
+	}
+	.sidebar-left .side-menu > .wiki-top-category-list {
+		padding-left: 0;
+	}
+	.banner-sb {
+		max-width: 100%;
+		overflow: hidden;
+	}
+	.banner-sb a {
+		display: block;
+	}
+	.banner-sb img {
+		max-width: 100%;
+	}
+	table {
+		width: 100%;
+	}
+	.tbl-content-buttons-desc {
+		font-size: 14px;
+	}
+	.tbl-content-columns {
+		margin-bottom: 30px;
+		font-size: 14px;
+	}
+	.tbl-content-columns td {
+		width: auto;
+		padding: 10px;
+	}
+	.tbl-content-columns td:first-child {
+		padding-left: 0;
+	}
+	.tbl-content-columns td:last-child {
+		padding-right: 0;
+	}
+	.tbl-content-columns tr:first-child td {
+		padding-top: 0;
+	}
+	.tbl-content-columns tr:last-child td {
+		padding-bottom: 0;
+	}
+	.tbl-content-columns td > div {
+		width: auto !important;
+		height: auto !important;
+	}
+	.tab-controls-list a {
+		font-size: 14px;
+		height: 40px;
+		line-height: 40px;
+		overflow: hidden;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+	.tab-controls-list a span {
+		display: inline-block;
+		vertical-align: middle;
+		width: 1005;
+		margin: 0 !important;
+		padding: 0;
+		line-height: 1.1;
+	}
+	.partner-box .partner-holder {
+		padding-left: 200px;
+		overflow: hidden;
+	}
+	.partner-box .image {
+		width: 200px;
+		float: left;
+		margin: 0 0 0 -200px;
+		padding: 0 15px 0 0;
+	}
+	.partner-box .description {
+		width: 100% !important;
+		float: left;
+		margin: 0 0 15px 0;
+	}
+	.partner-box .customer,
+	.partner-box .equipment {
+		width: 50% !important;
+		float: left;
+		padding: 0 15px 0 0;
+		margin: 0;
+	}
+	.partner-box .customer {
+		padding-right: 0;
+	}
+}
+@media (max-width: 767px) {
+
+	.mobile-hidden {
+		display: none;
+	}
+
+	.widget-tags-list {
+		margin: 0 -10px 20px 0;
+	}
+	.widget-tags-list li {
+		display: inline-block;
+		vertical-align: top;
+		overflow: hidden;
+		white-space: nowrap;
+		max-width: 100%;
+		margin: 0 10px 10px 0;
+	}
+	.widget-tags {
+		padding-bottom: 0;
+	}
+	.wiki-print-bar {
+		padding-left: 0;
+	}
+	.sidebar-left {
+		float: none;
+		margin: 0 0 30px 0;
+		width: 100%;
+		padding: 0;
+	}
+	.sidebar-left .btn-red-gradient {
+		width: auto;
+		display: inline-block;
+	}
+	.sidebar-left .banner-sb {
+		display: none;
+	}
+	.sidebar-left .side-menu .btn-side-menu-toggle {
+		cursor: pointer;
+		position: relative;
+		padding-left: 40px;
+		line-height: 30px;
+	}
+	.sidebar-left .side-menu .btn-side-menu-toggle:before,
+	.sidebar-left .side-menu .btn-side-menu-toggle:after {
+		content: "";
+		display: block;
+		width: 24px;
+		height: 16px;
+		border-top: 2px solid #000;
+		border-bottom: 2px solid #000;
+		position: absolute;
+		top: 15px;
+		left: 12px;
+		margin: -8px 0 0 -12px;
+		-webkit-transform-origin: 50% 50%;
+		-ms-transform-origin: 50% 50%;
+		transform-origin: 50% 50%;
+	}
+	.sidebar-left .side-menu .btn-side-menu-toggle:before {
+		border-top: none;
+		height: 2px;
+		margin-top: -1px;
+	}
+	.sidebar-left .side-menu .btn-side-menu-toggle.active:after,
+	.sidebar-left .side-menu .btn-side-menu-toggle.active:before {
+		border-top: none;
+		margin-top: -1px;
+		height: 2px;
+		-webkit-transform: -webkit-rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	.sidebar-left .side-menu .btn-side-menu-toggle.active:before {
+		-webkit-transform: -webkit-rotate(-45deg);
+		-webkit-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+	}
+	.sidebar-left .side-menu .btn-side-menu-toggle.active ~ .wiki-top-category-list {
+		display: block;
+	}
+	.sidebar-left .side-menu > .wiki-top-category-list {
+		display: none;
+		-webkit-animation: fadein ease 0.2s;
+					animation: fadein ease 0.2s;
+		padding: 15px;
+		background: #f9f9f9;
+	}
+	.breadcrumbs-list li {
+		padding-left: 15px;
+		padding-bottom: 3px;
+		margin-left: 5px;
+		background-size: auto 20px;
+		background-position: 0 1px;
+	}
+	.content .note,
+	.solution-detail .note,
+	.article-detail .note {
+		font-size: 16px;
+	}
+	.more-description .video-box {
+		float: none;
+		width: 100%;
+		margin: 0 0 25px 0;
+		max-width: 300px;
+	}
+	.more-description .video-box figure a {
+		display: block;
+	}
+	.more-description .video-box figure img {
+		max-width: 100%;
+	}
+	.article .image-center {
+		max-width: 100%;
+	}
+}
+@media (max-width: 639px) {
+
+	.article p {
+		font-size: 14px;
+	}
+	blockquote {
+		font-size: 14px;
+	}
+	.more-description .text blockquote p,
+	.more-description .text q p {
+		font-size: 14px;
+	}
+	.content .note,
+	.solution-detail .note,
+	.article-detail .note {
+		padding-left: 25px;
+		font-size: 14px;
+	}
+	#wiki-post-content blockquote {
+		padding: 15px;
+		font-size: 14px;
+	}
+	.btn-red-gradient,
+	.sidebar-left .btn-red-gradient {
+		font-size: 14px;
+		padding: 10px 15px;
+	}
+	.partner-box .customer,
+	.partner-box .equipment {
+		width: 100% !important;
+		float: none;
+		padding-right: 0;
+	}
+	.partner-box .customer {
+		margin-bottom: 15px;
+	}
+}
+@media (max-width: 479px) {
+	.tab-controls {
+		margin-bottom: 15px;
+	}
+	.tab-controls-list li {
+		font-size: 12px;
+	}
+	.tab-controls-list a {
+		padding-left: 5px;
+		padding-right: 5px;
+		font-size: 10px;
+	}
+	.country-cities li {
+		width: 49.99%;
+	}
+	.partner-box .partner-holder {
+		padding-left: 0;
+	}
+	.partner-box .image {
+		margin: 0 0 15px 0;
+		float: none;
+	}
+	.tbl-content-menu tr {
+		display: block;
+		width: 100%;
+	}
+	.tbl-content-menu td {
+		padding: 0 20px 0 0;
+		border: none;
+		display: block;
+		width: 100%;
+		vertical-align: top;
+	}
+	.tbl-content-buttons-desc tr {
+		display: block;
+		padding: 10px 0;
+		border-bottom: 1px solid #bbbbbb;
+	}
+	.tbl-content-buttons-desc tr th {
+		display: none;
+	}
+	.tbl-content-buttons-desc tr td {
+		display: block;
+		width: 100% !important;
+		padding: 5px 0 !important;
+		position: relative;
+		border: none !important;
+	}
+	.tbl-content-buttons-desc tr td:before {
+		content: "";
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+	.tbl-content-buttons-desc tr td:first-child:before {
+		content: "Кнопка";
+	}
+	.tbl-content-buttons-desc tr td:last-child:before {
+		content: "Описание";
+	}
+}

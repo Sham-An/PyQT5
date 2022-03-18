@@ -1,0 +1,28 @@
+function fillCBlockOptionsList()
+{
+	cnames = {};
+	$("[cblock=true]").each(function( index ) { 
+		var t = $(this).attr('rel').split('|');
+		for (var index in t)
+			cnames[t[index].trim()] = true;
+	});
+
+	ctext = "<option></option>";
+	for(var name in cnames)
+		ctext += "<option>" + name + "</option>";
+	
+	$("select[id=cblocks]").html(ctext);
+	$("select[id=cblocks]").change(function() { onCBlockOptionChange(this.options[this.selectedIndex].value); });
+	$("[id=cblocks_selector]").show();
+}
+
+function onCBlockOptionChange(cvalue)
+{
+	if(cvalue)
+	{
+		$("[cblock=true]").hide();
+		$("[cblock=true][rel*='" + cvalue + "']").show();
+	}
+	else
+		$("[cblock=true]").show();
+}

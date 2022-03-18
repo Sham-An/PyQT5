@@ -1,0 +1,54 @@
+.wiki-print-bar  .btn-2pdf-m {
+	display: none;
+}
+.wiki-print-bar  a.btn-red {
+	padding: 5px 10px;
+	font-size:87%
+}
+
+@media (max-width: 767px) {
+
+	.wiki-print-bar .btn-print-all,
+	.wiki-print-bar .btn-print,
+	.wiki-print-bar  .btn-2pdf {
+		display: none;
+	}
+	.wiki-print-bar .btn-red.btn-2pdf-m {
+		display: block;
+		min-width: 50px;
+		margin-right: 25px;
+		padding: 1px 5px;
+		font-weight: bold;
+	}
+	.wiki-print-bar .btn-red.btn-2pdf-m i {
+		margin-right: 0px;
+		margin-top: 2px;
+
+	}
+	.wiki-post h1 {
+		margin-right: 85px;
+
+	}
+}
+
+@media (max-width: 1199px) {
+	.product-category-list .wiki-index-box {
+		width: 100%;
+		padding-right: 20px;
+	}
+	div#wiki-post div#wiki-post-content {
+		width: 100%;
+	}
+}
+@media (max-width: 899px) {
+	.wiki-category-wrap .sib-product,
+	.wiki-category-wrap .wiki-alfabet {
+		width: 100%;
+		float: none;
+		margin-bottom: 30px;
+	}
+	.sib-product .product-category-list > li {
+		margin-left: 0;
+		width: 100%;
+	}
+}

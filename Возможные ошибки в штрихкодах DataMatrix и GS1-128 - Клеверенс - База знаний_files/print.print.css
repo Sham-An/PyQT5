@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+@import "/local/templates/cleverence/css/print.css" print;
+
+
+.wiki-print-bar {
+	right: 0;
+	top: 10px;
+	position: absolute;
+}
+
+.wiki-print-bar-admin {
+	top: 80px;
+}
+
+.wiki-print-bar a {
+	float: right;
+	margin-right: 10px;
+}
+
+.wiki-print-bar a:FIRST-CHILD {
+	margin-right: 0;
+}
+
+
+

@@ -1,0 +1,10 @@
+.input-holder {
+	margin-bottom: 12px;
+}
+
+.fancybox-skin .popup-private .popup-close.icon-popup-cross {
+	display: none;
+}
+div.bx-auth{
+	margin-top: 0 !important;
+}

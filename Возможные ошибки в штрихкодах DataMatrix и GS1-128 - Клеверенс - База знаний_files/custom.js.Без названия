@@ -1,0 +1,68 @@
+$(document).ready(function () {
+
+    $('.partners-presentation-slider .slider').owlCarousel({
+        items: 3,
+        loop: true,
+        nav: true,
+        dots: true,
+        smartSpeed: 1000,
+        fluidSpeed: 1000,
+        autoplaySpeed: 1000,
+        navSpeed: 1000,
+        dotsSpeed: 1000,
+        dragEndSpeed: 1000,
+        responsiveRefreshRate: 100,
+        autoHeight: false,
+        autoplay: false,
+        autoplayTimeout: 5000,
+    })
+
+    window.showedcommercialoffer = false;
+    $("#show_article_p").click(function () {
+        if (window.showedcommercialoffer == false) {
+            window.showedcommercialoffer = true;
+            $("#show_article_p").text("Скрыть предложения");
+        } else {
+            window.showedcommercialoffer = false;
+            $("#show_article_p").text("Показать все предложения");
+        }
+        $(".articles-box").find('.hidearticle').toggleClass('hidearticle-show');
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(".articles-box").offset().top
+        }, 1000);
+        return false;
+    });
+
+    //для сбора статистики для поиска
+    $('body').on('click', '.save-search-statistic', function (e) {
+        e.preventDefault();
+
+        var sphraseId = $(this).data('sphrase-id'),
+            url = $(this).attr('href');
+
+        $.ajax({
+            type: "POST",
+            url: '/_ajax/Search.php',
+            data: ({
+                'action': 'saveUrlForStatistic',
+                'sphraseId': sphraseId,
+                'url': url,
+            }),
+            success: function (response) {
+
+            },
+
+        }).done(function() {
+            window.location = url;
+        });
+    })
+
+    // работа с меню в подвале в мобильной версии
+    if ($(window).innerWidth()<671) {
+        $('.footer-menu-list .h4').on('click', function () {
+            // $(".menu-items-list").slideUp(300);
+            $(this).next().slideToggle(300);
+            $(this).toggleClass('h4_open');
+        })
+    }
+});

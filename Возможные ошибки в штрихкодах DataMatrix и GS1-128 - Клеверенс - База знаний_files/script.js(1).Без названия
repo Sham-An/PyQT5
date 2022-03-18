@@ -1,0 +1,168 @@
+document.addEventListener("DOMContentLoaded", function () {
+    var status = true;
+    // кнопка на которую нажали да или нет
+    var currentBtn;
+
+    $('.button__voter').on('click', function () {
+
+        currentBtn = $(this);
+
+        if (status === false) return;
+
+        // открываем попап при голосование
+        var popupType = $(this).data('popup-type');
+        $(`.voter-popup-${popupType}`).addClass('voter-popup_open');
+
+        if (currentBtn.hasClass('button_type_yes')) {
+            currentBtn.addClass('button__voter_active');
+            // getMessage({voter_status: "Положительный", voter_text: "Статья оказалось полезной"})
+            status = false;
+        }
+    })
+
+    // закрываем попапы при нажатей esc
+    $(document).keydown(function (e) {
+        if (e.keyCode === 27) {
+            $(`.voter__popup`).removeClass('voter-popup_open');
+        }
+    })
+
+    // закрытие попапа при клике мимо него
+    $(document).mouseup(function (e) {
+        var div = $(".voter__popup");
+        if (!div.is(e.target) && div.has(e.target).length === 0) {
+            sendMessageBeforeClose();
+            $(`.voter__popup`).removeClass('voter-popup_open');
+        }
+    });
+
+    // отправка стандартного нигатевного отзыва
+    $('.negative-link_voted').on('click', function (e) {
+        e.preventDefault();
+
+        clearErrors();
+        var currentVoted = $(this);
+
+        $(`.voter-popup-no`).removeClass('voter-popup_open');
+        $(`.voter__email-popup`).addClass('voter-popup_open');
+        $('.voter__email-popup .description').text(currentVoted.text());
+    })
+
+    $('.button_send_email').on('click', function (e) {
+        e.preventDefault();
+
+        var desc = $('.voter__email-popup .description').text(),
+            inputControl = $(this).parent('.voter__popup').find('.input__control');
+        if (inputControl.val().length === 0) {
+            clearErrors();
+            inputControl.after('<p class="error">Необходимо указать ваш e-mail для отправки отзыва</p>');
+            return false;
+        }
+
+        status = false;
+        $(`.voter__email-popup`).removeClass('voter-popup_open');
+        $(`.voter-popup-yes`).addClass('voter-popup_open');
+        currentBtn.addClass('button__voter_active');
+        getMessage({voter_status: "Отрицательный", voter_text: desc, voter_email: inputControl.val()})
+    })
+
+    // отправка негативного отзыва из формы
+    $('.button_theme_action').on('click', function (e) {
+        e.preventDefault();
+        var textarea__control = $('.textarea__control'),
+            inputControl = $(this).parents('.voter__popup').find('.input__control');
+        if (textarea__control.val().length === 0) return;
+
+        if (inputControl.val().length === 0) {
+            clearErrors();
+            inputControl.after('<p class="error">Необходимо указать ваш e-mail для отправки отзыва</p>');
+            return false;
+        }
+
+        status = false;
+
+        $(`.voter__text-popup`).removeClass('voter-popup_open');
+        $(`.voter-popup-yes`).addClass('voter-popup_open');
+        currentBtn.addClass('button__voter_active');
+        getMessage({voter_status: "Отрицательный", voter_text: textarea__control.val(), voter_email: inputControl.val()})
+    })
+
+    // открываем форму ввода нигативного отзыва
+    $('.negative-link__text').on('click', function (e) {
+        e.preventDefault();
+        clearErrors();
+        $(`.voter-popup-no`).removeClass('voter-popup_open');
+        $(`.voter__text-popup`).addClass('voter-popup_open');
+    })
+
+    function clearErrors()
+    {
+        $('.voter__popup').find('.error').remove();
+    }
+
+    /**
+     * если пользователь закрывает форму, то отправляем письмо с имеющимися данными
+     */
+    function sendMessageBeforeClose()
+    {
+        var form = $('.voter__popup.voter-popup_open.info'),
+            text = '',
+            email = '';
+        if (form.length === 0) {
+            return;
+        }
+
+        if (form.hasClass('voter__text-popup')) {
+            text = $('.textarea__control').val();
+            email = form.find('.input__control').val();
+        } else if (form.hasClass('voter__email-popup')) {
+            text = $('.voter__email-popup .description').text();
+            email = form.find('.input__control').val();
+        }
+
+        if (text.length === 0) {
+            return;
+        }
+
+        if (email.length !== 0) {
+            return;
+        }
+
+        getMessage({voter_status: "Отрицательный", voter_text: text, voter_email: email})
+    }
+
+    // отправка почты при выборе отзыва
+    function getMessage(setting) {
+        BX.ajax.post(//Выполняем POST запрос
+            mail_url,
+            {
+                post_url: window.location.href,
+                post_title: $('h1').text(),
+                voter_status: setting.voter_status,
+                voter_text: setting.voter_text,
+                voter_email: setting.voter_email,
+            },
+            function (result) {//Функция при успешном выполнении
+                console.log(result)
+            });
+    }
+
+
+    // проверяем длину текстового поля формы
+    var button_theme_action = $('.button_theme_action');
+    $('.textarea__control').bind('input', function () {
+        var lengthText = $(this).val().length;
+        if (lengthText === 0) {
+            button_theme_action.attr('disabled', true);
+        } else {
+            button_theme_action.attr('disabled', false);
+            if (lengthText === 500) {
+                $('.count').addClass('count-error');
+            } else {
+                $('.count').removeClass('count-error');
+            }
+        }
+        $('#count').text(lengthText);
+    });
+
+});
