@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://russianblogs.com/article/93331019942/ -->
+<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="keywords" content="Подробное объяснение основных функций QFileInfo, Русские Блоги">
+<meta name="description" content="Подробное объяснение основных функций QFileInfo, Русские Блоги, лучший сайт для обмена техническими статьями программиста.">
+<title>Подробное объяснение основных функций QFileInfo - Русские Блоги</title>
+<link rel="stylesheet" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/normalize.css">
+<link rel="stylesheet" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/foundation.min.css">
+<link rel="stylesheet" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/superfish.css">
+<link rel="stylesheet" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/stylesheet.css">
+<link href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/fonts.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="/css/ie-fixes.css">
+<![endif]-->
+<link rel="stylesheet" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/markdown.css">
+<link rel="stylesheet" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/viewer.min.css">
+
+<script async="" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/aax.js.Без названия"></script><script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_page_level_ads_2022031401.js"></script><script async="" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gtm.js.Без названия"></script><script async="" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/tag.js.Без названия"></script><script async="" type="text/javascript" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/cmp2.js.Без названия"></script><script async="" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gtm.js(1).Без названия"></script><script async="" type="text/javascript" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/choice.js.Без названия"></script><script type="text/javascript" async="true">
+(function() {
+    var host = 'www.themoneytizer.com';
+    var element = document.createElement('script');
+    var firstScript = document.getElementsByTagName('script')[0];
+    var url = 'https://quantcast.mgr.consensu.org'
+        .concat('/choice/', '6Fv0cGNfc_bw8', '/', host, '/choice.js')
+    var uspTries = 0;
+    var uspTriesLimit = 3;
+    element.async = true;
+    element.type = 'text/javascript';
+    element.src = url;
+
+    firstScript.parentNode.insertBefore(element, firstScript);
+
+    function makeStub() {
+        var TCF_LOCATOR_NAME = '__tcfapiLocator';
+        var queue = [];
+        var win = window;
+        var cmpFrame;
+
+        function addFrame() {
+            var doc = win.document;
+            var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+            if (!otherCMP) {
+                if (doc.body) {
+                    var iframe = doc.createElement('iframe');
+
+                    iframe.style.cssText = 'display:none';
+                    iframe.name = TCF_LOCATOR_NAME;
+                    doc.body.appendChild(iframe);
+                } else {
+                    setTimeout(addFrame, 5);
+                }
+            }
+            return !otherCMP;
+        }
+
+        function tcfAPIHandler() {
+            var gdprApplies;
+            var args = arguments;
+
+            if (!args.length) {
+                return queue;
+            } else if (args[0] === 'setGdprApplies') {
+                if (
+                    args.length > 3 &&
+                    args[2] === 2 &&
+                    typeof args[3] === 'boolean'
+                ) {
+                    gdprApplies = args[3];
+                    if (typeof args[2] === 'function') {
+                        args[2]('set', true);
+                    }
+                }
+            } else if (args[0] === 'ping') {
+                var retr = {
+                    gdprApplies: gdprApplies,
+                    cmpLoaded: false,
+                    cmpStatus: 'stub'
+                };
+
+                if (typeof args[2] === 'function') {
+                    args[2](retr);
+                }
+            } else {
+                queue.push(args);
+            }
+        }
+
+        function postMessageEventHandler(event) {
+            var msgIsString = typeof event.data === 'string';
+            var json = {};
+
+            try {
+                if (msgIsString) {
+                    json = JSON.parse(event.data);
+                } else {
+                    json = event.data;
+                }
+            } catch (ignore) {}
+
+            var payload = json.__tcfapiCall;
+
+            if (payload) {
+                window.__tcfapi(
+                    payload.command,
+                    payload.version,
+                    function(retValue, success) {
+                        var returnMsg = {
+                            __tcfapiReturn: {
+                                returnValue: retValue,
+                                success: success,
+                                callId: payload.callId
+                            }
+                        };
+                        if (msgIsString) {
+                            returnMsg = JSON.stringify(returnMsg);
+                        }
+                        event.source.postMessage(returnMsg, '*');
+                    },
+                    payload.parameter
+                );
+            }
+        }
+
+        while (win) {
+            try {
+                if (win.frames[TCF_LOCATOR_NAME]) {
+                    cmpFrame = win;
+                    break;
+                }
+            } catch (ignore) {}
+
+            if (win === window.top) {
+                break;
+            }
+            win = win.parent;
+        }
+        if (!cmpFrame) {
+            addFrame();
+            win.__tcfapi = tcfAPIHandler;
+            win.addEventListener('message', postMessageEventHandler, false);
+        }
+    };
+
+    if (typeof module !== 'undefined') {
+        module.exports = makeStub;
+    } else {
+        makeStub();
+    }
+
+    var uspStubFunction = function() {
+        var arg = arguments;
+        if (typeof window.__uspapi !== uspStubFunction) {
+            setTimeout(function() {
+                if (typeof window.__uspapi !== 'undefined') {
+                    window.__uspapi.apply(window.__uspapi, arg);
+                }
+            }, 500);
+        }
+    };
+
+    var checkIfUspIsReady = function() {
+        uspTries++;
+        if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+            console.warn('USP is not accessible');
+        } else {
+            clearInterval(uspInterval);
+        }
+    };
+
+    if (typeof window.__uspapi === 'undefined') {
+        window.__uspapi = uspStubFunction;
+        var uspInterval = setInterval(checkIfUspIsReady, 6000);
+    }
+})();
+</script>
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PC2RG39');</script>
+
+<script async="" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+   window.googletag = window.googletag || {cmd: []};
+         googletag.cmd.push(function() {
+           var interstitialSlot = googletag.defineOutOfPageSlot('/147246189,22396446015/russianblogs.com_interstitial', googletag.enums.OutOfPageFormat.INTERSTITIAL);
+           if (interstitialSlot) interstitialSlot.addService(googletag.pubads());
+           googletag.pubads().enableSingleRequest();
+           googletag.enableServices();
+           googletag.display(interstitialSlot);
+       });
+</script>
+<style type="text/css"> .qc-cmp-button.qc-cmp-secondary-button:hover {    background-color: #368bd6 !important;    border-color: transparent !important;  }  .qc-cmp-button.qc-cmp-secondary-button:hover {    color: #ffffff !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    color: #368bd6 !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    background-color: #eee !important;    border-color: transparent !important;  } </style><meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/pubads_impl_2022031401.js.Без названия" async=""></script><style type="text/css">pre{position: relative}pre:hover .hljs-button{display: block}.hljs-button{display: none;position: absolute;right: 4px;top: 4px;font-size: 12px;color: #4d4d4d;background-color: white;padding: 2px 8px;margin: 8px;border-radius: 4px;cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);}.hljs-button:after{content: attr(data-title)}</style><style type="text/css">.hljs-ln{border-collapse:collapse}            .hljs-ln td{padding:0}            .hljs-ln-n{text-align: right;padding-right: 8px;}            .hljs-ln-n:before{content:attr(data-line-number)}</style><link rel="preload" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/f.txt" as="script"><script type="text/javascript" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/f.txt"></script><link rel="preload" href="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/f(1).txt" as="script"><script type="text/javascript" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/f(1).txt"></script></head>
+<body>
+<div class="row outterWrapper">
+<div class="columns large-12">
+<div class="row header-row">
+<div class="columns header-inner large-12" style="padding:0px;padding-left:39px;"><h1 style="font-size:40px;font-weight: bold;margin-bottom:8px;margin-top:8px;"><a href="https://russianblogs.com/">Русские Блоги</a><span id="short-desc" style="font-size:12px;font-weight: normal;">&nbsp;</span></h1></div>
+</div>
+<div class="row menu-row">
+<div class="columns top-menu large-12 top-nav">
+<nav>
+<section>
+<ul class="sf-menu">
+<li class="active"><a href="https://russianblogs.com/">Главная</a></li>
+<li><a href="mailto:russianblogs@gmx.com">Свяжитесь с нами</a></li>
+</ul>
+</section>
+</nav>
+</div>
+</div>
+<div class="row small-top-menu">
+<div class="columns large-12 plr0 top-nav">
+<form name="dropdown" action="https://russianblogs.com/article/93331019942/#">
+<nav>
+<section>
+<ul class="sf-menu">
+<li class="active"><a href="https://russianblogs.com/">Главная</a></li>
+<li><a href="mailto:russianblogs@gmx.com">Свяжитесь с нами</a></li>
+</ul>
+</section>
+</nav>
+</form>
+</div>
+</div>
+</div>
+<div class="columns large-12 content-row">
+<div class="row title">
+<div class="columns large-12 content-title-inner">
+<div class="row">
+<div class="columns large-12">
+<form id="searchForm" action="https://russianblogs.com/search" method="post" onsubmit="return validate();" style="margin:0;float:right;">
+<div>
+<input type="text" name="s" id="s" style="font-size:16px;width:200px;display: inline-block;padding:0;margin:0"> <input type="submit" value="Поиск" style="color:black;display: inline-block;height:32px;font-size:16px;">
+</div>
+</form>
+<div style="clear:both;"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="topads" style="text-align:center;margin-top:10px;width:100%;height:250px;" class="adsloading">
+<div style="text-align:center;" id="82332-31"><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gen.js.Без названия"></script><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/requestform.js.Без названия"></script></div>
+</div>
+<div id="topads1" style="text-align:center;margin-top:10px;">
+<iframe data-id="russianblogs.com_980x300_responsive_1_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/saved_resource.html"></iframe>
+<script>
+    (function () {
+        var size='970x250|300x250',
+            adunit = 'russianblogs.com_980x300_responsive_1_DFP',
+            childNetworkId = '22396446015',
+            xmlhttp = new XMLHttpRequest();xmlhttp.onreadystatechange = function(){if(xmlhttp.readyState==4 && xmlhttp.status==200){var es = document.querySelectorAll("[data-id='"+adunit+"']");var e = Array.from(es).filter(function(e) {return !e.hasAttribute("data-rendered")});if(e.length > 0){e.forEach(function(el){var iframe = el.contentWindow.document;iframe.open();iframe.write(xmlhttp.responseText);iframe.close();el.setAttribute('data-rendered', true)})}}};var child=childNetworkId.trim()?','+childNetworkId.trim():'';xmlhttp.open("GET", 'https://pubads.g.doubleclick.net/gampad/adx?iu=/147246189'+child+'/'+adunit+'&sz='+encodeURI(size)+'&t=Placement_type%3Dserving&'+Date.now(), true);xmlhttp.send();})();
+</script>
+</div>
+<div class="row content about">
+<div class="columns large-12 content-inner">
+<div class="row">
+<div class="columns large-7">
+<h2 style="line-height: 32px;">
+<span>Подробное объяснение основных функций QFileInfo</span>
+</h2>
+<div style="clear:both;"></div>
+<div id="contentaboveads" style="width:100%;text-align:center;padding-top:10px;">
+<iframe data-id="russianblogs.com_750x200_responsive_2_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/saved_resource(1).html"></iframe>
+<script>
+    (function () {
+        var size='750x200|300x250',
+            adunit = 'russianblogs.com_750x200_responsive_2_DFP',
+            childNetworkId = '22396446015',
+            xmlhttp = new XMLHttpRequest();xmlhttp.onreadystatechange = function(){if(xmlhttp.readyState==4 && xmlhttp.status==200){var es = document.querySelectorAll("[data-id='"+adunit+"']");var e = Array.from(es).filter(function(e) {return !e.hasAttribute("data-rendered")});if(e.length > 0){e.forEach(function(el){var iframe = el.contentWindow.document;iframe.open();iframe.write(xmlhttp.responseText);iframe.close();el.setAttribute('data-rendered', true)})}}};var child=childNetworkId.trim()?','+childNetworkId.trim():'';xmlhttp.open("GET", 'https://pubads.g.doubleclick.net/gampad/adx?iu=/147246189'+child+'/'+adunit+'&sz='+encodeURI(size)+'&t=Placement_type%3Dserving&'+Date.now(), true);xmlhttp.send();})();
+</script>
+</div>
+<div style="padding:5px 5px 5px 5px;word-wrap: break-word; word-break: normal;max-width: 950px;font-size:14px;" id="article_content">
+<div id="content_views" class="markdown_views prism-atom-one-dark">
+<p>Часть контента поступает из:<a href="https://blog.csdn.net/Amnes1a/article/details/65444966" rel="nofollow,noindex" target="_blank">https://blog.csdn.net/Amnes1a/article/details/65444966</a></p>
+<p></p>
+<div class="toc">
+<h3>Подробное объяснение основных функций QFileInfo</h3>
+<ul>
+<li><a href="https://russianblogs.com/article/93331019942/#QFileInfo_3" rel="nofollow,noindex" target="">Введение в QFileInfo</a></li>
+<li><a href="https://russianblogs.com/article/93331019942/#_44" rel="nofollow,noindex" target="">Развернуть</a></li>
+<li><a href="https://russianblogs.com/article/93331019942/#_58" rel="nofollow,noindex" target="">Имя файла и класс пути</a></li>
+<li><a href="https://russianblogs.com/article/93331019942/#_74" rel="nofollow,noindex" target="">Класс прав доступа к файлу</a></li>
+<li><a href="https://russianblogs.com/article/93331019942/#_80" rel="nofollow,noindex" target="">Класс владельца файла</a></li>
+<li><a href="https://russianblogs.com/article/93331019942/#_87" rel="nofollow,noindex" target="">Дата, связанная с документом</a></li>
+<li><a href="https://russianblogs.com/article/93331019942/#_93" rel="nofollow,noindex" target="">Пример вывода</a></li>
+</ul>
+</div>
+<p></p>
+<h1><a id="QFileInfo_3" target="_blank" rel="nofollow,noindex"></a>Введение в QFileInfo</h1>
+<p>Класс QFileInfo предоставляет нам системно-независимую информацию о файле, включая имя и расположение файла в файловой системе, права доступа к файлу, каталог или ссылку и т. Д. И с помощью этого класса вы можете изменить размер файла, последнее изменение и время чтения. В то же время класс QFileInfo также можно использовать для получения информации о ресурсах Qt.</p>
+<p>QFileInfo может представлять файлы с абсолютными или относительными путями. Среди них абсолютный путь - это путь, начинающийся с «/» (или путь, начинающийся с определенной буквы диска в системах Windows). Относительный путь - это файл или каталог относительно текущего рабочего каталога. Мы можем использовать функцию-член isRelative () этого класса, чтобы определить, представляет ли QFileInfo относительный или абсолютный путь во время разработки, или использовать makeAbsolute () для преобразования относительного пути в абсолютный путь.</p>
+<p>Вы можете использовать функцию exists (), чтобы определить, существует ли файл, и функцию size (), чтобы получить размер файла. Функции-члены isFile (), isDir (), isSymLink () могут определять тип файла (обычный файл, каталог или символическая ссылка).</p>
+<p>Если QFileInfo в настоящее время представляет собой символическую ссылку, функция symLinkTarget () возвращает файл, на который указывает символическая ссылка. На платформах Unix, включая macOS и iOS, символические ссылки имеют тот же размер, что и файлы, на которые они указывают, поскольку Unix прозрачно обрабатывает обычные файлы и символические ссылки; аналогично, при открытии символической ссылки для чтения и записи он фактически открывает ее. Настоящий файл указывает на. Например:</p>
+<pre class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)"> #ifdef <span class="token constant">Q_OS_UNIX</span>
+ 
+  QFileInfo <span class="token function">info1</span><span class="token punctuation">(</span><span class="token string">"/home/bob/bin/untabify"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  info1<span class="token punctuation">.</span><span class="token function">isSymLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// returns true</span>
+  info1<span class="token punctuation">.</span><span class="token function">absoluteFilePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns "/home/bob/bin/untabify"</span>
+  info1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// returns 56201</span>
+  info1<span class="token punctuation">.</span><span class="token function">symLinkTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// returns "/opt/pretty++/bin/untabify"</span>
+ 
+  QFileInfo <span class="token function">info2</span><span class="token punctuation">(</span>info1<span class="token punctuation">.</span><span class="token function">symLinkTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  info2<span class="token punctuation">.</span><span class="token function">isSymLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// returns false</span>
+  info2<span class="token punctuation">.</span><span class="token function">absoluteFilePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns "/opt/pretty++/bin/untabify"</span>
+  info2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// returns 56201</span>
+ 
+  #endif
+<div class="hljs-button {2}" data-title="копия"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li></ul></pre>
+<p>На платформе Windows символические ссылки - это файлы .lnk, которые представляют собой ярлыки. В это время функция size () возвращает размер самой символической ссылки.Точно так же открытие файла .lnk означает открытие самого файла .lnk, а не реального файла, на который он указывает. Например:</p>
+<pre class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)">#ifdef <span class="token constant">Q_OS_WIN</span>
+ 
+  QFileInfo <span class="token function">info1</span><span class="token punctuation">(</span><span class="token string">"C:\\Documents and Settings\\Bob\\untabify.lnk"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  info1<span class="token punctuation">.</span><span class="token function">isSymLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// returns true</span>
+  info1<span class="token punctuation">.</span><span class="token function">absoluteFilePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns "C:/Documents and Settings/Bob/untabify.lnk"</span>
+  info1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// returns 743</span>
+  info1<span class="token punctuation">.</span><span class="token function">symLinkTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// returns "C:/Pretty++/untabify"</span>
+ 
+  QFileInfo <span class="token function">info2</span><span class="token punctuation">(</span>info1<span class="token punctuation">.</span><span class="token function">symLinkTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  info2<span class="token punctuation">.</span><span class="token function">isSymLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// returns false</span>
+  info2<span class="token punctuation">.</span><span class="token function">absoluteFilePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns "C:/Pretty++/untabify"</span>
+  info2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// returns 63942</span>
+ 
+  #endif
+<div class="hljs-button {2}" data-title="копия"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li></ul></pre>
+<h1><a id="_44" target="_blank" rel="nofollow,noindex"></a>Развернуть</h1>
+<ol>
+<li> <p>Если QFileInfo представляет каталог, QFileInfo не будет автоматически добавлять "/" после пути. Если вам нужен этот "/", вам нужно добавить его вручную.</p> </li>
+<li> <p>В файловых системах NTFS, особенно Windows, права собственности на файлы и проверка разрешений по умолчанию отключены из соображений производительности. Чтобы включить эту функцию, вы можете добавить в файл следующую строку кода:</p> </li>
+</ol>
+<pre class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)">extern <span class="token constant">Q_CORE_EXPORT</span> int qt_ntfs_permission_lookup<span class="token punctuation">;</span>
+<div class="hljs-button {2}" data-title="копия"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li></ul></pre>
+<p>Таким образом, мы можем легко включить или отключить функцию проверки разрешений, увеличивая или уменьшая эту переменную:</p>
+<pre class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)">qt_ntfs_permission_lookup<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// turn checking on</span>
+qt_ntfs_permission_lookup<span class="token operator">--</span><span class="token punctuation">;</span> <span class="token comment">// turn it off again</span>
+<div class="hljs-button {2}" data-title="копия"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li></ul></pre>
+<ol start="3">
+<li>Некоторые функции QFileInfo запрашивают всю файловую систему, но по соображениям производительности некоторые функции управляют только самим именем файла. Например, чтобы получить абсолютный путь к файлу, absolutePath () должен запросить файловую систему. Функция path () может напрямую воздействовать на само имя файла, поэтому функция path () будет работать быстрее.</li>
+<li>Также обратите внимание, что для ускорения получения информации о файле QFileInfo кэширует информацию о файле. Но с другой стороны, файл может быть изменен другими пользователями или программами или другими функциями текущей программы в любое время, поэтому QFileInfo также предоставляет функцию refresh () для повторного чтения информации файла. Если вы хотите отключить функцию кэширования, чтобы обеспечить доступ к файловой системе для получения последней информации каждый раз, когда вы обращаетесь к информации о файле, вы можете сделать это, вызвав setCaching (false).</li>
+</ol>
+<h1><a id="_58" target="_blank" rel="nofollow,noindex"></a>Имя файла и класс пути</h1>
+<table>
+<thead>
+<tr>
+<th align="center">Название функции</th>
+<th align="left">описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">baseName</td>
+<td align="left">Имя файла (не включает полный суффикс, не существует<kbd>.</kbd>Разделитель)</td>
+</tr>
+<tr>
+<td align="center">completeBaseName</td>
+<td align="left">Полное имя файла (не включая последний суффикс, может существовать<kbd>.</kbd>Разделитель)</td>
+</tr>
+<tr>
+<td align="center">suffix</td>
+<td align="left">Последний суффикс (с последнего<kbd>.</kbd>Начать с разделителя)</td>
+</tr>
+<tr>
+<td align="center">completeSuffix</td>
+<td align="left">Полный суффикс (с первого<kbd>.</kbd>Начать с разделителя)</td>
+</tr>
+<tr>
+<td align="center">path</td>
+<td align="left">Верните путь к файлу, не включая имя файла. Однако, если объект QFileInfo представляет путь, заканчивающийся на «/», тогда имя файла считается пустым.В это время функция возвращает полный путь.</td>
+</tr>
+<tr>
+<td align="center">filePath</td>
+<td align="left">Верните имя файла, включая путь (это может быть абсолютный или относительный путь).</td>
+</tr>
+<tr>
+<td align="center">fileName</td>
+<td align="left">Возвращается только имя файла, не включая путь. Обратите внимание, что если объект QFileInfo представляет путь, заканчивающийся на «/», функция возвращает пустую строку.</td>
+</tr>
+<tr>
+<td align="center">dir</td>
+<td align="left">Вернуть путь к родительскому каталогу файла как объект QDir.</td>
+</tr>
+<tr>
+<td align="center">absoluteDir</td>
+<td align="left">Вернуть абсолютный путь к файлу как объект QDir.</td>
+</tr>
+<tr>
+<td align="center">absolutePath</td>
+<td align="left">Возвращает абсолютный путь к файлу, не включая имя файла.</td>
+</tr>
+<tr>
+<td align="center">absoluteFilePath</td>
+<td align="left">Возвращает абсолютный путь к имени файла. В системах Unix будет возвращен каталог, начинающийся с «/», на платформах Windows будет возвращен каталог, начинающийся с буквы диска.</td>
+</tr>
+<tr>
+<td align="center">canonicalPath</td>
+<td align="left">Верните путь к файлу (не включая имя файла), который является абсолютным путем;</td>
+</tr>
+<tr>
+<td align="center">canonicalFilePath</td>
+<td align="left">Каноническое имя пути является абсолютным и уникальным. Точное определение канонического имени пути зависит от системы. При необходимости этот метод сначала преобразует имя пути в имя абсолютного пути, что имеет тот же эффект, что и вызов метода absolutefilePath (), а затем сопоставляет его с уникальным именем пути системным способом. Обычно это включает удаление избыточных элементов из имени пути (например, «.» И «...»), анализ символических ссылок (для платформ UNIX) и преобразование имен дисков в стандартный регистр (для платформ Microsoft Windows).</td>
+</tr>
+</tbody>
+</table>
+<h1><a id="_74" target="_blank" rel="nofollow,noindex"></a>Класс прав доступа к файлу</h1>
+<table>
+<thead>
+<tr>
+<th align="center">Название функции</th>
+<th align="center">описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">isReadable</td>
+<td align="center">Это читается</td>
+</tr>
+<tr>
+<td align="center">isWriteable</td>
+<td align="center">Возможность записи</td>
+</tr>
+<tr>
+<td align="center">isExecutable</td>
+<td align="center">Это исполняемый файл</td>
+</tr>
+</tbody>
+</table>
+<h1><a id="_80" target="_blank" rel="nofollow,noindex"></a>Класс владельца файла</h1>
+<table>
+<thead>
+<tr>
+<th align="center">Название функции</th>
+<th align="center">описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">owner</td>
+<td align="center">Владелец файла</td>
+</tr>
+<tr>
+<td align="center">ownerId</td>
+<td align="center">ID владельца файла</td>
+</tr>
+<tr>
+<td align="center">group</td>
+<td align="center">Группа, к которой принадлежит файл</td>
+</tr>
+<tr>
+<td align="center">groupId</td>
+<td align="center">ID группы, к которой принадлежит файл</td>
+</tr>
+</tbody>
+</table>
+<h1><a id="_87" target="_blank" rel="nofollow,noindex"></a>Дата, связанная с документом</h1>
+<table>
+<thead>
+<tr>
+<th align="center">Название функции</th>
+<th align="center">описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">created</td>
+<td align="center">Дата и местное время создания файла</td>
+</tr>
+<tr>
+<td align="center">lastModified</td>
+<td align="center">Дата и местное время последнего изменения файла.</td>
+</tr>
+<tr>
+<td align="center">lastRead</td>
+<td align="center">Дата и местное время последнего чтения файла.</td>
+</tr>
+</tbody>
+</table>
+<h1><a id="_93" target="_blank" rel="nofollow,noindex"></a>Пример вывода</h1>
+<pre class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)"><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>relative file path<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">==</span><span class="token function">QFileInfo</span><span class="token punctuation">(</span><span class="token string">"./user/xueying/script.tag.gz"</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+baseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"script"</span>
+completeBaseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"script.tag"</span>
+suffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"gz"</span>
+completeSuffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"tag.gz"</span>
+bundleName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user/xueying"</span>
+filePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user/xueying/script.tag.gz"</span>
+fileName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"script.tag.gz"</span>
+absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying"</span>
+absoluteFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying/script.tag.gz"</span>
+canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"."</span>
+canonicalFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"xueying"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"xueying"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user/xueying"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>absolute file path<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span><span class="token function">QFileInfo</span><span class="token punctuation">(</span><span class="token string">"E:/project/test/script.tag.gz"</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+baseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"script"</span>
+completeBaseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"script.tag"</span>
+suffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"gz"</span>
+completeSuffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"tag.gz"</span>
+bundleName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+filePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test/script.tag.gz"</span>
+fileName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"script.tag.gz"</span>
+absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+absoluteFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test/script.tag.gz"</span>
+canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"."</span>
+canonicalFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span>relative dir path <span class="token keyword">with</span> QDir<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">sepator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span>
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">==</span><span class="token function">QFileInfo</span><span class="token punctuation">(</span><span class="token string">"./user/xueying/"</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">==</span>
+baseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+completeBaseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+suffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+completeSuffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+bundleName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user/xueying"</span>
+filePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user/xueying/"</span>
+fileName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user"</span>
+absoluteFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying"</span>
+canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"."</span>
+canonicalFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"user"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"xueying"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user/xueying"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span>absolute dir path <span class="token keyword">with</span> QDir<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">sepator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span>
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">==</span><span class="token function">QFileInfo</span><span class="token punctuation">(</span><span class="token string">"E:/project/test/"</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+baseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+completeBaseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+suffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+completeSuffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+bundleName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+filePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test/"</span>
+fileName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+absoluteFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test/"</span>
+canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+canonicalFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>relative dir path no QDir<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">sepator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span><span class="token function">QFileInfo</span><span class="token punctuation">(</span><span class="token string">"./user/xueying"</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+baseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"xueying"</span>
+completeBaseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"xueying"</span>
+suffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+completeSuffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+bundleName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user"</span>
+filePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user/xueying"</span>
+fileName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"xueying"</span>
+absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user"</span>
+absoluteFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user/xueying"</span>
+canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"."</span>
+canonicalFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"user"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"user"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/qt/fileinfoTest/bin/user"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"./user"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>absolute dir path no QDir<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">sepator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+<span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token function">QFileInfo</span><span class="token punctuation">(</span><span class="token string">"E:/project/test"</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">===</span><span class="token operator">=</span>
+baseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"test"</span>
+completeBaseName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"test"</span>
+suffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+completeSuffix<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+bundleName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">""</span>
+path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+filePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+fileName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"test"</span>
+absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+absoluteFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+canonicalFilePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project/test"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"project"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+<span class="token function">absoluteDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dirName<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"project"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>absolutePath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>path<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+<span class="token function">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>canonicalPath<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;&gt;&gt;</span> <span class="token string">"E:/project"</span>
+<div class="hljs-button {2}" data-title="копия"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li><li style="color: rgb(153, 153, 153);">21</li><li style="color: rgb(153, 153, 153);">22</li><li style="color: rgb(153, 153, 153);">23</li><li style="color: rgb(153, 153, 153);">24</li><li style="color: rgb(153, 153, 153);">25</li><li style="color: rgb(153, 153, 153);">26</li><li style="color: rgb(153, 153, 153);">27</li><li style="color: rgb(153, 153, 153);">28</li><li style="color: rgb(153, 153, 153);">29</li><li style="color: rgb(153, 153, 153);">30</li><li style="color: rgb(153, 153, 153);">31</li><li style="color: rgb(153, 153, 153);">32</li><li style="color: rgb(153, 153, 153);">33</li><li style="color: rgb(153, 153, 153);">34</li><li style="color: rgb(153, 153, 153);">35</li><li style="color: rgb(153, 153, 153);">36</li><li style="color: rgb(153, 153, 153);">37</li><li style="color: rgb(153, 153, 153);">38</li><li style="color: rgb(153, 153, 153);">39</li><li style="color: rgb(153, 153, 153);">40</li><li style="color: rgb(153, 153, 153);">41</li><li style="color: rgb(153, 153, 153);">42</li><li style="color: rgb(153, 153, 153);">43</li><li style="color: rgb(153, 153, 153);">44</li><li style="color: rgb(153, 153, 153);">45</li><li style="color: rgb(153, 153, 153);">46</li><li style="color: rgb(153, 153, 153);">47</li><li style="color: rgb(153, 153, 153);">48</li><li style="color: rgb(153, 153, 153);">49</li><li style="color: rgb(153, 153, 153);">50</li><li style="color: rgb(153, 153, 153);">51</li><li style="color: rgb(153, 153, 153);">52</li><li style="color: rgb(153, 153, 153);">53</li><li style="color: rgb(153, 153, 153);">54</li><li style="color: rgb(153, 153, 153);">55</li><li style="color: rgb(153, 153, 153);">56</li><li style="color: rgb(153, 153, 153);">57</li><li style="color: rgb(153, 153, 153);">58</li><li style="color: rgb(153, 153, 153);">59</li><li style="color: rgb(153, 153, 153);">60</li><li style="color: rgb(153, 153, 153);">61</li><li style="color: rgb(153, 153, 153);">62</li><li style="color: rgb(153, 153, 153);">63</li><li style="color: rgb(153, 153, 153);">64</li><li style="color: rgb(153, 153, 153);">65</li><li style="color: rgb(153, 153, 153);">66</li><li style="color: rgb(153, 153, 153);">67</li><li style="color: rgb(153, 153, 153);">68</li><li style="color: rgb(153, 153, 153);">69</li><li style="color: rgb(153, 153, 153);">70</li><li style="color: rgb(153, 153, 153);">71</li><li style="color: rgb(153, 153, 153);">72</li><li style="color: rgb(153, 153, 153);">73</li><li style="color: rgb(153, 153, 153);">74</li><li style="color: rgb(153, 153, 153);">75</li><li style="color: rgb(153, 153, 153);">76</li><li style="color: rgb(153, 153, 153);">77</li><li style="color: rgb(153, 153, 153);">78</li><li style="color: rgb(153, 153, 153);">79</li><li style="color: rgb(153, 153, 153);">80</li><li style="color: rgb(153, 153, 153);">81</li><li style="color: rgb(153, 153, 153);">82</li><li style="color: rgb(153, 153, 153);">83</li><li style="color: rgb(153, 153, 153);">84</li><li style="color: rgb(153, 153, 153);">85</li><li style="color: rgb(153, 153, 153);">86</li><li style="color: rgb(153, 153, 153);">87</li><li style="color: rgb(153, 153, 153);">88</li><li style="color: rgb(153, 153, 153);">89</li><li style="color: rgb(153, 153, 153);">90</li><li style="color: rgb(153, 153, 153);">91</li><li style="color: rgb(153, 153, 153);">92</li><li style="color: rgb(153, 153, 153);">93</li><li style="color: rgb(153, 153, 153);">94</li><li style="color: rgb(153, 153, 153);">95</li><li style="color: rgb(153, 153, 153);">96</li><li style="color: rgb(153, 153, 153);">97</li><li style="color: rgb(153, 153, 153);">98</li><li style="color: rgb(153, 153, 153);">99</li><li style="color: rgb(153, 153, 153);">100</li><li style="color: rgb(153, 153, 153);">101</li><li style="color: rgb(153, 153, 153);">102</li><li style="color: rgb(153, 153, 153);">103</li><li style="color: rgb(153, 153, 153);">104</li><li style="color: rgb(153, 153, 153);">105</li><li style="color: rgb(153, 153, 153);">106</li><li style="color: rgb(153, 153, 153);">107</li><li style="color: rgb(153, 153, 153);">108</li><li style="color: rgb(153, 153, 153);">109</li><li style="color: rgb(153, 153, 153);">110</li><li style="color: rgb(153, 153, 153);">111</li><li style="color: rgb(153, 153, 153);">112</li><li style="color: rgb(153, 153, 153);">113</li><li style="color: rgb(153, 153, 153);">114</li><li style="color: rgb(153, 153, 153);">115</li><li style="color: rgb(153, 153, 153);">116</li><li style="color: rgb(153, 153, 153);">117</li><li style="color: rgb(153, 153, 153);">118</li><li style="color: rgb(153, 153, 153);">119</li><li style="color: rgb(153, 153, 153);">120</li><li style="color: rgb(153, 153, 153);">121</li><li style="color: rgb(153, 153, 153);">122</li><li style="color: rgb(153, 153, 153);">123</li><li style="color: rgb(153, 153, 153);">124</li><li style="color: rgb(153, 153, 153);">125</li><li style="color: rgb(153, 153, 153);">126</li><li style="color: rgb(153, 153, 153);">127</li><li style="color: rgb(153, 153, 153);">128</li><li style="color: rgb(153, 153, 153);">129</li><li style="color: rgb(153, 153, 153);">130</li><li style="color: rgb(153, 153, 153);">131</li><li style="color: rgb(153, 153, 153);">132</li><li style="color: rgb(153, 153, 153);">133</li><li style="color: rgb(153, 153, 153);">134</li><li style="color: rgb(153, 153, 153);">135</li><li style="color: rgb(153, 153, 153);">136</li><li style="color: rgb(153, 153, 153);">137</li></ul></pre>
+</div></div>
+<div id="contentbelowads" style="width:100%;text-align:center;padding-top:10px;">
+<iframe data-id="russianblogs.com_728x90_responsive_5_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/saved_resource(2).html"></iframe>
+<script>
+    (function () {
+        var size='728x90|300x250',
+            adunit = 'russianblogs.com_728x90_responsive_5_DFP',
+            childNetworkId = '22396446015',
+            xmlhttp = new XMLHttpRequest();xmlhttp.onreadystatechange = function(){if(xmlhttp.readyState==4 && xmlhttp.status==200){var es = document.querySelectorAll("[data-id='"+adunit+"']");var e = Array.from(es).filter(function(e) {return !e.hasAttribute("data-rendered")});if(e.length > 0){e.forEach(function(el){var iframe = el.contentWindow.document;iframe.open();iframe.write(xmlhttp.responseText);iframe.close();el.setAttribute('data-rendered', true)})}}};var child=childNetworkId.trim()?','+childNetworkId.trim():'';xmlhttp.open("GET", 'https://pubads.g.doubleclick.net/gampad/adx?iu=/147246189'+child+'/'+adunit+'&sz='+encodeURI(size)+'&t=Placement_type%3Dserving&'+Date.now(), true);xmlhttp.send();})();
+</script>
+</div>
+<div style="clear:both;"></div>
+<hr>
+<h3><span>Интеллектуальная рекомендация</span></h3>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<div class="loop-thumb">
+<a href="https://russianblogs.com/article/21521540125/"><img style="width:172px;height:120px;" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/80c310adff193dac7f4e8c62e3671dab.png">
+</a>
+</div>
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/21521540125/" rel="bookmark" title="Принцип и алгоритм прямой сортировки java">Принцип и алгоритм прямой сортировки java</a>
+</h3>
+ </header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">Первый: основная идея означает, что указанная позиция сортировки сравнивается с другими элементами массива, и элементы обмениваются, когда выполняются условия. Обратите внимание на разницу между пузыр...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<div class="loop-thumb">
+<a href="https://russianblogs.com/article/4874214518/"><img style="width:172px;height:120px;" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/cdee73bec85e856c767abea0302785b8.png">
+</a>
+</div>
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/4874214518/" rel="bookmark" title="01 linux">01 linux</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">ключ vmware http://www.hack520.com/293.html &nbsp; Ключ vmwarePro15 YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8 &nbsp; &nbsp; 1. Структура каталогов Linux &nbsp; &nbsp; &nbsp; &nbsp; 1. Переключите каталог команды ...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<div class="loop-thumb">
+<a href="https://russianblogs.com/article/8863216596/"><img style="width:172px;height:120px;" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/7738862ae5701f45c2f55b9ef88c9534.png">
+</a>
+</div>
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/8863216596/" rel="bookmark" title="Инкапсуляция образа Docker (в качестве примера возьмем ssh и apache)">Инкапсуляция образа Docker (в качестве примера возьмем ssh и apache)</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">Инкапсулируйте образ apache Тест: пакет ssh Тест:...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/2320649491/" rel="bookmark" title="Berkeley DB база данных с открытым исходным кодом">Berkeley DB база данных с открытым исходным кодом</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">Файловая база данных с открытым исходным кодом, между реляционной базой данных и базой данных в памяти, хранящаяся в парах ключ-значение Ниже приведен пример, скопированный онлайн, а затем запустить е...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/1126420983/" rel="bookmark" title="Инструменты формы данных JSON">Инструменты формы данных JSON</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">Формат данных JSON часто используется в веб-разработке. Часто возникает проблема с преобразованием класса в формат данных JSON. Особенно наглядным примером является представление внешних данных в форм...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="rightads2" style="width:100%;height:90px;margin-top:10px;margin-bottom:10px;" class="adsloading">
+<div id="82332-1"><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gen.js(1).Без названия"></script><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/requestform.js(1).Без названия"></script></div>
+</div>
+<h3><span>Вам также может понравиться</span></h3>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/26511167550/" rel="bookmark" title="Краткое описание принципа html2image">Краткое описание принципа html2image</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">Предисловие УвидетьTJ Великий Бог звездаdom-to-imageИ всегда было любопытноhtmlКак повернутьimage Так что просто посмотрите исходный код и посмотрите, как он реализован: на самом деле, всего кода мень...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<div class="loop-thumb">
+<a href="https://russianblogs.com/article/31082432671/"><img style="width:172px;height:120px;" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/585c438849d4f40d0b3bb5e72edeb0bc.png">
+</a>
+</div>
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/31082432671/" rel="bookmark" title="Гнездо по ошибке rabbitmq закрыто">Гнездо по ошибке rabbitmq закрыто</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">Application.yml Файл конфигурации ниже Много Baidu сказал, что это разрешение, но разрешения не проблем. Все не проблема, но это ошибка. Затем я нашел другое объяснение, 15672 в Port = 15672 - это пор...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/89561870855/" rel="bookmark" title="Существует двусторонний связанный список, его значение не повторяется, удаляет ключевые слова к узлам ключей">Существует двусторонний связанный список, его значение не повторяется, удаляет ключевые слова к узлам ключей</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<div class="loop-thumb">
+<a href="https://russianblogs.com/article/32631643581/"><img style="width:172px;height:120px;" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/0938e7afe33d282311d0f4f07b0347f8.png">
+</a>
+</div>
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/32631643581/" rel="bookmark" title="Анализ архитектуры OpenStack">Анализ архитектуры OpenStack</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">1. Общая структура На следующем рисунке показана взаимосвязь между OpenStack Services. Nova: управление жизненным циклом виртуальных машин Neutron: предоставляет услуги сетевого подключения для других...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div style="padding-top:6px;padding-bottom:6px;">
+<div class="loop-wrap clearfix">
+<header class="loop-data">
+<h3 style="margin-top:0px;border-bottom-style: none;padding-bottom: 0px;margin-bottom: 0px;overflow:hidden;line-height:30px;">
+<a href="https://russianblogs.com/article/80427056/" rel="bookmark" title="Spring + распоряжается управлением транзакциями на сервисном уровне applicationContext.xml">Spring + распоряжается управлением транзакциями на сервисном уровне applicationContext.xml</a>
+</h3>
+</header>
+<div class="mh-excerpt">
+<p style="line-height:25px;">Используйте весной конфигурацию jdbcTemplate. На уровне обслуживания в некоторых случаях для доступа к базе данных одновременно вызывается другой dao, и эти операции являются атомарными, то есть если ...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="rightads3" style="width:100%;height:90px;margin-top:10px;margin-bottom:10px;" class="adsloading">
+<div id="82332-28"><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gen.js(2).Без названия"></script><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/requestform.js(2).Без названия"></script></div>
+</div>
+</div>
+<div class="columns large-4 large-offset-1 sidebar" style="position: -webkit-sticky;position: sticky;top: 0;">
+<div id="leftads0">
+<iframe data-id="russianblogs.com_300x250_responsive_3_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/saved_resource(3).html"></iframe>
+<script>
+    (function () {
+        var size='300x250',
+            adunit = 'russianblogs.com_300x250_responsive_3_DFP',
+            childNetworkId = '22396446015',
+            xmlhttp = new XMLHttpRequest();xmlhttp.onreadystatechange = function(){if(xmlhttp.readyState==4 && xmlhttp.status==200){var es = document.querySelectorAll("[data-id='"+adunit+"']");var e = Array.from(es).filter(function(e) {return !e.hasAttribute("data-rendered")});if(e.length > 0){e.forEach(function(el){var iframe = el.contentWindow.document;iframe.open();iframe.write(xmlhttp.responseText);iframe.close();el.setAttribute('data-rendered', true)})}}};var child=childNetworkId.trim()?','+childNetworkId.trim():'';xmlhttp.open("GET", 'https://pubads.g.doubleclick.net/gampad/adx?iu=/147246189'+child+'/'+adunit+'&sz='+encodeURI(size)+'&t=Placement_type%3Dserving&'+Date.now(), true);xmlhttp.send();})();
+</script>
+</div>
+<h3 class="page-title services" style="margin-top:0px;">Статьи по теме</h3>
+<ul>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/3024127652/" title="Подробное объяснение основных функций библиотеки opencv2">Подробное объяснение основных функций библиотеки opencv2</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/6970507959/" title="QFileInfo">QFileInfo</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/4362409286/" title="Подробное объяснение модуля Python paramiko и моделирование основных функций SSH">Подробное объяснение модуля Python paramiko и моделирование основных функций SSH</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/17481105171/" title="Java - новичок - подробное объяснение основной функции + использование статических инструментов">Java - новичок - подробное объяснение основной функции + использование статических инструментов</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/34141188001/" title="Подробное объяснение основных функций Pandas | Легко играть в Pandas (2)">Подробное объяснение основных функций Pandas | Легко играть в Pandas (2)</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/56642309424/" title="Принцип вспомогательной функции Android и основное использование подробное объяснение - доступностьСервис">Принцип вспомогательной функции Android и основное использование подробное объяснение - доступностьСервис</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/64842370394/" title="Функция SPARK подробного объяснения серия РДД основное преобразование">Функция SPARK подробного объяснения серия РДД основное преобразование</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/91261247203/" title="Основные функции Pytorch (три) основные математические функции (1) -функции -max () и min () (подробное объяснение параметров dim)">Основные функции Pytorch (три) основные математические функции (1) -функции -max () и min () (подробное объяснение параметров dim)</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/3863372519/" title="Подробное объяснение основных утверждений">Подробное объяснение основных утверждений</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/1799704898/" title="Основное подробное объяснение mariadb">Основное подробное объяснение mariadb</a></li>
+</ul>
+<div style="width:320px;height:250px;background-color: white;" id="leftads1" class="adsloading">
+<div id="82332-2"><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gen.js(3).Без названия"></script><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/requestform.js(3).Без названия"></script></div>
+</div>
+<h3 class="page-title services" style="margin-top:0px;">популярные статьи</h3>
+<ul>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/9972601533/" title="Одно из самых простых действий касания экрана, чтобы понять 3 метода распределения событий">Одно из самых простых действий касания экрана, чтобы понять 3 метода распределения событий</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/15732412536/" title="Bzoj3813 страна страна">Bzoj3813 страна страна</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/98841127636/" title="Анализ принципа построения VUE виртуальной DOM и функции рендеринга">Анализ принципа построения VUE виртуальной DOM и функции рендеринга</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/53231878765/" title="C Пункт знания языка Consolidation Consolidation _07_ имеет открытие строки или заканчиваться с пространством N, хочу перейти на переднее и заднее пространство, вернуться в новую строку">C Пункт знания языка Consolidation Consolidation _07_ имеет открытие строки или заканчиваться с пространством N, хочу перейти на переднее и заднее пространство, вернуться в новую строку</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/52172368958/" title="Экспорт файла MATLAB в JAR; Java Recall MAR шаги">Экспорт файла MATLAB в JAR; Java Recall MAR шаги</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/5116352559/" title="Многопоточный Java-многопоточный отлов исключений">Многопоточный Java-многопоточный отлов исключений</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/5893841685/" title="HTTP2 Sampler for JMeter">HTTP2 Sampler for JMeter</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/11591849218/" title="Используйте GitHub в Pycharm">Используйте GitHub в Pycharm</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/88981150405/" title="js немедленно выполнить функцию">js немедленно выполнить функцию</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/87421436756/" title="Используйте чит-движок для изменения параметров игры «Растения против зомби»">Используйте чит-движок для изменения параметров игры «Растения против зомби»</a></li>
+</ul>
+<div style="width:320px;height:615px;background-color: white;" id="leftads2" class="adsloading">
+<div id="82332-3"><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gen.js(4).Без названия"></script><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/requestform.js(4).Без названия"></script></div>
+</div>
+<h3 class="page-title services" style="margin-top:0px;">рекомендованная статья</h3>
+<ul>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/78101369155/" title="Сервер выполняет создание сценария, и проблем с разрешением нет -bash: Permission denied">Сервер выполняет создание сценария, и проблем с разрешением нет -bash: Permission denied</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/9295960654/" title="Цифровое шифрование PAT1048 (реализовано на java)">Цифровое шифрование PAT1048 (реализовано на java)</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/62401759302/" title="Пекинский университет постов и телекоммуникаций найти предметы (трудности 2)">Пекинский университет постов и телекоммуникаций найти предметы (трудности 2)</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/25632312351/" title="Myeclipse Конфигурация Tomcat 7">Myeclipse Конфигурация Tomcat 7</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/4277292/" title="Android AsyncListDiffer-RecyclerПросмотреть лучшего партнера">Android AsyncListDiffer-RecyclerПросмотреть лучшего партнера</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/70922261146/" title="Режим однополома: пять способов реализации режима одного столбца">Режим однополома: пять способов реализации режима одного столбца</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/99412152282/" title="Java читает файлы в папке и процессов">Java читает файлы в папке и процессов</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/7313788601/" title="Используйте идею для интеграции весенней загрузки и подробного руководства по jsp">Используйте идею для интеграции весенней загрузки и подробного руководства по jsp</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/2175709662/" title="JQuery нажмите сверху, чтобы сгладить к вершине">JQuery нажмите сверху, чтобы сгладить к вершине</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/article/90441095796/" title="Go Language Exploration-3 (Оригинал)">Go Language Exploration-3 (Оригинал)</a></li>
+</ul>
+<div style="width:320px;height:250px;background-color: white;" id="leftads3" class="adsloading">
+<div id="82332-19"><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/gen.js(5).Без названия"></script><script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/requestform.js(5).Без названия"></script></div>
+</div>
+<h3 class="page-title services" style="margin-top:0px;">Связанные теги</h3>
+<ul>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/QFileInfo/" title="QFileInfo">QFileInfo</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/paramiko/" title="paramiko">paramiko</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/SSH/" title="SSH">SSH</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/Python/" title="Python">Python</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/Pytorch/" title="Pytorch">Pytorch</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%B0%D1%8F+%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F/" title="Основная функция">Основная функция</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/%D0%98%D0%BD%D0%BA%D0%B0%D0%BF%D1%81%D1%83%D0%BB%D1%8F%D1%86%D0%B8%D1%8F+%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%B0+Docker+%28%D0%B2+%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5+%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%B0+%D0%B2%D0%BE%D0%B7%D1%8C%D0%BC%D0%B5%D0%BC+ssh+%D0%B8+apache%29/" title="Инкапсуляция образа Docker (в качестве примера возьмем ssh и apache)">Инкапсуляция образа Docker (в качестве примера возьмем ssh и apache)</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/json/" title="json">json</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/Web/" title="Web">Web</a></li>
+<li style="padding-top: 6px;padding-bottom: 6px;border-bottom:1px solid #EBEBEB;line-height:20px;"><a href="https://russianblogs.com/tag/%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0/" title="Ошибка">Ошибка</a></li>
+</ul>
+<div id="leftads_bottom">
+<iframe data-id="russianblogs.com_300x600_responsive_4_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/saved_resource(4).html"></iframe>
+<script>
+    (function () {
+        var size='300x600|300x250',
+            adunit = 'russianblogs.com_300x600_responsive_4_DFP',
+            childNetworkId = '22396446015',
+            xmlhttp = new XMLHttpRequest();xmlhttp.onreadystatechange = function(){if(xmlhttp.readyState==4 && xmlhttp.status==200){var es = document.querySelectorAll("[data-id='"+adunit+"']");var e = Array.from(es).filter(function(e) {return !e.hasAttribute("data-rendered")});if(e.length > 0){e.forEach(function(el){var iframe = el.contentWindow.document;iframe.open();iframe.write(xmlhttp.responseText);iframe.close();el.setAttribute('data-rendered', true)})}}};var child=childNetworkId.trim()?','+childNetworkId.trim():'';xmlhttp.open("GET", 'https://pubads.g.doubleclick.net/gampad/adx?iu=/147246189'+child+'/'+adunit+'&sz='+encodeURI(size)+'&t=Placement_type%3Dserving&'+Date.now(), true);xmlhttp.send();})();
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="anchor_ads">
+<iframe data-id="russianblogs.com_970x90_sticky_anchorad_responsive_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/saved_resource(5).html"></iframe>
+<script>
+    (function () {
+        var size='970x90|320x100',
+            adunit = 'russianblogs.com_970x90_sticky_anchorad_responsive_DFP',
+            childNetworkId = '22396446015',
+            xmlhttp = new XMLHttpRequest();xmlhttp.onreadystatechange = function(){if(xmlhttp.readyState==4 && xmlhttp.status==200){var es = document.querySelectorAll("[data-id='"+adunit+"']");var e = Array.from(es).filter(function(e) {return !e.hasAttribute("data-rendered")});if(e.length > 0){e.forEach(function(el){var iframe = el.contentWindow.document;iframe.open();iframe.write(xmlhttp.responseText);iframe.close();el.setAttribute('data-rendered', true)})}}};var child=childNetworkId.trim()?','+childNetworkId.trim():'';xmlhttp.open("GET", 'https://pubads.g.doubleclick.net/gampad/adx?iu=/147246189'+child+'/'+adunit+'&sz='+encodeURI(size)+'&t=Placement_type%3Dserving&'+Date.now(), true);xmlhttp.send();})();
+</script>
+</div>
+<div class="columns footer-meta">
+<div class="row">
+<div class="columns large-12 footer-meta-inner">
+<div class="row">
+<div class="columns large-12"> © 2020-2022 All rights reserved by russianblogs.com</div>
+</div>
+</div>
+</div>
+</div>
+</div><iframe name="__tcfapiLocator" style="display: none;" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/saved_resource(6).html"></iframe>
+<script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/jquery-1.9.1.min.js.Без названия" type="text/javascript"></script>
+<script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/hljs_new.js.Без названия" type="text/javascript"></script>
+<script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/md.js.Без названия" type="text/javascript"></script>
+<script>
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+<script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/viewer.min.js.Без названия"></script>
+<script>
+var viewer = new Viewer(document.getElementById('article_content'));
+</script>
+<script src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/bottom.js.Без названия"></script>
+
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(72909481, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/72909481" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+
+
+<script type="text/javascript" id="">!function(a,c,b,f,d,h,k,e,g){a[d]=a[d]||[];a[b]=a[b]||{};a[b][e]=g;a[b].Y=20;b=c.getElementsByTagName(f)[0];e={};g=h+".js";c=c.createElement(f);f="dataLayer"!=d?"\x26l\x3d"+d:"";e[h+".start"]=(new Date).getTime();e.event=g;a[d].push(e);c.async=!0;c.src="https://www.googletagmanager.com/"+g+"?id\x3d"+k+f;b.parentNode.insertBefore(c,b)}(window,document,google_tag_manager["GTM-PC2RG39"].macro(4),"script","dataLayer","gtm",google_tag_manager["GTM-PC2RG39"].macro(5),google_tag_manager["GTM-PC2RG39"].macro(6),google_tag_manager["GTM-PC2RG39"].macro(7));</script><iframe src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/container.html" style="visibility: hidden; display: none;"></iframe><script type="text/javascript" id="">!function(h,c,f,n,p,x,q,y,z,A,B,g,C){window[c()]=window[c()]||{};var a=window[c()];g="L";var r="K",t=!0,d=g+g,D="C"+d,u=function(){for(var b in a[d])clearInterval(a[d][b]),clearTimeout(a[d][b]);a[d]={}},k=function(){for(var b=0;5>b;b++)f("//")},l=function(b){if(b||a.url!=h.href){k();f("NEW PAGE PREPARATION");k();a.I=Date.now();a.url=h.href;a[r]=function(e,v){(a[r]=e)&&(e={reason:e});for(var w in v)e[w]=v[w];C("dblck","dns",e)};if(!t&&(q("previous page cleanup"),u(),p("DBSINGLEPAGE")))return q("new page preparation inhibited");
+k();t=!1;n("new-page")}};a.E=p;a[g]=x;a[d]={};a[D]=u;a.N=function(){f("REQUESTING NP");l(!0)};a.X=y;a.I=Date.now();a.O=A;f(c(2)+" ROOT - V"+B);n(c(1)+"-init");l();setInterval(l,200);var m=[[/latribune/,9945624415527048]];c=function(){for(var b=0;b<m.length;b++)if(m[b][0].test(h.hostname))return m[b][1]}();z(c,0!=c)}(location,google_tag_manager["GTM-WS7SWNV"].macro(11),google_tag_manager["GTM-WS7SWNV"].macro(15),google_tag_manager["GTM-WS7SWNV"].macro(20),google_tag_manager["GTM-WS7SWNV"].macro(21),google_tag_manager["GTM-WS7SWNV"].macro(23),google_tag_manager["GTM-WS7SWNV"].macro(26),google_tag_manager["GTM-WS7SWNV"].macro(39),google_tag_manager["GTM-WS7SWNV"].macro(62),
+google_tag_manager["GTM-WS7SWNV"].macro(130),google_tag_manager["GTM-WS7SWNV"].macro(131),google_tag_manager["GTM-WS7SWNV"].macro(219),google_tag_manager["GTM-WS7SWNV"].macro(270));</script><script type="text/javascript" id="">!function(a,b){a("tag ready V"+b)}(google_tag_manager["GTM-PC2RG39"].macro(272),google_tag_manager["GTM-PC2RG39"].macro(273));</script><script type="text/javascript" id="">!function(f,q,k,g,r,A,B,C,h){window[f()]=window[f()]||{};var c=window[f()],e=function(a){return h("consent",a,"CMP")},l=18E5,t=f(3)+"ps",m=function(){var a=document.cookie,b=a.indexOf(t);if(-1!=b){var d=a.indexOf(";",b);-1==d&&(d=void 0);return a.substring(a.indexOf("\x3d",b)+1,d)}}(),n=function(a,b){var d=parseInt(a);a=isNaN(d)?a:d+1;b=t+"\x3d"+a+"; expires\x3d"+b+" path\x3d/;";document.cookie=b;return a},p,u=0;f=100;var v=250,D=10,w=function(){__tcfapi("ping",2,function(a){var b=a.displayStatus;
+a=a.cmpStatus;if("stub"==a)throw e(4)+" LOADING";return"loaded"!=a||"hidden"!=b&&"disabled"!=b?p=!1:p=!0})};m&&(c.S=n(m,l));var x=setInterval(function(){u+=v;try{w()}catch(a){g("PING ERROR")}if(!p)return c.C=u;k(e(2)+" CHOICE RECORDED");clearInterval(x);c.C=!0;__tcfapi("getTCData",2,function(a,b){k(a);b=a.purpose;a=a.vendor;var d=720,y="1";if(!b.consents[y]&&!b.legitimateInterests[y])return c.S=n("NC",l),g(h("publisher",void 0)+" "+e()+" denied"),c.K("NO CONSENT");m||(c.S=n(0,l));if(!a.consents[d]&&
+!a.legitimateInterests[d])return c.K("CMP VENDORLIST INCOMPLETE");try{var z=c.R;"function"==typeof z&&r()&&setTimeout(function(){z()},150)}catch(E){g("refresh on "+e()+" failed : "+E)}})},v);q(w,"TCF PING",D,f,function(){g(h("publisher",2)+" "+e(4)+" NOT WORKING");q(function(){if((A(/DBCMP/)||C||1==c.F)&&r()&&900<window.innerWidth)return B(),k("overriding "+h("publisher",void 0)+" "+e(4));c.C="nostub";c.S="NS";clearInterval(x)},e(4)+" Override",50,50)})}(google_tag_manager["GTM-WS7SWNV"].macro(276),google_tag_manager["GTM-WS7SWNV"].macro(344),
+google_tag_manager["GTM-WS7SWNV"].macro(348),google_tag_manager["GTM-WS7SWNV"].macro(352),google_tag_manager["GTM-WS7SWNV"].macro(361),google_tag_manager["GTM-WS7SWNV"].macro(362),function(){window[window[google_tag_manager["GTM-WS7SWNV"].macro(363)].A||"dataLayer"].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});google_tag_manager["GTM-WS7SWNV"].macro(376)("https://www.googletagmanager.com/gtm.js?id\x3dGTM-KCVKDZM","GTM CMP "+google_tag_manager["GTM-WS7SWNV"].macro(378)(2))},google_tag_manager["GTM-WS7SWNV"].macro(379),google_tag_manager["GTM-WS7SWNV"].macro(380));</script>
+<script type="text/javascript" id="">!function(b,a,g,c,h){var k=a.toUpperCase()+(/laposte.net/.test(location.hostname)?"YJ2851":"23QE99"),d=".",e="pub",f="https://c"+d+a+"ads"+d+"com/"+a+d+"js";c={ver:[1,2].join(d),hst:c};c[e]=k;f=g(f,c);b[a]=c;b[a][e+"Id"]=b[a][e];b[a].initTime=(new Date).getTime();h(f,a,void 0,{onerror:function(){b[a].getAbpStatus=function(){return!1}}})}(window,google_tag_manager["GTM-WS7SWNV"].macro(381),google_tag_manager["GTM-WS7SWNV"].macro(382),google_tag_manager["GTM-WS7SWNV"].macro(383),google_tag_manager["GTM-WS7SWNV"].macro(396));</script>
+
+
+<script type="text/javascript" id="">!function(q,r,e,h,t,k,l,u){var b="db",m="adblock",f=b+"abp",v=f,n="AbpStatus",p="get"+n,g=b+"force";b+="dont";var w=window[e].Y||5,a=function(c,d){t(c);k(f,d,{sa:w});l(v);c&&l(n)};if(h(new RegExp(g.toUpperCase())))return a(g,g);if(h(new RegExp(b.toUpperCase())))return a(!1,b);q(function(){var c=window[r][p](),d=window[e].W;if("undefined"==typeof d)throw e+" not ready";return d?c?a(!0,"acceptableAds"):a(!1,"noAdAccepted"):c?(u("weird "+m+" behavior"),a(!0,"weirdAcceptable")):a(!1,"no"+m)},p,500,50,
+function(){k(f,"timeout")})}(google_tag_manager["GTM-WS7SWNV"].macro(464),google_tag_manager["GTM-WS7SWNV"].macro(465),google_tag_manager["GTM-WS7SWNV"].macro(466),google_tag_manager["GTM-WS7SWNV"].macro(467),google_tag_manager["GTM-WS7SWNV"].macro(476),google_tag_manager["GTM-WS7SWNV"].macro(527),google_tag_manager["GTM-WS7SWNV"].macro(532),google_tag_manager["GTM-WS7SWNV"].macro(535));</script><img style="display: none !important;" src="./Подробное объяснение основных функций QFileInfo - Русские Блоги_files/timeout"></body></html>
