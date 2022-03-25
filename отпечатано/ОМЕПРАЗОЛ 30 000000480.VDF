@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<File Format="Amica.VDF" Version="3.0" MagicPageVersionInfo="3.6.2.122" HexTextTemp="1" Type="Monochroic">
+  <VDPPage Elements="4">
+    <VariableText FullName="Amica.Vdp.Common.Element.VdpVariableText">
+      <DisplayType>Barcode</DisplayType>
+      <Mirror>None</Mirror>
+      <DoVerification>false</DoVerification>
+      <Rect X="0.3689324" Y="0.04134351" Width="0.45" Height="0.45" />
+      <IsDisplayBorder>false</IsDisplayBorder>
+      <IsReverseColor>false</IsReverseColor>
+      <Text>
+        <Content><![CDATA[3031303436303730323237353034373832313030306F5232577761783058451D3931454530371D393243742F7256426F2B706D4E616950574C767943692B6E6639654732395559755759497458594936376377493D]]></Content>
+        <ForeColor A="255" R="0" G="0" B="0" />
+        <TextFont>
+          <Name>Microsoft Sans Serif</Name>
+          <Size>8.25</Size>
+          <Style>Regular</Style>
+        </TextFont>
+        <Alignment_H>Left</Alignment_H>
+        <Alignment_V>Top</Alignment_V>
+        <FontScale>1</FontScale>
+        <IsConvertNumberToWord>false</IsConvertNumberToWord>
+        <GapSpaceNum>0</GapSpaceNum>
+        <CharacterInterval>0</CharacterInterval>
+        <LineSpace>0</LineSpace>
+      </Text>
+      <TBarcode FullName="Amica.Vdp.Common.TDataMatrix">
+        <BarcodeTypeShell>DataMatrix</BarcodeTypeShell>
+        <BarcodeType>DataMatrix</BarcodeType>
+        <ModuleWidth>0.01249681</ModuleWidth>
+        <FixedModuleWidth>false</FixedModuleWidth>
+        <WHWithScale>true</WHWithScale>
+        <PrintRatio />
+        <TextDistance>0</TextDistance>
+        <BarWidthReduction>16</BarWidthReduction>
+        <BarWidthReductionUnit>Percent</BarWidthReductionUnit>
+        <IsShowText>true</IsShowText>
+        <IsTextAbove>false</IsTextAbove>
+        <IsCustDrawText>false</IsCustDrawText>
+        <IsTextFormat>false</IsTextFormat>
+        <CustAlignment>Center</CustAlignment>
+        <CheckdigitMethod>Standard</CheckdigitMethod>
+        <EncodingMode>CodePage</EncodingMode>
+        <CodePage>Default</CodePage>
+        <TranslateEscapeSequences>false</TranslateEscapeSequences>
+        <OnlyFixedModuleWidth>false</OnlyFixedModuleWidth>
+        <BarSize Width="0.45" Height="0.45" />
+        <CodeFont>
+          <Name>Microsoft Sans Serif</Name>
+          <Size>9</Size>
+          <Style>Regular</Style>
+        </CodeFont>
+        <TextFormat FullName="Amica.Vdp.Common.TextFormat">
+          <MaskFormat />
+          <Padding>
+          </Padding>
+          <PaddingLeading>true</PaddingLeading>
+        </TextFormat>
+        <Format />
+        <FormatFlag>false</FormatFlag>
+        <UseRainbow>false</UseRainbow>
+        <DataMatrix>
+          <IsRectangular>false</IsRectangular>
+          <IsEnforceBinEncoding>false</IsEnforceBinEncoding>
+          <IsStructuredAppend>false</IsStructuredAppend>
+          <AppendFileId>-1</AppendFileId>
+          <AppendIndex>-1</AppendIndex>
+          <AppendSum>-1</AppendSum>
+          <DMFormat>UccEanGs1</DMFormat>
+          <DMSize>Square36x36</DMSize>
+        </DataMatrix>
+      </TBarcode>
+      <VarFieldManager FullName="Amica.Vdp.Common.Element.VarFieldManager">
+        <VarFields Elements="1">
+          <VarField FullName="Amica.Vdp.Common.Element.DataField">
+            <FieldType>FT_DataField</FieldType>
+            <FullName>&lt;&lt;DM&gt;&gt;</FullName>
+            <FieldName>DM</FieldName>
+            <FieldIndex>0</FieldIndex>
+            <StartPos>0</StartPos>
+            <StopPos>0</StopPos>
+            <Length>6</Length>
+            <ApplyMask>false</ApplyMask>
+          </VarField>
+        </VarFields>
+      </VarFieldManager>
+      <TextTemplate>3C3C444D3E3E</TextTemplate>
+      <OneCellPerField>false</OneCellPerField>
+      <IgnoreEmptyFieldLine>false</IgnoreEmptyFieldLine>
+      <Line>
+        <LineColor C="0" M="0" Y="0" K="100" />
+        <LineWidth>0.75</LineWidth>
+        <LineStyle>Solid</LineStyle>
+      </Line>
+      <ZOrder>1</ZOrder>
+      <RotateAngle>90</RotateAngle>
+      <Visible>true</Visible>
+      <IsAutoSize>true</IsAutoSize>
+      <IsAutoWrap>false</IsAutoWrap>
+      <IsAutoScale>false</IsAutoScale>
+      <IsTransparent>true</IsTransparent>
+      <IsKeyElement>false</IsKeyElement>
+      <IsValueElement>false</IsValueElement>
+      <IsFilled>true</IsFilled>
+      <Overprint>false</Overprint>
+      <InPage>false</InPage>
+      <Density>100</Density>
+      <RecordOrder>0</RecordOrder>
+    </VariableText>
+    <VariableText FullName="Amica.Vdp.Common.Element.VdpVariableText">
+      <DisplayType>Text</DisplayType>
+      <Mirror>None</Mirror>
+      <Rect X="0.1222615" Y="1.072881" Width="1.223333" Height="0.1448333" />
+      <IsDisplayBorder>false</IsDisplayBorder>
+      <IsReverseColor>false</IsReverseColor>
+      <Text>
+        <Content><![CDATA[4754494E3A203034363037303232373530343738]]></Content>
+        <ForeColor A="255" R="0" G="0" B="0" />
+        <TextFont>
+          <Name>Microsoft Sans Serif</Name>
+          <Size>8.25</Size>
+          <Style>Regular</Style>
+        </TextFont>
+        <Alignment_H>Left</Alignment_H>
+        <Alignment_V>Top</Alignment_V>
+        <FontScale>1</FontScale>
+        <IsConvertNumberToWord>false</IsConvertNumberToWord>
+        <GapSpaceNum>0</GapSpaceNum>
+        <CharacterInterval>0</CharacterInterval>
+        <LineSpace>0</LineSpace>
+      </Text>
+      <VarFieldManager FullName="Amica.Vdp.Common.Element.VarFieldManager">
+        <VarFields Elements="1">
+          <VarField FullName="Amica.Vdp.Common.Element.DataField">
+            <FieldType>FT_DataField</FieldType>
+            <FullName>&lt;&lt;GTIN&gt;&gt;</FullName>
+            <FieldName>GTIN</FieldName>
+            <FieldIndex>0</FieldIndex>
+            <StartPos>6</StartPos>
+            <StopPos>0</StopPos>
+            <Length>8</Length>
+            <ApplyMask>false</ApplyMask>
+          </VarField>
+        </VarFields>
+      </VarFieldManager>
+      <TextTemplate>4754494E3A203C3C4754494E3E3E</TextTemplate>
+      <OneCellPerField>false</OneCellPerField>
+      <IgnoreEmptyFieldLine>false</IgnoreEmptyFieldLine>
+      <Line>
+        <LineColor C="0" M="0" Y="0" K="100" />
+        <LineWidth>0.75</LineWidth>
+        <LineStyle>Solid</LineStyle>
+      </Line>
+      <ZOrder>2</ZOrder>
+      <RotateAngle>90</RotateAngle>
+      <Visible>true</Visible>
+      <IsAutoSize>true</IsAutoSize>
+      <IsAutoWrap>false</IsAutoWrap>
+      <IsAutoScale>false</IsAutoScale>
+      <IsTransparent>true</IsTransparent>
+      <IsKeyElement>false</IsKeyElement>
+      <IsValueElement>false</IsValueElement>
+      <IsFilled>true</IsFilled>
+      <Overprint>false</Overprint>
+      <InPage>false</InPage>
+      <Density>100</Density>
+      <RecordOrder>0</RecordOrder>
+    </VariableText>
+    <VariableText FullName="Amica.Vdp.Common.Element.VdpVariableText">
+      <DisplayType>Text</DisplayType>
+      <Mirror>None</Mirror>
+      <Rect X="-0.2040672" Y="1.135352" Width="1.348333" Height="0.1448333" />
+      <IsDisplayBorder>false</IsDisplayBorder>
+      <IsReverseColor>false</IsReverseColor>
+      <Text>
+        <Content><![CDATA[D0A1D0B5D1802EE284963A203030306F523257776178305845]]></Content>
+        <ForeColor A="255" R="0" G="0" B="0" />
+        <TextFont>
+          <Name>Microsoft Sans Serif</Name>
+          <Size>8.25</Size>
+          <Style>Regular</Style>
+        </TextFont>
+        <Alignment_H>Left</Alignment_H>
+        <Alignment_V>Top</Alignment_V>
+        <FontScale>1</FontScale>
+        <IsConvertNumberToWord>false</IsConvertNumberToWord>
+        <GapSpaceNum>0</GapSpaceNum>
+        <CharacterInterval>0</CharacterInterval>
+        <LineSpace>0</LineSpace>
+      </Text>
+      <VarFieldManager FullName="Amica.Vdp.Common.Element.VarFieldManager">
+        <VarFields Elements="1">
+          <VarField FullName="Amica.Vdp.Common.Element.DataField">
+            <FieldType>FT_DataField</FieldType>
+            <FullName>&lt;&lt;SN&gt;&gt;</FullName>
+            <FieldName>SN</FieldName>
+            <FieldIndex>0</FieldIndex>
+            <StartPos>7</StartPos>
+            <StopPos>0</StopPos>
+            <Length>6</Length>
+            <ApplyMask>false</ApplyMask>
+          </VarField>
+        </VarFields>
+      </VarFieldManager>
+      <TextTemplate>D0A1D0B5D1802EE284963A203C3C534E3E3E</TextTemplate>
+      <OneCellPerField>false</OneCellPerField>
+      <IgnoreEmptyFieldLine>false</IgnoreEmptyFieldLine>
+      <Line>
+        <LineColor C="0" M="0" Y="0" K="100" />
+        <LineWidth>0.75</LineWidth>
+        <LineStyle>Solid</LineStyle>
+      </Line>
+      <ZOrder>3</ZOrder>
+      <RotateAngle>90</RotateAngle>
+      <Visible>true</Visible>
+      <IsAutoSize>true</IsAutoSize>
+      <IsAutoWrap>false</IsAutoWrap>
+      <IsAutoScale>false</IsAutoScale>
+      <IsTransparent>true</IsTransparent>
+      <IsKeyElement>false</IsKeyElement>
+      <IsValueElement>false</IsValueElement>
+      <IsFilled>true</IsFilled>
+      <Overprint>false</Overprint>
+      <InPage>false</InPage>
+      <Density>100</Density>
+      <RecordOrder>0</RecordOrder>
+    </VariableText>
+    <Page FullName="Amica.Vdp.Common.Element.VdpPage">
+      <Rect X="0" Y="0" Width="1.259843" Height="2.952756" />
+      <Guid>6c6a13e8-4f4f-4113-bf75-aefe329e3423</Guid>
+      <PageNum>1</PageNum>
+      <IsNotAllowRepeatPrint>true</IsNotAllowRepeatPrint>
+      <IsOutputBackground>true</IsOutputBackground>
+      <BackgroundImage />
+      <BKAlignment>MiddleCenter</BKAlignment>
+      <DesignUnit>Inch</DesignUnit>
+      <Stretch>None</Stretch>
+      <TextMode>TRM_GdiPro</TextMode>
+      <RipParam FullName="Amica.Vdp.PageOutput.RipParam">
+        <OutPutPath />
+        <DataSourcePath />
+        <Resolution Width="600" Height="600" />
+        <IsOneRecordPerPanel>true</IsOneRecordPerPanel>
+        <IsBarcodeOptimization>false</IsBarcodeOptimization>
+        <IsReverse>false</IsReverse>
+        <IsProofing>false</IsProofing>
+        <IsOutputHeadPages>true</IsOutputHeadPages>
+        <IsOutputBackImage>true</IsOutputBackImage>
+        <BeginNo>1</BeginNo>
+        <EndNo>75085</EndNo>
+        <BeginBookNo>1</BeginBookNo>
+        <EndBookNo>1</EndBookNo>
+        <ColorDepth>1</ColorDepth>
+        <PageRotateAngle>0</PageRotateAngle>
+        <DensityType>Middle</DensityType>
+        <OutputFileType>TIFF</OutputFileType>
+        <PageAdjust>None</PageAdjust>
+        <AllPages>true</AllPages>
+        <OutColorModes Elements="1">
+          <ColorMode>K</ColorMode>
+        </OutColorModes>
+        <OutputRecords>0-149999</OutputRecords>
+        <ChannelVariableDots>
+          <VariableDot FullName="Amica.Vdp.Common.ChannelVariableDot">
+            <ChannelName>K</ChannelName>
+            <Items>
+              <Item input="0.33" output="1" />
+              <Item input="0.66" output="1" />
+              <Item input="1" output="1" />
+            </Items>
+          </VariableDot>
+          <VariableDot FullName="Amica.Vdp.Common.ChannelVariableDot">
+            <ChannelName>C</ChannelName>
+            <Items>
+              <Item input="0.33" output="1" />
+              <Item input="0.66" output="1" />
+              <Item input="1" output="1" />
+            </Items>
+          </VariableDot>
+          <VariableDot FullName="Amica.Vdp.Common.ChannelVariableDot">
+            <ChannelName>M</ChannelName>
+            <Items>
+              <Item input="0.33" output="1" />
+              <Item input="0.66" output="1" />
+              <Item input="1" output="1" />
+            </Items>
+          </VariableDot>
+          <VariableDot FullName="Amica.Vdp.Common.ChannelVariableDot">
+            <ChannelName>Y</ChannelName>
+            <Items>
+              <Item input="0.33" output="1" />
+              <Item input="0.66" output="1" />
+              <Item input="1" output="1" />
+            </Items>
+          </VariableDot>
+        </ChannelVariableDots>
+      </RipParam>
+      <DataSourceSet DataCount="1">
+        <DataSource>
+          <DataPathInfo FullName="Amica.Vdp.Common.DataSource.CsvAdapter">
+            <SourceType>CSV</SourceType>
+            <SettingStr>;</SettingStr>
+            <SourcePath>C:\Users\Solmark\Desktop\СЕРИИ\Омепразол 30\ОМЕПРАЗОЛ 30 000000480   28_02_2022.csv</SourcePath>
+          </DataPathInfo>
+          <KeyField />
+          <DataMd5>8F43C01DA2C1E5550E0F71AAD05F34B9</DataMd5>
+        </DataSource>
+      </DataSourceSet>
+      <Template FullName="Amica.Vdp.PageTemplate.VdpPageTemplate">
+        <UniqueId>af6f0ef1-3434-4d89-aa3c-9355d73c6fba</UniqueId>
+        <PanelNum HorNum="1" VerNum="1" />
+        <PageSize Width="1.259843" Height="2.952756" />
+        <PageMargin X="0" Y="0" />
+        <PanelSize Width="1.259843" Height="2.952756" />
+        <PanelSpace Width="0" Height="0" />
+        <IsOneRecordPerPanel>false</IsOneRecordPerPanel>
+        <PanelCount>1</PanelCount>
+        <PaperStockId>32x75</PaperStockId>
+        <PaperDescription>32x75</PaperDescription>
+        <PanelOrder>LeftToRight</PanelOrder>
+        <ConveyorDirection>RightToLeft</ConveyorDirection>
+      </Template>
+      <ConsumeRecordsPerPanel>1</ConsumeRecordsPerPanel>
+    </Page>
+  </VDPPage>
+</File>

@@ -4,6 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QFileInfo
 import csv
+import re
 
 
 
@@ -48,7 +49,27 @@ class Demo(QtWidgets.QWidget, Ui_Form):
             FileBaseName = FilInfo.completeBaseName()
             #Fil = self.fileinfo.fileName(file)
             print(f"\n_______________    File Name BLOCK: ____________\nName Full = {Filename2}, \n ext = {FilenameExt}, \n completeBaseName = {FileBaseName} ")
+
+            #kod_zapros=
+            kod_zapros = ",".join(re.findall(r'0{3,}\d{4}\b',
+                                FileBaseName))
+            print(f'kod_zapros {kod_zapros}')
+
+            separateName1=FileBaseName.split(sep=" ")
+            print(f"separateName1 {separateName1[0]}\n")
+            print(f"separateName2 {separateName1[1]}\n")
+            print(f"separateName3 {separateName1[2]}\n")
+            print(f"separateName4 {separateName1[3]}\n")
             print(file)
+
+            # delimiter = ';'
+            # names = ['Java', 'Python', 'Go']
+            # delimiter = ','
+            # single_str = delimiter.join(names)
+            # print('Строка: {0}'.format(single_str))
+            #
+            # split = single_str.split(delimiter)
+            # print('Список: {0}'.format(split))
 
 ################################################
         with open(file, 'r') as f:
