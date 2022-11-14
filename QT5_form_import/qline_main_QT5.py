@@ -32,6 +32,11 @@ class mywindow(QtWidgets.QMainWindow):
 
         ######################## BUTTON
         self.ui.pushButton.setText("Button")
+        #Слоты и сигналы Перетяните QPushButton и QLineEdit в вашу форму.
+        #Нажмите F4 и перетяните курсор из QPushButton и отпустите его в верхней
+        # части QLineEdit. Чтобы вернуться в обычный режим, нажмите на F3.
+        #Визуальный редактор слота/сигнала
+        #https://python-scripts.com/pyqt5?ysclid=lagg1me49i992191830#signal-slot-editor
         self.ui.pushButton.clicked.connect(self.btnClicked)
 
     def btnClicked(self):
