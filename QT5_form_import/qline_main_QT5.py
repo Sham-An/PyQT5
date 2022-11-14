@@ -27,10 +27,17 @@ class mywindow(QtWidgets.QMainWindow):
         # изменение цвета фона QLineEdit
         self.ui.lineEdit_6.setStyleSheet("background-color: rgb(28, 43, 255);")
 
-        self.ui.label.setFont(QtGui.QFont('SansSerif', 30))  # Изменение шрифта и размера
+        self.ui.label.setFont(QtGui.QFont('SansSerif', 13))  # Изменение шрифта и размера
         self.ui.label.setText("PyScripts")  # Меняем текст
 
+        ######################## BUTTON
+        self.ui.pushButton.setText("Button")
+        self.ui.pushButton.clicked.connect(self.btnClicked)
 
+    def btnClicked(self):
+        self.ui.label.setText("Вы нажали на кнопку!")
+        # Если не использовать, то часть текста исчезнет.
+        self.ui.label.adjustSize()
 
 
 app = QtWidgets.QApplication([])

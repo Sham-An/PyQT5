@@ -39,12 +39,11 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setObjectName("label")
         self.label.setGeometry(QtCore.QRect(10, 260, 291, 31))
-        #self.ui.label.setText("PyScripts")  # Меняем текст
-        #self.label.setFont(QtGui.QFont('SansSerif', 30))
+#################################################
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton.setGeometry(QtCore.QRect(10, 310, 291, 31))
 
-        #self.label.setGeometry(QtCore.QRect(10, 260, 291, 31))  # изменить геометрию ярлыка
-
-        #################################################
 
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 785, 25))
