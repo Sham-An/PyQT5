@@ -1,0 +1,92 @@
+
+uic.loadUi(path[, instance])
+
+    Parameters
+
+            path – путь к файлу
+
+            instance – экземпляр класса
+
+    Возвращает ссылку на объект формы, сконвертированный из формы диайнера в питон объект.
+
+    Если задан второй параметр instance, то заполняет его
+
+uic.loadUiType()
+
+    Возвращает кортеж из двух элементов, ссылки на клас формы и ссылки на базовый класс.
+
+    После создания экземпляра, необходмо вызвать метод setupUi.
+
+    class MyWindow(Qwidget):
+        def __init__(self, parent=None):
+            super(MyWindow, self).__init__(parent)
+
+            Form, Base = uic.loadUiType('myform.uic')
+            self.ui = Form()
+            self.ui.setupUi(self)
+
+#######################################################################
+Такое может произойти если вы поменяли OjbectName у вашего QLabel.
+Посмотрите в дизайнере ObjectName, или в файле widget.ui строку:
+
+|<widget class="QLabel" name="label">|
+
+Вот пример с вашим кодом:
+
+Файл test_ui.py
+
+|import sys
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QWidget, QLabel
+from PyQt5 import uic
+
+class Widget(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("test.ui", self)
+        self.label.setText("NewText")
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Widget()
+    ex.show()
+    sys.exit(app.exec_())
+|
+
+И файл формы test.ui:
+
+|<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>70</y>
+     <width>59</width>
+     <height>14</height>
+     </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
+|
+
