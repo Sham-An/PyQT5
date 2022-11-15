@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 #pyuic5 qline.ui -o qline.py
+
 # Form implementation generated from reading ui file 'qline.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
